@@ -31,7 +31,7 @@ Things you may want to cover:
 |email|string|null: false, unique: true|
 |password|password|null: false|
 |birthday|date|null: false|
-|deleted_flag|boolean|default: 0|
+|is_deleted|boolean|default: 0|
 
 ### Association
 - has_many :items
@@ -41,11 +41,11 @@ Things you may want to cover:
 ## Addressテーブル
 |Column|Type|Options|
 |------|----|-------|
-|lastName|string|null: false|
-|firstName|string|null: false|
-|lastNameKana|string|null: false|
-|firstNameKana|string|null: false|
-|postalCode|string|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|postal_code|string|null: false|
 |prefectures|string|null: false|
 |city|string|null: false|
 |address|string|null: false|
@@ -63,20 +63,20 @@ Things you may want to cover:
 |bland|string|
 |size|string|
 |condition|string|null: false|
-|deliveryFee|string|null: false|
-|deliveryDay|string|null: false|
+|delivery_fee|string|null: false|
+|delivery_day|string|null: false|
 |price|integer|null: false|
-|deleted_flag|boolean|default: 0|
+|is_deleted|boolean|default: 0|
 |user_id|reference|null: false, foreign_key: true|
+|category_id|reference|foreign_key true|
 
 ### Association
 - belongs_to :user
 - has_one :purchase
-- has_many :items_ancestries through :categories
-- has_many :categories
+- belongs_to :category
 - has_many :item_images
 
-## item-imageテーブル
+## item-imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_id|reference|foreign_key: true|
@@ -92,19 +92,8 @@ Things you may want to cover:
 |item_id|reference|foreign_key: true|
 
 ### Association
-- has_many :items_categories through :items
 - has_many :items
 - has_ancestry
-
-## items_categoryテーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_id|reference|foreign_key :true|
-|category_id|reference|foreign_key :true|
-
-### Assoiation
-- belongs_to :category
-- belongs_to :item
 
 ## purchasesテーブル
 |Column|Type|Options|
@@ -129,7 +118,7 @@ Things you may want to cover:
 ## destinationsテーブル
 |Column|Type|Options|
 |--------|----|--------|
-|postalCode|string|null: false|
+|postal_code|string|null: false|
 |prefectures|string|null: false|
 |city|string|null: false|
 |address|string|null: false|
