@@ -29,3 +29,35 @@
             %a{:href => "#"}
               %li.right__item ログイン
     = yield
+    %footer.footer
+      %ul.footer-contents
+        %li.footer-content
+          %h2.footer-content__head FURIMAについて
+          %ul
+            %li
+              %a 会社概要（運営会社）
+            %li
+              %a プライバシーポリシー
+            %li
+              %a FURIMA利用規約
+            %li
+              %a ポイントに関する規約
+        %li.footer-content
+          %h2.footer-content__head FURIMAを見る
+          %ul
+            %li
+              %a カテゴリー一覧
+            %li
+              %a ブランド一覧
+        %li.footer-content
+          %h2.footer-content__head ヘルプ&amp;ガイド
+          %ul
+            %li
+              %a FURIMAガイド
+            %li
+              %a FURIMAロゴ利用ガイドライン
+            %li
+              %a お知らせ
+      .footer-logo
+        = image_tag 'logo-white.png', size: '160x46', class:"footer-logo--image"
+      %p © FURIMA
