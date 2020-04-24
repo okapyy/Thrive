@@ -18,7 +18,7 @@
       .item-box
         %h2.item-box__name
         .item-box__picture
-          %ul
+          %ul.top-picture
             %li
               %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"}
           %ul
@@ -29,12 +29,16 @@
               %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/8/a002.png"}
           %ul
             %li
-              %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"}
-          
-          
-
+              %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/9/a003.png"}
         .item-box__price
+          %span
+            ¥10000
+          .item-box__price__info
+            %span
+            (税込み)
+            送料込み
         .item-box__description
+          %p ここに商品の説明を長々と説明する。ああああああああああああああああああああああああああああああああああああああああ
         .item-box__table
           %table
             %tbody
@@ -78,17 +82,14 @@
               %a{href: "#"} 不適切な商品の通報
       .comment-box
       .form
-        %input{type: "textarea"}
-        %p.caution-message
+        -# = form_with(model: [@comment], local: true) do |form|
+          = form.text_area :text
+          %p.caution-message
           相手のことを考え丁寧なコメントを心がけましょう。
           %br
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        %input{type: "submit", value: "コメントする"}
+          = form.submit "SEND"
           %i.fa.fa-comment
-          
-
-
-
     %ul.links
       %li
         = link_to "前の商品"
