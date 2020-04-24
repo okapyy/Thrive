@@ -1,0 +1,35 @@
+%nav.breadCrums
+  %ul
+    %li= link_to "FURIMA", root_path
+    %li
+      %i.fa.fa-angle-right
+    %li= link_to "レディース"
+    %li
+      %i.fa.fa-angle-right
+    %li= link_to "Tシャツ/カットソー(半袖/袖なし)"
+    %li
+      %i.fa.fa-angle-right
+    %li
+      %P Product1
+    
+.main
+  .content
+    .top-content
+      .item-box
+        %h2.item-box__name
+        .item-box__body
+        .item-box__price
+        .item-box__description
+        .item-box__table
+        .option-rea
+      .comment-box
+    %ul.links
+      %li
+        = link_to "前の商品"
+        %i.fa.fa-angle-left
+      %li
+        = link_to "後ろの商品"
+        %i.fa.fa-angle-left
+    .related-items
+      = link_to "レディースをもっと見る"
+    .item-lists
