@@ -17,7 +17,22 @@
     .top-content
       .item-box
         %h2.item-box__name
-        .item-box__body
+        .item-box__picture
+          %ul
+            %li
+              %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"}
+          %ul
+            %li
+              %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"}
+          %ul
+            %li
+              %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/8/a002.png"}
+          %ul
+            %li
+              %img{src: "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"}
+          
+          
+
         .item-box__price
         .item-box__description
         .item-box__table
@@ -54,7 +69,26 @@
                 %th 発送日の目安
                 %td 1-2日で発送
         .additional-area
+          %ul.favorite
+            %li.like-btn
+              %i.fa.fa-star
+              %P お気に入り
+          %ul.report
+            %li.report-btn
+              %a{href: "#"} 不適切な商品の通報
       .comment-box
+      .form
+        %input{type: "textarea"}
+        %p.caution-message
+          相手のことを考え丁寧なコメントを心がけましょう。
+          %br
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %input{type: "submit", value: "コメントする"}
+          %i.fa.fa-comment
+          
+
+
+
     %ul.links
       %li
         = link_to "前の商品"
