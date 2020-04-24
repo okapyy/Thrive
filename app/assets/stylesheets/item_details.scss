@@ -1,0 +1,17 @@
+.breadCrums {
+  width: 100%;
+  height: 55px;
+  padding: 0 60px;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  ul {
+    display: flex;
+    line-height: 55px;
+    margin: 0 140px;
+    font-size: 14px;
+    li a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
