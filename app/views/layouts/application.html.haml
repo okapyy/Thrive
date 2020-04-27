@@ -22,7 +22,16 @@
         .header-nav
           %ul.nav--left
             = link_to "#", id:"categoryBtn" do
-              %li.left__item カテゴリー
+              %li.left__item#opentree カテゴリー
+              .trees
+                .tree
+                  %ul.category-tree
+                    - @parents.each do |parent|
+                      %li.category= parent.name
+                .tree
+                  %ul.category-tree
+                    - @ladies.each do |lady|
+                      %li= lady.name
             = link_to "#", id:"blandBtn" do
               %li.left__item ブランド
           %ul.nav--right
