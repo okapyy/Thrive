@@ -21,19 +21,23 @@
                   = image_tag 'icon-search 1.png', size:"20x20"
         .header-nav
           %ul.nav--left
-            = link_to "#", id:"categoryBtn" do
-              %li.left__item#opentree カテゴリー
-              .trees
-                .tree
+            %li.left__item#opentree
+              = link_to "カテゴリー", "/categories/index", id:"categoryBtn"
+              %ul.trees
+                %li.tree
                   %ul.category-tree
                     - @parents.each do |parent|
-                      %li.category= parent.name
-                .tree
+                      %li.category= link_to parent.name, "/categories/index" 
+                %li.tree
                   %ul.category-tree
-                    - @ladies.each do |lady|
-                      %li= lady.name
-            = link_to "#", id:"blandBtn" do
-              %li.left__item ブランド
+                    - @lady.children.each do |child|
+                      %li.category= link_to child.name, "/categories/index"
+                %li.tree
+                  %ul.category-tree
+                    - @ladies_item.each do |grand_children|
+                      %li.category= link_to grand_children.name, "/categories/index"
+            %li.left__item
+              = link_to "ブランド", "#", id:"blandBtn"
           %ul.nav--right
             %a{:href => "#", class:"login-link"}
               %li.right__item ログイン

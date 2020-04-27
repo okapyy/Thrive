@@ -50,24 +50,25 @@
       font-size: 14px;
       margin-bottom: 10px;
       justify-content: space-between;
-      // align-items: center;
       .nav--left {
         display: flex;
         margin-right: auto;
-        #categoryBtn {
-          color: #333;
+        .left__item {
           text-decoration: none;
-          line-height: 32px;
-          background-position: center right;
-          padding-right: 30px;
-          position: relative;
-          .left__item {
-            text-decoration: none;
+          color: #333;
+          line-height: 38px;
+          padding: 0 16px 0 0;
+          #categoryBtn {
             color: #333;
-            line-height: 38px;
-            padding: 0 16px 0 0;
+            text-decoration: none;
+            line-height: 32px;
+            background-position: center right;
+            padding-right: 30px;
+            position: relative;
           }
           .trees {
+            position: absolute;
+            display: flex;
             .tree {
               display: none;
               background-color: #fff;
@@ -83,12 +84,9 @@
             }
           }
         }
-        #categoryBtn:hover {
-          .trees {
-            display: flex;
-            .tree {
-              display: block;
-            }
+        .left__item:hover {
+          .tree {
+            display: block;
           }
         }
         #blandBtn {

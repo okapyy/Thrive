@@ -12,11 +12,9 @@ jQuery(document).on('turbolinks:load', function(){
 
   $('.category').on('mouseover', function() {
     $(this).css('color', '#ff9900');
-    var setLeft = $('.tree').position().left;
-    var setTop = $('.tree').position().top;
-    console.log(setLeft);
-    console.log(setTop);
-
+    $.ajax({
+      url: 
+    })
   }).on('mouseout', function() {
     $(this).css('color', '');
   });
