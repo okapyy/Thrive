@@ -8,7 +8,7 @@ class User < ApplicationRecord
     @user = User.new(user_params)
     if @user.save
       @user.update(birthday:birthday_join)
-      # redirect_to root_path
+      # redirect_to root_path      //ユーザーを登録した後のページの遷移先の指定してください！
     else
       render 'new'
     end
