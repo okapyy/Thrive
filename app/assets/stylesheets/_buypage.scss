@@ -1,17 +1,3 @@
-$pc: 1024px; // PC
-$tab: 680px; // タブレット
-
-@mixin pc {
-  @media (max-width: ($pc)) {
-    @content;
-  }
-}
-@mixin tab {
-  @media (max-width: ($tab)) {
-    @content;
-  }
-}
-
 /*buypage*/
 .buypage-header{
   width: 100vw;
