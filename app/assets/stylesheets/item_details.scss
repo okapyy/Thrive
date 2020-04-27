@@ -36,8 +36,8 @@
     .top-content {
       width: 700px;
       margin: 0 auto;
-      background-color: white;
       .item-box {
+        background-color: white;
         padding: 24px 40px;
         text-align: center;
         &__name {
@@ -90,16 +90,104 @@
           margin-bottom: 30px;
         }
         &__table {
-
+          width: 100%;
+          margin-bottom: 20px;
+          table {
+            border: 1px solid #222;
+            width: 100%;
+            tr {
+              th {
+                width: 20%;
+                font-size: 14px;
+                font-weight: 400;
+                padding: 8px;
+                background-color: #eee;
+                text-align: center;
+                border: 1px solid #dedede;
+              }
+              td {
+                font-size: 14px;
+                padding: 15px;
+                text-align: left;
+                border: 1px solid #dedede;
+                a {
+                  text-decoration: none;
+                  color: #3CCACE;
+                }
+              }
+            }
+          }
         }
-        &__additional-area {
-
+        .additional-area {
+          width: 100%;
+          display: flex;
+          position: relative;
+          padding: 10px 0;
+          ul {
+            width: 200px;
+            .like-btn {
+              width: 130px;
+              padding: 6px 10px;
+              border: 1px solid #ffb340;
+              display: flex;
+              border-radius: 40px;
+              color: #3CCACE;
+              i {
+                font-size: 14px;
+                padding-top: 4px;
+              }
+            }
+            .report-btn {
+              position: absolute;
+              right: 0px;
+              top: 15px;
+              border: 1px solid black;
+              padding: 5px 8px;
+              border-radius: 5px;
+              i{
+                font-size: 12px;
+              }
+              a {
+                text-decoration: none;
+                color: black;
+                font-size: 14px;
+              }
+            }
+          }
         }
       }
       .comment-box {
+        margin: 10px 0;
+        background-color: white;
+        width: 100%;
+        padding: 20px;
         .form {
-          
+
         }
+      }
+    }
+    .links {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 60px;
+      li {
+        width: 100px;
+        a {
+          text-decoration: none;
+          color: #3CCACE;
+        }
+        i {
+          color: #3CCACE;
+        }
+      }
+    }
+    .related-items {
+      margin: 30px 60px;
+      a {
+        text-decoration: none;
+        font-size: 22px;
+        font-weight: bold;
+        color: #3CCACE;
       }
     }
   }

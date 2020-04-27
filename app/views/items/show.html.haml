@@ -73,12 +73,13 @@
                 %th 発送日の目安
                 %td 1-2日で発送
         .additional-area
-          %ul.favorite
+          %ul
             %li.like-btn
               %i.fa.fa-star
-              %P お気に入り
-          %ul.report
+              %p お気に入り0
+          %ul
             %li.report-btn
+              %i.fa.fa-flag
               %a{href: "#"} 不適切な商品の通報
       .comment-box
         .form
@@ -87,16 +88,14 @@
               相手のことを考え丁寧なコメントを心がけましょう。
               %br
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            -# %input{type: "submit" value="コメント"}
-            -# -#   %i.fa.fa-comment
 
     %ul.links
       %li
-        = link_to "前の商品"
         %i.fa.fa-angle-left
+        = link_to "前の商品"
       %li
-        = link_to "後ろの商品"
+        = link_to "後ろの商品" 
         %i.fa.fa-angle-right
     .related-items
       = link_to "レディースをもっと見る"
-    .item-lists
+      .item-lists
