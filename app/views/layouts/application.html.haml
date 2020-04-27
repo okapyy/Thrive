@@ -1,0 +1,66 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Thrive
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header.header
+      .header-inner
+        .header-top
+          %h1.header-icon
+            %a= image_tag 'logo.png', size:"140x40"
+          .search-box
+            %form
+              %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
+              %button{:type => "submit"}
+                .search-box--icon
+                  = image_tag 'icon-search 1.png', size:"20x20"
+        .header-nav
+          %ul.nav--left
+            = link_to "#", id:"categoryBtn" do
+              %li.left__item カテゴリー
+            = link_to "#", id:"blandBtn" do
+              %li.left__item ブランド
+          %ul.nav--right
+            %a{:href => "#", class:"login-link"}
+              %li.right__item ログイン
+            %a{:href => "#", class:"signup-link"}
+              %li.right__item 新規会員登録
+            .image-box{style:"background-image: url(google.png);"}
+    = yield
+    %footer.footer
+      %ul.footer-contents
+        %li.footer-content
+          %h2.footer-content__head FURIMAについて
+          %ul
+            %li
+              %a 会社概要（運営会社）
+            %li
+              %a プライバシーポリシー
+            %li
+              %a FURIMA利用規約
+            %li
+              %a ポイントに関する規約
+        %li.footer-content
+          %h2.footer-content__head FURIMAを見る
+          %ul
+            %li
+              = link_to 'カテゴリー一覧', "#"
+            %li
+              = link_to 'ブランド一覧', "#"
+        %li.footer-content
+          %h2.footer-content__head ヘルプ&amp;ガイド
+          %ul
+            %li
+              %a FURIMAガイド
+            %li
+              %a FURIMAロゴ利用ガイドライン
+            %li
+              %a お知らせ
+      .footer-logo
+        = image_tag 'logo-white.png', size: '160x46', class:"footer-logo--image"
+      %p © FURIMA
