@@ -1,0 +1,9 @@
+.mypage
+  .mypage-main.clearfix
+    .mypage-content
+      .mypage-logout
+        = link_to destroy_user_session_path,method: :delete do
+          %button.mypage-logout__btn ログアウト
+  
+    .mypage-side
+      = render partial: "side_menu"

@@ -1,0 +1,408 @@
+.mypage{
+  min-height: 100%;
+  background-color: rgb(245, 245, 245);
+  color: rgb(51, 51, 51);
+  font-size: 14px;
+  
+  .mypage-main{
+    width: 1020px;
+    margin: 0 auto;
+    @include pc{
+      width: 700px;
+    }
+    @include tab{
+      width: 500px;
+    }
+    .mypage-side{
+      float: left;
+      width: 280px;
+      font-size: 14px;
+      margin: 40px 40px 40px 0; 
+      @include pc{
+        width: 700px;
+        float: none;
+        padding-bottom: 40px;
+        margin: 40px 0 0 0;
+        
+        @include tab{
+          width: 500px;
+        }
+      }
+      .side-menu{
+        &__list{
+          background-color: white;
+        }
+        &__link:hover{
+          background-color: rgb(250,250,250);
+        }
+        &__link{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 15px;
+          text-decoration: none;
+          color: rgb(51, 51, 51);
+          border-bottom: 1px solid #ddd;
+          .angre-btn{
+            color: #ccc;
+          }
+        }
+      }
+      .side-merupay p{
+        background-color: rgb(245, 245, 245);
+        padding: 20px 0 5px;
+        font-size: 16ox;
+        font-weight: bold;
+        @include pc{
+          margin: 0 0 0 20px;
+        }
+        @include tab{
+          margin: 0 0 0 20px;
+        }
+      }
+    }
+    .mypage-content{
+      float: right;
+      width: 700px;
+      margin: 40px 0;
+      background-color: rgb(245, 245, 245);
+      @include pc{
+        float: none;
+        margin: 0;
+        padding-top: 40px;
+        @include tab{
+          width: 500px;
+        }
+      }
+      .mypage-list{
+        position: relative;
+        height: 200px;
+        background-image: url(bg-topMiddleDl-pict.jpg);
+        background-size: cover;
+        &__image{
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          &--size{
+            width: 60px;
+            height: 60px;
+          }
+          &--color{
+            color: black;
+            text-decoration: none;
+          }
+          &--color:hover{
+            text-decoration: underline;
+          }
+        }
+        &__name{
+          padding: 5px 10px;
+          font-weight: bold;
+          
+        }
+        &__show{
+          display: flex;
+          align-items: center;
+          
+        }
+        &__valuation{
+          padding: 0 5px 10px 10px;
+          &--padding{
+            padding: 0 5px 10px 5px;
+          }
+        }
+      }
+    }
+    .mypage-tab{
+      display: flex;
+      align-items: center;
+      text-align: center;
+      height: 75px;
+      background-color: white;
+      font-weight: bold;
+      font-size: 16px;
+      &__info{
+        padding: 25px;
+        width: 50%;
+        border-top: 2px solid red;
+        cursor: pointer;
+      }
+      &__info p:hover{
+        opacity: 0.6;
+      }
+      &__todo{
+        padding: 25px;
+        width: 50%;
+        background-color: #eee;
+        cursor: pointer;
+      }
+      &__todo p:hover{
+        opacity: 0.6;
+      }
+    }
+    .mypage-infomation{
+      position: relative;
+      background-color: white;
+      height: 235px;
+      &--image{
+        text-align: center;
+        opacity: 0.3;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &--font{
+        margin-top: 30px;
+        font-size: 16px;
+      }
+    }
+    .mypage-purchase{
+      margin: 40px 0 0;
+    }
+    .mypage-purchase h2{
+      height: 75px;
+      background-color: #eee;
+      line-height: 75px;
+      padding: 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+  
+  .clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .mypage-logout{
+    width: 700px;
+    background-color: white;
+    text-align: center;
+    @include tab{
+      width: 500px;
+    }
+    &__btn{
+      width: 320px;
+      height: 50px;
+      margin: 65px 0;
+      border: 1px solid #ea352d;
+      background-color: #ea352d;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+  .mypage-card{
+    width: 700px;
+    background-color: white;
+    text-align: center;
+    @include tab{
+      width: 500px;
+    }
+    &__cash{
+      padding: 6px 15px;
+      font-size: 1.8em;
+      font-weight: bold;
+      color: rgb(51, 51, 51);
+      border-bottom: 2px solid #eee;
+    }
+    &__list{
+      width: 500px;
+      margin: 0 auto;
+      padding: 60px 20px 30px 20px;
+      border-bottom: 1px solid #eee;
+      @include tab{
+        width: 460px;
+      }
+      &--font{
+        width: 320px;
+        margin: 0 auto;
+        text-align: left;
+        font-size: 16px;
+        font-weight: bold;   
+      }
+    }
+    &__btn{
+      width: 320px;
+      height: 50px;;
+      border: 1px solid #ea352d;
+      background-color: #ea352d;
+      color: #fff;
+      font-size: 14px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    &__btn:focus{
+      outline: none;
+    }
+    &__create{
+      text-decoration: none;
+      color: #fff;
+    }
+    &__icon{
+      margin-right: 15px;
+    }
+    /*クレジットカード登録画面*/
+    &__form{
+      width: 350px;
+      padding: 10px 0 64px;
+      margin: 0 auto;
+      &__input{
+        padding-top: 32px;
+        display: flex;
+      }
+      &__number{
+        padding-right: 10px;
+        font-weight: bold;
+      }
+      &__require{
+        color: #fff;
+        padding: 0px 3px;
+        border-radius: 2px;
+        background-color: #ea352d;
+        font-size: 12px;
+        &--color{
+          background-color: #ccc;
+          color: #fff;
+          padding: 0px 3px;
+          border-radius: 2px;
+          font-size: 12px;
+        }
+      }
+      &__text{
+        width: 100%;
+        height: 50px;
+        margin-top: 8px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        &:focus{
+          border: 1px solid skyblue;
+          outline: none;
+        }
+      }
+      &__list{
+        display: flex;
+        
+        &--imagevisa{
+          padding-top: 5px;
+          width: 50px;
+          height: 35px;
+        }
+        &--image{
+          padding: 5px 0 0 7px;
+          width: 45px;
+          height: 35px;
+        }
+      }
+      &__select{
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        &--icon-month{
+          position: absolute;
+          right: 63%;
+          top: 13px;
+          color: #bbb;
+          pointer-events: none;
+        }
+        &--icon-year{
+          position: absolute;
+          right: 13%;
+          top: 13px;
+          color: #bbb;
+          pointer-events: none;
+        }
+        &--icon-address{
+          position: absolute;
+          right: 5%;
+          top: 13px;
+          color: #bbb;
+          pointer-events: none;
+        }
+      }
+      &__date{
+        width: 40%;
+        height: 50px;
+        padding: 0 15px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-appearance: none;
+        cursor: pointer;
+        &:focus{
+          border: 1px solid skyblue;
+          outline: none;
+        }
+      }
+      span{
+        width: 10%;
+      }
+      &__security{
+        padding-top: 5px;
+        &--link{
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          text-decoration: none;
+          color: #0099e8;
+        }
+      }
+      &__btn{
+        width: 100%;
+        height: 50px;
+        border: 1px solid #ea352d;
+        background-color: #ea352d;
+        font-size: 14px;
+        margin-top: 32px;
+        cursor: pointer;
+        &--create{
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+      /*都道府県セレクト*/
+      &__prefecture{
+        width: 100%;
+        height: 50px;
+        padding: 0 15px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-appearance: none;
+        cursor: pointer;
+        &:focus{
+          border: 1px solid skyblue;
+          outline: none;
+        }
+      }
+    }
+    .mypage-card-way{
+      padding: 40px 0 55px;
+      margin: 0 auto;
+      width: 500px;
+      @include tab{
+        width: 400px;
+      }
+      &__show{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      &__show a{
+        text-decoration: none;
+        color: #0099e8;
+      }
+    }
+    .angre-cardbtn{
+      cursor: pointer;
+      color: #0099e8;
+      padding-left: 10px;
+    }
+  }
+}
