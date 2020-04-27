@@ -1,0 +1,263 @@
+* {
+  box-sizing: border-box;
+}
+
+@mixin forminput() {
+  height: 48px;
+  padding: 10px 16px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+@mixin formbtn() {
+  width: 100%;
+  height: 48px;
+  margin-top: 24px;
+  display: block;
+  background-color: #13e0e0;
+  border: 1px solid #13e0e0;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@mixin bluelink_hover() {
+  color: #0099e8;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.7;
+  }
+}
+
+@mixin banner() {
+  display: block;
+  text-decoration: none;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  position: relative;
+  &--icon {
+    position: absolute;
+    top: 21%;
+    left: 16px;
+    font-size: 30px;
+  }
+}
+
+
+.user-body {
+  background-color: rgb(245,245,245);
+  color: #333;
+  &__header {
+    height: 128px;
+    display: flex;
+    align-items: center;
+    &__logo {
+      display: block;
+      margin: 0 auto;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+  &__main {
+    &__contents {
+      width: 700px;
+      margin: 0 auto;
+      background-color: #fff;
+      &__title {
+        font-size: 22px;
+        padding: 32px;
+        border-bottom: 1px solid rgb(245,245,245);
+        text-align: center;
+      }
+      &__form {
+        width: 343px;
+        padding: 8px 0 64px;
+        margin: 0 auto;
+        &__field {
+          margin-top: 32px;
+          label {
+            font-weight: 600;
+            font-size: 14px;
+          }
+          span {
+            background-color: #13e0e0;
+            border-radius: 2px;
+            font-size: 12px;
+            color: #333;
+            padding: 2px 4px;
+            margin-left: 8px;
+          }
+          &--input {
+            width: 100%;
+            margin-top: 5px;
+            @include forminput();
+          }
+          &__half {
+            display: flex;
+            justify-content: space-between;
+            &--input {
+              width: 49%;
+              display: block;
+              margin-top: 8px;
+              @include forminput();
+            }
+          }
+          &--label {
+            p {
+              font-size: 14px;
+              color: #888;
+              margin-top: 8px;
+            }
+            &--day {
+              margin-top: 8px;
+              select {
+                width: 22%;
+                margin-left: 2px;
+                background-color: #fff;
+                @include forminput();
+               }
+            }
+          }
+          &--right {
+            margin-top: 32px;
+            text-align: right;
+            a {
+              font-size: 14px;
+              @include bluelink_hover();
+            }
+          }
+        }
+        &__text {
+          margin-top: 24px;
+          h2 {
+            font-size: 16px;
+            font-weight: 600;
+          }
+          p {
+            margin-top: 8px;
+            font-size: 14px;
+          }
+          &--link {
+            margin-top: 40px;
+            font-size: 13.5px;
+            text-align: center;
+            a {
+              font-size: 14px;
+              @include bluelink_hover();
+            }
+          }
+        }
+        &__actions {
+          @include formbtn();
+        }
+        &__term {
+          margin-top: 32px;
+          padding: 8px 16px;
+          background-color: rgb(245,245,245);
+          color: #888888;
+          font-size: 10px;
+          a {
+            font-size: 10px;
+            @include bluelink_hover();
+          }
+        }
+      }
+    }
+    &__container {
+      width: 456px;
+      background-color: #fff;
+      margin: 0 auto;
+      &__upper-row {
+        padding: 40px 64px;
+        text-align: center;
+        border-bottom: 1px solid rgb(245,245,245);
+        p {
+          font-size: 14px;
+        }
+        a {
+          display: block;
+          height: 40px;
+          line-height: 40px;
+          margin: 8px 0 0;
+          background-color: #0099e8;
+          border: 1px solid #0099e8;
+          color: #fff;
+          text-decoration: none;
+          font-size: 14px;
+        }
+      }
+      &__row {
+        &__var {
+          padding: 32px 64px;
+          font-size: 13px;
+          &__facebook {
+            color: #fff;
+            background-color: #385185;
+            @include banner();
+          }
+          &__google {
+            margin: 16px 0 0;
+            color: #333;
+            border: 1px solid #979797;
+            @include banner();
+          }
+        }
+        &__form {
+          padding: 0 64px 32px;
+          &__field {
+            margin-top: 24px;
+            &__input {
+              width: 100%;
+              @include forminput();
+            }
+          }
+          &__actions {
+            @include formbtn();
+          }
+          a {
+            display: block;
+            margin-top: 40px;
+            font-size: 14px;
+            @include bluelink_hover();
+          }
+        }
+        }
+      }
+    }
+  &__bottom {
+    width: 456px;
+    height: 220px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px 0;
+    &__nav {
+      ul {
+        display: flex;
+        justify-content: center;
+        li {
+          margin-right: 16px;
+          font-size: 12px;
+        }
+      }
+    }
+    &__icon{
+      display: block;
+      width: 150px;
+      height: 40px;
+      margin: 30px auto 0;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    p {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+  }
+}
+
+
