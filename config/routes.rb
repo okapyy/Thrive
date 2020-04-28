@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  get 'categories/index'
+  
   root 'items#index'
+  get 'categories/index'
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :items
+
 end
