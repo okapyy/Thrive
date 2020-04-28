@@ -74,7 +74,9 @@ end
 
 gem 'devise'
 gem 'haml-rails'
+
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'ancestry'
 gem 'jquery-rails'
 gem 'gon'
+

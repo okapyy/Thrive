@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root 'items#index'
   get 'categories/index'
   devise_for :users
