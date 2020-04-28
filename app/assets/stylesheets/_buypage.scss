@@ -1,0 +1,162 @@
+/*buypage*/
+.buypage-header{
+  width: 100vw;
+  min-height: 100%;
+  background-color: rgb(245, 245, 245);
+  color: rgb(51, 51, 51);
+  &__logo{
+    height: 128px;
+    text-align: center;
+    &--position{
+      margin-top: 39px;
+    }
+  }
+  .buypage-main{
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    @include tab{
+      width: 500px;
+    }
+    .buypage-top{
+      &__check{
+        padding: 34px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+      }
+    }
+    .buypage-content{
+      padding: 35px 15px 50px;
+      border-bottom: 1px solid #eee;
+      &__inner{
+        width: 340px;
+        margin: 0 auto;
+      }
+      &__box{
+        display: flex;
+      }
+      &__image{
+        margin-right: 20px;
+        &--item{
+          width: 70px;
+          height: 80px;
+        }
+      }
+      &__description{
+        width: 250px;
+        p{
+          padding: 5px;
+          font-size: 14px;
+        }
+        &__price{
+          padding: 5px 5px 0 5px;
+          font-weight: bold;
+          font-size: 12px;
+        }
+      }
+    }
+    .buypage-form{
+
+      &__cash{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: bold;
+        &__info{
+          font-size: 18px;
+        }
+        &__total{
+          font-size: 24px;
+        }
+      }
+      &__point{
+        display: flex;
+        align-items: center;
+        padding: 20px 0 30px;
+        i{
+          color: #ccc;
+        }
+        &__use{
+          padding-top: 1px;
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+    .buypage-user{
+      padding: 35px 0;
+      border-top: 1px solid #eee;
+      h3{
+        font-size: 14px;
+        font-weight: bold;
+      }
+      &__credit-card{
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        padding-top: 5px;
+        color: #0099e8;
+        text-decoration: none;
+      }
+      i{
+        color: #0099e8;
+        padding-right: 5px;
+      }
+      &__address{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 5px;
+      }
+      &__change{
+        text-decoration: none;
+        color: #0099e8;
+        font-size: 14px;
+      }
+      &__street-address{
+        font-size: 12px;
+      }
+      &__infomation{
+        font-size: 14px;
+        opacity: 0.6;
+      }
+      &__buybtn{
+        width: 100%;
+        height: 50px;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        background-color: #888;
+        border: 1px solid #888;
+      }
+    }
+  }
+}
+.buypage-footer{
+  width: 460px;
+  height: 220px;
+  margin: 0 auto;
+  &__nav{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px 0;
+    font-size: 12px;
+  }
+  &__private{
+    text-decoration: none;
+    color: rgb(51, 51, 51);
+  }
+  &__logo{
+    text-align: center;
+  }  
+  &__link{
+    height: 25px;
+    font-size: 12px;
+    line-height: 25px;
+  }
+  span{
+    font-size: 18px;
+  }
+}

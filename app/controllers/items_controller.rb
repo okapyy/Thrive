@@ -6,4 +6,5 @@ class ItemsController < ApplicationController
     @ladies_item = Category.where(ancestry: "1/14")
     gon.names = @parents
   end
+
 end
