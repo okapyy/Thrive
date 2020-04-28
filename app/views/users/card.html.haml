@@ -8,7 +8,7 @@
             %p.mypage-card__form__number カード番号
             %p.mypage-card__form__require 必須
 
-          %input.mypage-card__form__text{:type => "text", :placeholder => "半角数字のみ", :maxlength => 19 }
+          %input.mypage-card__form__text{type: "text", placeholder: "半角数字のみ", maxlength: 19 }
           %ul.mypage-card__form__list
             %li
               = image_tag "credit-card_visa.png",class: "mypage-card__form__list--imagevisa"
@@ -30,32 +30,32 @@
             %p.mypage-card__form__require 必須
           .mypage-card__form__select
             %select.mypage-card__form__date
-              %option{ :selected => "selected", :value => "12"} 12
-              %option{ :selected => "selected", :value => "11"} 11
-              %option{ :selected => "selected", :value => "10"} 10
-              %option{ :selected => "selected", :value => "09"} 09
-              %option{ :selected => "selected", :value => "08"} 08
-              %option{ :selected => "selected", :value => "07"} 07
-              %option{ :selected => "selected", :value => "06"} 06
-              %option{ :selected => "selected", :value => "05"} 05
-              %option{ :selected => "selected", :value => "04"} 04
-              %option{ :selected => "selected", :value => "03"} 03
-              %option{ :selected => "selected", :value => "02"} 02
-              %option{ :selected => "selected", :value => "01"} 01
+              %option{ selected: "selected", value: "12"} 12
+              %option{ selected: "selected", value: "11"} 11
+              %option{ selected: "selected", value: "10"} 10
+              %option{ selected: "selected", value: "09"} 09
+              %option{ selected: "selected", value: "08"} 08
+              %option{ selected: "selected", value: "07"} 07
+              %option{ selected: "selected", value: "06"} 06
+              %option{ selected: "selected", value: "05"} 05
+              %option{ selected: "selected", value: "04"} 04
+              %option{ selected: "selected", value: "03"} 03
+              %option{ selected: "selected", value: "02"} 02
+              %option{ selected: "selected", value: "01"} 01
             %i.mypage-card__form__select--icon-month.fas.fa-angle-down.fa-2x
             %span 月
             %select.mypage-card__form__date
-              %option{ :selected => "selected", :value => "30"} 30
-              %option{ :selected => "selected", :value => "29"} 29
-              %option{ :selected => "selected", :value => "28"} 28
-              %option{ :selected => "selected", :value => "27"} 27
-              %option{ :selected => "selected", :value => "26"} 26
-              %option{ :selected => "selected", :value => "25"} 25
-              %option{ :selected => "selected", :value => "24"} 24
-              %option{ :selected => "selected", :value => "23"} 23
-              %option{ :selected => "selected", :value => "22"} 22
-              %option{ :selected => "selected", :value => "21"} 21
-              %option{ :selected => "selected", :value => "20"} 20
+              %option{ selected: "selected", value: "30"} 30
+              %option{ selected: "selected", value: "29"} 29
+              %option{ selected: "selected", value: "28"} 28
+              %option{ selected: "selected", value: "27"} 27
+              %option{ selected: "selected", value: "26"} 26
+              %option{ selected: "selected", value: "25"} 25
+              %option{ selected: "selected", value: "24"} 24
+              %option{ selected: "selected", value: "23"} 23
+              %option{ selected: "selected", value: "22"} 22
+              %option{ selected: "selected", value: "21"} 21
+              %option{ selected: "selected", value: "20"} 20
             %i.mypage-card__form__select--icon-year.fas.fa-angle-down.fa-2x
             %span 年
           
@@ -63,7 +63,7 @@
             %p.mypage-card__form__number セキュリティコード
             %p.mypage-card__form__require 必須
 
-          %input.mypage-card__form__text{:type => "text", :placeholder => "カード背面4桁もしくは3桁の番号", :maxlength => 4 }
+          %input.mypage-card__form__text{type: "text", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: 4 }
 
           .mypage-card__form__security
             = link_to "#", class: "mypage-card__form__security--link" do
@@ -71,7 +71,7 @@
               %p カード裏面の番号とは？
           
           %button.mypage-card__form__btn
-            = link_to card_path,class: "mypage-card__form__btn--create" do
+            = link_to "#",class: "mypage-card__form__btn--create" do
               追加する
 
     .mypage-side

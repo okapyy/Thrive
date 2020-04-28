@@ -62,10 +62,10 @@
     = link_to "#", class: "side-menu__link" do
       %li プロフィール
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to address_path, class: "side-menu__link" do
+    = link_to user_address_path(current_user), class: "side-menu__link" do
       %li 発送元・お届け先住所変更
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to cash_path, class: "side-menu__link" do
+    = link_to user_cash_path(current_user), class: "side-menu__link" do
       %li 支払い方法
       %i.angre-btn.fas.fa-angle-right.fa-2x
     = link_to "#", class: "side-menu__link" do
@@ -77,6 +77,6 @@
     = link_to "#", class: "side-menu__link" do
       %li 電話番号の確認
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to logout_path, class: "side-menu__link" do
+    = link_to user_logout_path(current_user), class: "side-menu__link" do
       %li ログアウト
       %i.angre-btn.fas.fa-angle-right.fa-2x
