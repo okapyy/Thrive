@@ -6,6 +6,7 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = include_gon 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header.header
@@ -27,15 +28,15 @@
                 %li.tree
                   %ul.category-tree
                     - @parents.each do |parent|
-                      %li.category= link_to parent.name, "/categories/index" 
-                %li.tree
-                  %ul.category-tree
-                    - @lady.children.each do |child|
-                      %li.category= link_to child.name, "/categories/index"
-                %li.tree
-                  %ul.category-tree
-                    - @ladies_item.each do |grand_children|
-                      %li.category= link_to grand_children.name, "/categories/index"
+                      %li.category-item= link_to parent.name, "/categories/index", class:"category" 
+                -# %li.tree.hidden
+                -#   %ul.category-tree
+                -#     - @lady.children.each do |child|
+                -#       %li.category-item= link_to child.name, "/categories/index", class:"category"
+                -# %li.tree.hidden
+                -#   %ul.category-tree
+                -#     - @ladies_item.each do |grand_children|
+                -#       %li.category-item= link_to grand_children.name, "/categories/index", class:"category"
             %li.left__item
               = link_to "ブランド", "#", id:"blandBtn"
           %ul.nav--right

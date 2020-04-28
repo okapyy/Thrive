@@ -77,11 +77,21 @@
               justify-content: flex-start;
               .category-tree {
                 z-index: 10;
-                li {
+                .category-item {
                   border-bottom: 1px solid #f8f8f8;
+                  .category {
+                    text-decoration: none;
+                    color: #333;
+                  }
+                  .changeColor {
+                    color: #ff9900;
+                  }
                 }
               }
             }
+            // .hidden {
+            //   display: none;
+            // }
           }
         }
         .left__item:hover {
