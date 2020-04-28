@@ -1,0 +1,12 @@
+.form
+  = form_with(url: items_path, method: :POST, local: true) do |form|
+    = form.label "商品の状態"
+    = form.collection_select :condition, Condition.all, :id, :name
+    = form.label "配送料の負担"
+    = form.collection_select :delivery_fee, DeliveryFee.all, :id, :name
+    = form.label "発送元の地域"
+    = form.collection_select :delivery_origin, DeliveryOrigin.all, :id, :name
+    = form.label "発送までの日数"
+    = form.collection_select :delivery_day, DeliveryDay.all, :id, :name
+    = form.submit "出品する"
+    
