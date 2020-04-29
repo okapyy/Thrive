@@ -1,0 +1,59 @@
+@mixin mouse_hover($opacity) {
+  opacity: $opacity;
+}
+
+@mixin banners() {
+  .aBtn {
+    display: inline-block;
+    width: 180px;
+    vertical-align: bottom;
+    margin-right: 10px;
+  }
+  .aBtn:hover {
+    opacity: 0.6;
+  }
+  .gBtn {
+    display: inline-block;
+    width: 180px;
+    vertical-align: bottom;
+  }
+  .gBtn:hover {
+    opacity: 0.6;
+  }
+}
+
+@mixin section_header($font_size) {
+  text-align: center;
+  font-size: $font_size;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+@mixin after_green() {
+  content: "";
+  width: 70px;
+  height: 4px;
+  background-color: #3CCACE;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin after_number() {
+  content: "1"
+}
+
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
