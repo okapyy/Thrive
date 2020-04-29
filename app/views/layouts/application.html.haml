@@ -8,24 +8,24 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %header.header
-      .header-inner
-        .header-top
-          %h1.header-icon
-            %a= image_tag 'logo.png', size:"140x40"
-          .search-box
-            %form
-              %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
-              %button{:type => "submit"}
-                .search-box--icon
-                  = image_tag 'icon-search 1.png', size:"20x20"
-        .header-nav
-          %ul.nav--left
-            %li.left__item カテゴリー
-            %li.left__item ブランド
-          %ul.nav--right
-            %a{:href => "#"}
-              %li.right__item 新規登録
-            %a{:href => "#"}
-              %li.right__item ログイン
+    -# %header.header
+    -#   .header-inner
+    -#     .header-top
+    -#       %h1.header-icon
+    -#         %a= image_tag 'logo.png', size:"140x40"
+    -#       .search-box
+    -#         %form
+    -#           %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
+    -#           %button{:type => "submit"}
+    -#             .search-box--icon
+    -#               = image_tag 'icon-search 1.png', size:"20x20"
+    -#     .header-nav
+    -#       %ul.nav--left
+    -#         %li.left__item カテゴリー
+    -#         %li.left__item ブランド
+    -#       %ul.nav--right
+    -#         %a{:href => "#"}
+    -#           %li.right__item 新規登録
+    -#         %a{:href => "#"}
+    -#           %li.right__item ログイン
     = yield
