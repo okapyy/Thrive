@@ -1,7 +1,6 @@
 .header {
-  height: 97.5px;
+  // height: 97.5px;
   padding: 0 60px;
-  margin-bottom: 10px;
   &-inner {
     max-width: 1040px;
     width: 100%;
@@ -46,99 +45,169 @@
       }
     }
     .header-nav {
-      display: flex;
       font-size: 14px;
+      display: flex;
       margin-bottom: 10px;
-      justify-content: space-between;
-      .nav--left {
+      &--left {
+        position: relative;
         display: flex;
-        margin-right: auto;
-        .left__item {
-          text-decoration: none;
-          color: #333;
+        &__item {
+          display: flex;
           line-height: 38px;
-          padding: 0 16px 0 0;
-          #categoryBtn {
+          padding: 0 0 0 16px;
+           a {
+            display: flex;
+            align-items: center;
             color: #333;
             text-decoration: none;
             line-height: 32px;
-            background-position: center right;
             padding-right: 30px;
-            position: relative;
           }
-          .trees {
+          .tree {
+            z-index: 2;
             position: absolute;
-            display: flex;
-            .tree {
-              display: none;
-              background-color: #fff;
-              width: 240px;
-              padding-left: 10px;
-              justify-content: flex-start;
-              .category-tree {
-                z-index: 10;
-                .category-item {
-                  border-bottom: 1px solid #f8f8f8;
-                  .category {
-                    text-decoration: none;
-                    color: #333;
-                  }
-                  .changeColor {
-                    color: #ff9900;
-                  }
-                }
+            background-color: #fff;
+            width: 240px;
+            top: 40px;
+            .categoryTree {
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              &--item a {
+                width: 240px;
+                padding: 3px 8px 3px 5px;
+                border-bottom: 1px solid #f8f8f8;
               }
             }
-            // .hidden {
-            //   display: none;
-            // }
-          }
-        }
-        .left__item:hover {
-          .tree {
-            display: block;
-          }
-        }
-        #blandBtn {
-          color: #333;
-          text-decoration: none;
-          line-height: 32px;
-          background-position: center right;
-          padding-right: 30px;
-          .left__item {
-            text-decoration: none;
-            color: #333;
-            line-height: 38px;
-            padding: 0 0 0 16px;
+            .subcatTree {
+              min-height: 480px;
+              background-color: #fff;
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              top: 0;
+              left: 230px;
+              &--item a {
+                width: 240px;
+                padding: 3px 8px 3px 5px;
+                border-bottom: 1px solid #f8f8f8;
+              }
+            }
+            .itemTree {
+              min-height: 480px;
+              background-color: #fff;
+              display: flex;
+              flex-direction: column;
+              position: absolute;
+              top: 0;
+              left: 470px;
+              &--item a {
+                width: 240px;
+                padding: 3px 8px 3px 5px;
+                border-bottom: 1px solid #f8f8f8;
+              }
+            }
+            .displayNone {
+              display: none;
+            }
           }
         }
       }
-      .nav--right {
-        display: flex;
+      .header-nav--left__item--first {
+        text-decoration: none;
+        padding: 0;
+      }
+      &--right {
         margin-left: auto;
-        .login-link {
+        display: flex;
+        &__item {
           color: #333;
-          text-decoration: none;
-          line-height: 32px;
-          background-position: center right;
-          padding-left: 30px;
-          .right__item {
+          line-height: 38px;
+          padding: 0 0 0 16px;
+          a {
+            display: flex;
+            align-items: center;
             color: #333;
-            line-height: 38px;
-            padding: 0 0 0 16px;
-          }
-        }
-        .signup-link {
-          color: #333;
-          text-decoration: none;
-          line-height: 32px;
-          .right__item {
-            color: #333;
-            line-height: 38px;
-            padding: 0 0 0 16px;
+            text-decoration: none;
+            line-height: 32px;
           }
         }
       }
     }
   }
 }
+
+
+
+// .header-nav {
+//   display: flex;
+//   font-size: 14px;
+//   margin-bottom: 10px;
+//   justify-content: space-between;
+//   .nav--left {
+//     display: flex;
+//     margin-right: auto;
+//     .left__item--category {
+//       text-decoration: none;
+//       color: #333;
+//       line-height: 38px;
+//       padding: 0 16px 0 0;
+//       .parent-tree {
+//         background-color: #fff;
+//         z-index: 10;
+//         position: relative;
+//         display: none;
+//       }
+//     }
+//     .left__item--category:hover {
+//       .parent-tree {
+//         display: block;
+//       }
+//     }
+//     .left__item--bland {
+//       text-decoration: none;
+//       color: #333;
+//       line-height: 38px;
+//       padding: 0 16px 0 0;
+//     }
+//     #blandBtn {
+//       color: #333;
+//       text-decoration: none;
+//       line-height: 32px;
+//       background-position: center right;
+//       padding-right: 30px;
+//       .left__item {
+//         text-decoration: none;
+//         color: #333;
+//         line-height: 38px;
+//         padding: 0 0 0 16px;
+//       }
+//     }
+//   }
+//   .nav--right {
+//     display: flex;
+//     margin-left: auto;
+//     .login-link {
+//       color: #333;
+//       text-decoration: none;
+//       line-height: 32px;
+//       background-position: center right;
+//       padding-left: 30px;
+//       .right__item {
+//         color: #333;
+//         line-height: 38px;
+//         padding: 0 0 0 16px;
+//       }
+//     }
+//     .signup-link {
+//       color: #333;
+//       text-decoration: none;
+//       line-height: 32px;
+//       .right__item {
+//         color: #333;
+//         line-height: 38px;
+//         padding: 0 0 0 16px;
+//       }
+//     }
+//   }
+// }

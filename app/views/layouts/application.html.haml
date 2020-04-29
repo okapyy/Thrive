@@ -13,38 +13,39 @@
       .header-inner
         .header-top
           %h1.header-icon
-            %a= image_tag 'logo.png', size:"140x40"
+            =link_to image_tag 'logo.png', size:"140x41"
           .search-box
             %form
               %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
               %button{:type => "submit"}
                 .search-box--icon
                   = image_tag 'icon-search 1.png', size:"20x20"
+          %ul.resultLists
         .header-nav
-          %ul.nav--left
-            %li.left__item#opentree
-              = link_to "カテゴリー", "/categories/index", id:"categoryBtn"
-              %ul.trees
-                %li.tree
-                  %ul.category-tree
-                    - @parents.each do |parent|
-                      %li.category-item= link_to parent.name, "/categories/index", class:"category" 
-                -# %li.tree.hidden
-                -#   %ul.category-tree
-                -#     - @lady.children.each do |child|
-                -#       %li.category-item= link_to child.name, "/categories/index", class:"category"
-                -# %li.tree.hidden
-                -#   %ul.category-tree
-                -#     - @ladies_item.each do |grand_children|
-                -#       %li.category-item= link_to grand_children.name, "/categories/index", class:"category"
-            %li.left__item
-              = link_to "ブランド", "#", id:"blandBtn"
-          %ul.nav--right
-            %a{:href => "#", class:"login-link"}
-              %li.right__item ログイン
-            %a{:href => "#", class:"signup-link"}
-              %li.right__item 新規会員登録
-            .image-box{style:"background-image: url(google.png);"}
+          %ul.header-nav--left
+            %li.header-nav--left__item.header-nav--left__item--first
+              = link_to "カテゴリー", "#",id:"categoryBtn"
+              .tree
+                %ul.categoryTree.displayNone
+                  - @parents.each do |parent|
+                    %li.categoryTree--item
+                      =link_to parent.name, "", id:"#{parent.id}"
+                %ul.subcatTree.displayNone
+                -#   - @lady_child.each do |child|
+                -#     %li.subcatTree--item
+                -#       =link_to child.name, ""
+                %ul.itemTree.displayNone
+                -#   - @lady_children[0].children.each do |child|
+                -#     %li.itemTree--item
+                -#       = link_to child.name, ""
+            %li.header-nav--left__item
+              = link_to "ブランド", "#", id:"brandBtn"
+              %ul.brandsPulldown.displayNone
+          %ul.header-nav--right
+            %li.header-nav--right__item.header-nav--right__item-login
+              = link_to "ログイン", "#"
+            %li.header-nav--right__item.header-nav--right__item-new
+              = link_to "新規会員登録", "#"
     = yield
     %footer.footer
       %ul.footer-contents
