@@ -1,6 +1,7 @@
 .header {
-  height: 100px;
+  height: 97.5px;
   padding: 0 60px;
+  margin-bottom: 10px;
   &-inner {
     max-width: 1040px;
     width: 100%;
@@ -30,13 +31,15 @@
           .search-box--input {
             width: calc(100% - 26px);
             height: 36px;
+            padding: 5px;
           }
           button {
             width: 36px;
             cursor: pointer;
             background-color: #3ccace;
             .search-box--icon {
-            padding: 5px;
+              padding-top: 5px;
+              vertical-align: bottom;
             }
           }
         }
@@ -46,22 +49,62 @@
       display: flex;
       font-size: 14px;
       margin-bottom: 10px;
+      justify-content: space-between;
+      align-items: center;
       .nav--left {
         display: flex;
-        margin-left: auto;
-        .left__item {
+        margin-right: auto;
+        #categoryBtn {
           color: #333;
-          line-height: 38px;
-          padding: 0 0 0 16px;
+          text-decoration: none;
+          line-height: 32px;
+          background-position: center right;
+          padding-right: 30px;
+          .left__item {
+            text-decoration: none;
+            color: #333;
+            line-height: 38px;
+            padding: 0 16px 0 0;
+          }
+        }
+        #blandBtn {
+          color: #333;
+          text-decoration: none;
+          line-height: 32px;
+          background-position: center right;
+          padding-right: 30px;
+          .left__item {
+            text-decoration: none;
+            color: #333;
+            line-height: 38px;
+            padding: 0 0 0 16px;
+          }
         }
       }
       .nav--right {
         display: flex;
-        margin-right: auto;
-        .right__item {
+        margin-left: auto;
+        .login-link {
           color: #333;
-          line-height: 38px;
-          padding: 0 0 0 16px;
+          text-decoration: none;
+          line-height: 32px;
+          background-position: center right;
+          padding-left: 30px;
+          .right__item {
+            color: #333;
+            line-height: 38px;
+            padding: 0 0 0 16px;
+          }
+        }
+        .signup-link {
+          color: #333;
+          text-decoration: none;
+          line-height: 32px;
+          .right__item {
+            color: #333;
+            line-height: 38px;
+            padding: 0 0 0 16px;
+          }
         }
       }
     }
