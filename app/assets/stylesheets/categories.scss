@@ -42,7 +42,7 @@
           color: #fff;
           text-align: left;
           font-weight: bold;
-          font-size: 22px;      
+          font-size: 22px;
         }
         .catContents {
             padding: 16px;
@@ -76,6 +76,61 @@
             text-decoration: none;
             color: #333;
             font-size: large;
+          }
+        }
+      }
+    }
+    .content {
+      width: 700px;
+      margin: 0 auto;
+      .titleBox {
+        h2 {
+          padding: 16px 10px 8px;
+          border-radius: 5px 5px 0 0;
+          background-color: #3CCACE;
+          color: #fff;
+          text-align: center;
+          font-weight: bold;
+          font-size: 22px;
+        }
+        .subLists {
+          list-style: none;
+          background-color: #fff;
+          padding: 8px;
+          li {
+            display: inline-block;
+            margin: 0 20px 20px 0;
+            a {
+              font-size: 14px;
+              text-decoration: none;
+              color: #FFB340;
+            }
+          }
+        }
+      }
+      .itemBox {
+        margin-top: 20px;
+        .subTitle {
+          color: #333;
+          font-weight: bold;
+          font-size: 16px;
+          text-decoration: none;
+        }
+        .itemList {
+          width: 700px;
+          display: flex;
+          justify-content: space-between;
+          list-style: none;
+          margin-bottom: 20px;
+          .item {
+            div {
+              width: 200px;
+              background-color: #fff;
+              .itemInfo {
+                padding: 10px;
+                height: 100%;
+              }
+            }
           }
         }
       }

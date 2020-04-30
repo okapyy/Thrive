@@ -7,7 +7,7 @@
             = link_to parent.name, {anchor: "parent#{parent.id}"}
       - @parents.each do |parent|
         .titleBox.titleBox--index
-          = link_to parent.name, "", class:"catTitle", id:"parent#{parent.id}"
+          = link_to parent.name, category_path(parent.id), class:"catTitle", id:"parent#{parent.id}"
           .catContents
             - parent.children.each do |children|
               .catContent
