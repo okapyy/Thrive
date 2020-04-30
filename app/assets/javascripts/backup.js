@@ -1,3 +1,5 @@
+// jQueryでカテゴリ表示をした場合のコード。後々使う可能性ありなので残しておきます。
+
 // jQuery(document).on('turbolinks:load', function(){
   
 //   var children = gon.lady_children;
