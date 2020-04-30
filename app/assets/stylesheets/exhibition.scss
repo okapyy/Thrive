@@ -1,0 +1,363 @@
+* {
+  box-sizing: border-box;
+}
+
+.exhibition {
+  width: 100%;
+  background-color: rgb(245, 245, 245);
+  &__header {
+    width: 100%;
+    height: 128px;
+    text-align: center;
+    align-items: center;
+    padding-top: 35px;
+  }
+  &__box {
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    &__image {
+      width: 100%;
+      border-bottom: solid 1px rgb(245, 245, 245);
+      padding: 40px;
+      &__input{
+        &--size{
+          width: 100%;
+          height: 48px;
+          padding: 0 16px;
+          margin: 16px 0 20px 0;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+        &--text{
+          width: 100%;
+          height: 154px;
+          margin-top: 16px;
+          padding: 10px 16px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+        }
+      }
+      &__count {
+        font-size: 12px;
+        text-align: right;
+        margin-top: 10px;
+        color: #888888;
+      }
+      &__select {
+        position: relative;
+        &--category {
+          width: 100%;
+          height: 48px;
+          padding: 0 16px;
+          margin: 16px 0 3px 0; 
+          background-color: white;
+          -webkit-appearance: none; 
+          -moz-appearance: none;
+          appearance: none;
+          border-radius: 3px;
+        }
+        &--categorys {
+          width: 100%;
+          height: 48px;
+          padding: 0 16px;
+          margin: 16px 0 3px 0; 
+          background-color: white;
+          margin-bottom: 28px;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          border-radius: 3px;
+        }
+        &__arrow {
+          position: absolute;
+          top: 33px;
+          right: 18px;
+          pointer-events: none;
+        }
+      }
+      &__details {
+        font-size: 14px;
+        color: #888888;
+        margin-bottom: 24px;
+        display: flex;
+        &__question {
+          margin-left: 5px;
+          padding-top: 3px;
+          color: #0095ee;
+        }
+      }
+      &__form {
+        width: 620px;
+        height: 19px;
+        margin: 0 auto;
+        display: flex;
+        &__lavel {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        &__required {
+          width: 32px;
+          height: 16px;
+          font-size: 12px;
+          font-weight: bold;
+          background-color: red;
+          color: white;
+          border-radius: 2px;
+          margin-left: 8px;
+          padding: 0 4px;
+        }
+        
+      }
+      &__carry {
+        width: 620px;
+        height: 19px;
+        margin: 0 auto;
+        display: flex;
+        margin-top: 26px;
+        &__lavel {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        &__required {
+          width: 32px;
+          height: 16px;
+          font-size: 12px;
+          font-weight: bold;
+          background-color: red;
+          color: white;
+          border-radius: 2px;
+          margin-left: 8px;
+          padding: 0 4px;
+        }
+      }
+      &__line {
+        width: 620px;
+        height: 19px;
+        margin: 0 auto;
+        display: flex;
+        margin: 28px 0 0 0;
+        &__bland {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        &__any {
+          background-color: #BFBFBF;
+          width: 32px;
+          height: 16px;
+          font-size: 12px;
+          font-weight: bold;
+          color: white;
+          padding: 0 4px;
+          border-radius: 2px;
+          margin-left: 8px;
+        }
+      }
+      &__max {
+        width: 620px;
+        height: 19px;
+        margin: 0 auto;
+        font-size: 14px;
+        margin-top: 16px;
+      }
+
+      &__upload {
+        width: 100%;
+        height: 150px;
+        background-color: #F5F5F5;
+        margin-top: 16px;
+        border: 1px dashed lightgray;
+        &__sentence {
+          font-size: 12px;
+          text-align: center;
+          margin-top: 5px;
+        }
+        &__camera {
+          text-align: center;
+          margin-top: 45px;
+          &--icon {
+            font-size: x-large;
+          }
+        }
+      }
+      &__price {
+        font-size: 14px;
+        color: #888888;
+        margin-bottom: 24px;
+      }
+      &__cash {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px rgb(245, 245, 245);
+        &__fee {
+          font-size: 12px;
+          text-align: center;
+          height: 14px;
+          border-bottom: #888888 ;
+          border-width: 1px;
+        }
+        &__rod {
+          font-size: 14px;
+          height: 14px;
+          float: right;
+        }
+      }
+      &__square {
+        width: 620px;
+        margin: 0 auto;
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+        &__lavel {
+          height: 19px;
+          font-size: 14px;
+          font-weight: bold;
+        }
+        &__required {
+          width: 32px;
+          height: 16px;
+          font-size: 12px;
+          font-weight: bold;
+          background-color: red;
+          color: white;
+          border-radius: 2px;
+          margin-left: 8px;
+          padding: 0 4px;
+        }
+        &__input {
+          &--size {
+            width: 285px;
+            height: 48px;
+            border-radius: 2px;
+            border: 1px solid #ccc;
+            text-align: right;
+            margin-left: 235px;
+            padding-right: 10px;
+          }
+        } 
+      }
+      &__button {
+        text-align: center;
+        &--do {
+          width: 360px;
+          height: 48px;
+          font-size: 17px;
+          background-color: red;
+          color: white;
+          font-weight: bold;
+          border-radius: 4px;
+        }
+        &--draft {
+          width: 360px;
+          height: 48px;
+          font-size: 17px;
+          background-color: #CCCCCC;
+          color: #222222;
+          font-weight: bold;
+          margin-top: 24px;
+          border-radius: 4px;
+        }
+      }
+      
+      &__profit {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        &__fee {
+          font-size: 12px;
+          text-align: center;
+          height: 14px;
+          border-bottom: #888888 ;
+          border-width: 1px;
+        }
+        &__rod {
+          font-size: 14px;
+          height: 14px;
+          float: right;
+        }
+      }
+      &__cash {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__fee {
+          font-size: 12px;
+          text-align: center;
+          height: 14px;
+          border-bottom: #888888 ;
+          border-width: 1px;
+        }
+        &__rod {
+          font-size: 14px;
+          height: 14px;
+          float: right;
+        }
+      }
+      &__note {
+        width: 620px;
+        height: 32px;
+        font-size: 12px;
+        & p {
+          & a {
+            text-decoration: none;
+            color: #0095ee;
+          }
+          & a:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+      &__back {
+        text-align: center;
+        margin: 24px 0 24px 0;
+        font-size: 14px;
+        & a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  &__footer {
+    height: 220px;
+    padding: 40px 0;
+    text-align: center;
+    &__box {
+      height: 54px;
+      display: flex;
+      font-size: 12px;
+      margin: 0 auto;
+      text-align: center;
+      justify-content: center;
+      &__policy {
+        & a {
+          margin-right: 15px;
+          text-decoration: none;
+          color: black;
+        }
+      }
+      &__terms {
+        & a {
+          margin-right: 15px;
+          text-decoration: none;
+          color: black;
+        }
+      }
+      &__notation {
+        & a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+    & p {
+      font-size: 12px;
+    }
+  }
+}
