@@ -1,0 +1,140 @@
+.main {
+  background-color: #f8f8f8;
+  .showMain {
+    padding: 40px;
+    margin: 0 auto;
+    .categories {
+      width: 700px;
+      margin: 0 auto;
+      .indexBox {
+        padding: 16px 8px;
+        .catIndex {
+          a {
+            display: inline-block;
+            background-color: #fff;
+            border-radius: 4px;
+            min-width: 80px;
+            line-height: 40px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.4);
+            text-align: center;
+            padding: 0 30px;
+            margin: 5px;
+            color: #333;
+            text-decoration: none;
+          }
+          a:hover {
+            background-color: #3ccace;
+            color: #fff;
+          }
+        }
+      }
+      .titleBox--index {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 0 0 10px;
+        margin-bottom: 20px; 
+        .catTitle {
+          text-decoration: none;
+          display: block;
+          border-radius: 5px 5px 0 0;
+          padding: 16px 10px 8px;
+          background-color: #3CCACE;
+          color: #fff;
+          text-align: left;
+          font-weight: bold;
+          font-size: 22px;
+        }
+        .catContents {
+            padding: 16px;
+            .catContent {
+              margin-bottom: 20px;
+              .subTitle {
+                color: #333;
+                font-weight: bold;
+                font-size: 16px;
+                text-decoration: none;
+              }
+              .catItems {
+                padding: 0 0 0 20px;
+                display: flex;
+                flex-wrap: wrap;
+              .catItem {
+                margin: 8px 0;
+                display: inline-block;
+                width: calc(100% / 2);
+                .itemTitle {
+                  text-decoration: none;
+                  color: #FFB340;
+                }
+              }
+            }
+          }
+        }
+        .topBtn {
+          padding-left: 20px;
+          a {
+            text-decoration: none;
+            color: #333;
+            font-size: large;
+          }
+        }
+      }
+    }
+    .content {
+      width: 700px;
+      margin: 0 auto;
+      .titleBox {
+        h2 {
+          padding: 16px 10px 8px;
+          border-radius: 5px 5px 0 0;
+          background-color: #3CCACE;
+          color: #fff;
+          text-align: center;
+          font-weight: bold;
+          font-size: 22px;
+        }
+        .subLists {
+          list-style: none;
+          background-color: #fff;
+          padding: 8px;
+          li {
+            display: inline-block;
+            margin: 0 20px 20px 0;
+            a {
+              font-size: 14px;
+              text-decoration: none;
+              color: #FFB340;
+            }
+          }
+        }
+      }
+      .itemBox {
+        margin-top: 20px;
+        .subTitle {
+          color: #333;
+          font-weight: bold;
+          font-size: 16px;
+          text-decoration: none;
+          margin-bottom: 10px;
+        }
+        .itemList {
+          width: 700px;
+          display: flex;
+          justify-content: space-between;
+          list-style: none;
+          margin-bottom: 30px;
+          .item {
+            &Container {
+              width: 200px;
+              background-color: #fff;
+              .itemInfo {
+                padding: 10px;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
