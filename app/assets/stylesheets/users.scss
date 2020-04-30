@@ -224,6 +224,41 @@
         font-size: 16px;
         font-weight: bold;   
       }
+      &__card{
+        width: 320px;
+        margin: 10px auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        border: 1px solid #eee;
+        border-radius: 10px;
+      }
+      &__image{
+        width: 50%;
+        text-align: left;
+        &--size{
+          width: 100px;
+          height: 70px;
+        }
+      }
+      &__limit{
+        width: 50%;
+        font-size: 16px;
+        &--right{
+          margin-top: 10px;
+          text-align: right;
+        }
+      }
+      &__term{
+        display: flex;
+        align-items: center;
+        p{
+          font-size: 14px;
+          padding-right: 24px;
+
+        }
+      }
     }
     &__btn{
       width: 320px;
@@ -234,6 +269,16 @@
       font-size: 14px;
       margin-top: 20px;
       cursor: pointer;
+      &--color{
+      width: 320px;
+      height: 50px;;
+      border: 1px solid #ddd;
+      color: black;
+      font-size: 14px;
+      margin-top: 20px;
+      background-color: #ddd;
+      cursor: pointer;
+      }
     }
     &__btn:focus{
       outline: none;
@@ -306,14 +351,14 @@
         position: relative;
         &--icon-month{
           position: absolute;
-          right: 63%;
+          right: 58%;
           top: 13px;
           color: #bbb;
           pointer-events: none;
         }
         &--icon-year{
           position: absolute;
-          right: 13%;
+          right: 8%;
           top: 13px;
           color: #bbb;
           pointer-events: none;
@@ -361,9 +406,10 @@
         font-size: 14px;
         margin-top: 32px;
         cursor: pointer;
+        color: #fff;
         &--create{
-          color: #fff;
           text-decoration: none;
+          color: #fff;
         }
       }
       /*都道府県セレクト*/
