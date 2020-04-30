@@ -6,25 +6,25 @@
         %ul.subLists
           - @parent.children.each do |child|
             %li
-              = link_to child.name,"#"
+              = link_to child.name, category_path(child.id)
       .itemBox
         - @parent.children.each do |child|
           %h2.subTitle= child.name
           %ul.itemList
             %li.item
-              %div
+              .itemContainer
                 = image_tag '/images/shooes.jpeg', size: "200x150"
                 .itemInfo
                   %p.item__name 革靴
                   %p.item__price 36,000円
             %li.item
-              %div
+              .itemContainer
                 = image_tag '/images/shooes.jpeg', size: "200x150"
                 .itemInfo
                   %p.item__name 革靴
                   %p.item__price 36,000円
             %li.item
-              %div
+              .itemContainer
                 = image_tag '/images/shooes.jpeg', size: "200x150"
                 .itemInfo
                   %p.item__name 革靴
