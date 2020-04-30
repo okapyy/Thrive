@@ -80,7 +80,13 @@ gem 'haml-rails'
 gem 'font-awesome-sass', '~> 5.4.1'
 
 gem 'active_hash'
+
 gem 'payjp'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'gon'
+
+
+
+
+
