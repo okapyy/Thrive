@@ -1,0 +1,77 @@
+.mypage
+  .mypage-main.clearfix
+    .mypage-content
+      .mypage-card
+        %h2.mypage-card__cash クレジットカード情報入力
+        .mypage-card__form
+          = form_with(url: cards_path, local: true,id: "card-form") do |f| 
+            .mypage-card__form__input
+              %p.mypage-card__form__number カード番号
+              %p.mypage-card__form__require 必須
+
+            = f.text_field :number, {id: "card-number",class: "mypage-card__form__text", placeholder: "半角数字のみ", maxlength: 19 }
+            %ul.mypage-card__form__list
+              %li
+                = image_tag "credit-card_visa.png",class: "mypage-card__form__list--imagevisa"
+              %li
+                = image_tag "credit-card_master.png",class: "mypage-card__form__list--image"
+              %li
+                = image_tag "credit-card_saison.png",class: "mypage-card__form__list--image"
+              %li
+                = image_tag "credit-card_jcb.png",class: "mypage-card__form__list--image"
+              %li
+                = image_tag "credit-card_american.png",class: "mypage-card__form__list--image"
+              %li
+                = image_tag "credit-card_diners.png",class: "mypage-card__form__list--image"
+              %li
+                = image_tag "credit-card_discover.png",class: "mypage-card__form__list--image"
+              
+            .mypage-card__form__input
+              %p.mypage-card__form__number 有効期限
+              %p.mypage-card__form__require 必須
+            .mypage-card__form__select
+              %select.mypage-card__form__date#card-month{name: "exp_month",type: "text"}
+                %option{ selected: "selected", value: "12"} 12
+                %option{ selected: "selected", value: "11"} 11
+                %option{ selected: "selected", value: "10"} 10
+                %option{ selected: "selected", value: "09"} 09
+                %option{ selected: "selected", value: "08"} 08
+                %option{ selected: "selected", value: "07"} 07
+                %option{ selected: "selected", value: "06"} 06
+                %option{ selected: "selected", value: "05"} 05
+                %option{ selected: "selected", value: "04"} 04
+                %option{ selected: "selected", value: "03"} 03
+                %option{ selected: "selected", value: "02"} 02
+                %option{ selected: "selected", value: "01"} 01
+              %i.mypage-card__form__select--icon-month.fas.fa-angle-down.fa-2x
+              %span 月
+              %select.mypage-card__form__date#card-year{name: "exp_year",type: "text"}
+                %option{ selected: "selected", value: "2030"} 30
+                %option{ selected: "selected", value: "2029"} 29
+                %option{ selected: "selected", value: "2028"} 28
+                %option{ selected: "selected", value: "2027"} 27
+                %option{ selected: "selected", value: "2026"} 26
+                %option{ selected: "selected", value: "2025"} 25
+                %option{ selected: "selected", value: "2024"} 24
+                %option{ selected: "selected", value: "2023"} 23
+                %option{ selected: "selected", value: "2022"} 22
+                %option{ selected: "selected", value: "2021"} 21
+                %option{ selected: "selected", value: "2020"} 20
+              %i.mypage-card__form__select--icon-year.fas.fa-angle-down.fa-2x
+              %span 年
+            
+            .mypage-card__form__input
+              %p.mypage-card__form__number セキュリティコード
+              %p.mypage-card__form__require 必須
+
+            = f.text_field :cvc,{id: "card-cvc",class: "mypage-card__form__text", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: 4 }
+
+            .mypage-card__form__security
+              = link_to "#", class: "mypage-card__form__security--link" do
+                %i.fas.fa-question-circle
+                %p カード裏面の番号とは？
+            
+            = f.submit "追加する",id: "card-create",class: "mypage-card__form__btn" ,name: "inputBtn"
+
+    .mypage-side
+      = render partial: "users/side_menu"
