@@ -5,7 +5,7 @@
         %h2.mypage-card__cash 支払い方法
         .mypage-card__list 
           %h2.mypage-card__list--font クレジットカード一覧
-          = link_to user_card_path(current_user) do
+          = link_to new_card_path(current_user) do
             %button.mypage-card__btn 
               %i.mypage-card__icon.far.fa-credit-card
               クレジットカードを追加する

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: :show do
     get 'logout', to: 'users#logout'
     get 'cash', to: 'users#cash'
-    get 'card', to: 'users#card'
     get 'address', to: 'users#address'
   end
+  resources :cards, only: [:show, :new, :create, :destroy]
 end
