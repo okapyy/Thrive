@@ -1,12 +1,12 @@
 class CardsController < ApplicationController
+  before_action :set_card
   require = "payjp"
 
   def show
-    card = Card.find_by(user_id: current_user.id)
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    customer = Payjp::Customer.retrieve(card.customer_id)
-    @cards = customer.cards.retrieve(card.card_id)
-    # binding.pry
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    @cards = customer.cards.retrieve(@card.card_id)
+
     @brand = @cards.brand
     case @brand
     when "Visa"
@@ -51,18 +51,21 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    card = Card.find_by(user_id: current_user.id)
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    customer = Payjp::Customer.retrieve(card.customer_id)
+    customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
-    card.destroy
+    @card.destroy
 
-    if card.destroy
+    if @card.destroy
       redirect_to user_cash_path(current_user.id)
       flash[:notice] = 'クレジットカードを削除しました'
 
       else
         redirect_to controller: 'cards', action: 'show', id: current_user.id, alert: "削除できませんでした。"
     end
+  end
+
+  def set_card
+    @card = Card.find_by(user_id: current_user.id)
   end
 end
