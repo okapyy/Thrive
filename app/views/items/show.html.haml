@@ -10,14 +10,14 @@
     %li
       %i.fa.fa-angle-right
     %li
-      %p Product1
+      = @item.name
 
 .main
   .content
     .top-content
       .item-box
         %h2.item-box__name
-          Product1
+          = @item.name
         .item-box__picture
           %ul
             %li
@@ -30,15 +30,17 @@
                 %li
                   = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/9/a003.png"
         .item-box__price
+          %span 
+            ¥
           %span
-            ¥10000
+            = @item.price
           .item-box__price__extra
             %span
             (税込)
             %span
             送料込み
         .item-box__description
-          %p ここに商品の説明を長々と説明する。親譲りの無鉄砲で小供の時から損ばかりしている。 小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。 なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。 弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+          = @item.description
         .item-box__table
           %table
             %tbody
@@ -56,22 +58,27 @@
               %tr
                 %th ブランド
                 %td
+                  = @item.brand
               %tr
                 %th 商品のサイズ
                 %td
+                  = @item.size.name
               %tr
                 %th 商品の状態
-                %td 新品/未使用
+                %td 
+                  = @item.condition.name
               %tr
                 %th 配送料の負担
-                %td 送料込み（出品者負担）
+                %td 
+                  = @item.delivery_fee.name
               %tr
                 %th 発送元の地域
                 %td
                   = link_to "青森県", "#"
               %tr
                 %th 発送日の目安
-                %td 1-2日で発送
+                %td 
+                  = @item.delivery_day.name
         .additional-area
           %ul
             %li.like-btn
