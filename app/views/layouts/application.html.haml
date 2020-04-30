@@ -25,12 +25,12 @@
           %ul.header-nav--left
             %li.header-nav--left__item.header-nav--left__item--first
               = link_to "カテゴリー", "#",id:"categoryBtn"
-              .tree
-                %ul.categoryTree.displayNone
+              .tree#tree
+                %ul.categoryTree.displayNone#categoryTree
                   - @parents.each do |parent|
                     %li.categoryTree--item
                       =link_to parent.name, "", id:"#{parent.id}"
-                %ul.subcatTree.displayNone
+                %ul.subcatTree.displayNone#subcatTree
                 -#   - @lady_child.each do |child|
                 -#     %li.subcatTree--item
                 -#       =link_to child.name, ""
@@ -43,9 +43,9 @@
               %ul.brandsPulldown.displayNone
           %ul.header-nav--right
             %li.header-nav--right__item.header-nav--right__item-login
-              = link_to "ログイン", "#"
+              = link_to "ログイン", new_user_session_path
             %li.header-nav--right__item.header-nav--right__item-new
-              = link_to "新規会員登録", "#"
+              = link_to "新規会員登録", new_user_registration_path
     = yield
     %footer.footer
       %ul.footer-contents

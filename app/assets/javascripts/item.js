@@ -1,47 +1,25 @@
+document.addEventListener('turbolinks:load', () => {
+  const categories = ["レディース", "メンズ", "本"];
 
-jQuery(document).on('turbolinks:load', function(){
+  const openCategory = document.getElementById('categoryBtn');
+  const tree = document.getElementById('tree');
+  const categoryTree = document.getElementById('categoryTree');
+  const subcatTree = document.getElementById('subcatTree');
+  const childrenMenu = document.getElementById('1');
+  const itemTreeItem = document.getElementsByClassName('itemTree--item');
+  let $subcatTreeItem = document.createElement('li');
+  $subcatTreeItem = $subcatTreeItem.appendChild(document.createElement('a'));
+  console.log($subcatTreeItem);
   
-  var children = gon.lady_children;
-  var indirects = gon.indirects;
-  
-  function buildChildList() {
-    for(var i = 0; i <= children.length; i++) {
-      var item = children[i];
-      var $subcatTree = $('.subcatTree');
-      $subcatTree.append(`<li>${item.name}</li>`);
-      var html = `
-      <ul class="subcatTree">
-        <li class="subcatTree--item"><a href="#" id="${item.id}">${item.name}</a></li>
-      </ul>`
-      console.log(item.id)
-      return html;
-    }
-  }
-  
-  function buildGrandchildList(){
-    for(var i = 0; i <= indirects.length; i++) {
-      var item = indirects[i];
-      console.log(item.name);
-      console.log(item.id)
-      var html = `
-      <ul class="itemTree">
-        <li class="itemTree--item"><a href="#" id="${item.id}">${item.name}</a></li>
-      </ul>`
-      return html;
-     }
-  }
-
-  $('#categoryBtn').on('mouseenter', function() {
-    $('.categoryTree').removeClass('displayNone');
-    $('.categoryTree--item').on('mouseenter', function(){
-      $('.tree').append(buildChildList);
-    });
-    $('.tree').on('mouseenter', '.subcatTree--item',function() {
-      $('.tree').append(buildGrandchildList);
-    }).on('mouseleave', function() {
-      $('.itemTree').empty();
-    })
-  }).on('mouseleave', function() {
-    $('.tree').addClass('displayNone');
+  openCategory.addEventListener('click', (e) => {
+    e.preventDefault();
+    categoryTree.classList.remove('displayNone');
   });
-})
+  // childrenMenu.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   subcatTree.classList.remove('displayNone');
+  //   $subcatTreeItem.classList.add('subcatTree--item');
+  //   $subcatTreeItem.textContent = categories[0];
+  //   subcatTree.insertAdjacentElement('afterbegin', $subcatTreeItem);
+  // })
+});
