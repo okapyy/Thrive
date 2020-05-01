@@ -15,7 +15,9 @@
       .header-inner
         .header-top
           %h1.header-icon
+
             =link_to image_tag('logo.png', size:"140x41"), root_path 
+
           .search-box
             %form
               %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
@@ -24,6 +26,7 @@
                   = image_tag 'icon-search 1.png', size:"20x20"
           %ul.resultLists
         .header-nav
+
           %ul.header-nav--left
             %li.header-nav--left__item.header-nav--left__item--first
               = link_to "カテゴリー", categories_path,id:"categoryBtn"
