@@ -8,36 +8,51 @@
     = csp_meta_tag
     = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = include_gon 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header.header
       .header-inner
         .header-top
           %h1.header-icon
-            = link_to root_path do
-              = image_tag 'logo.png', size:"140x40"
+
+            =link_to image_tag('logo.png', size:"140x41"), root_path 
+
           .search-box
             %form
               %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
               %button{:type => "submit"}
                 .search-box--icon
                   = image_tag 'icon-search 1.png', size:"20x20"
+          %ul.resultLists
         .header-nav
-          %ul.nav--left
-            = link_to "#", id:"categoryBtn" do
-              %li.left__item カテゴリー
-            = link_to "#", id:"blandBtn" do
-              %li.left__item ブランド
-            = link_to top_path, id:"blandBtn" do
-              %li.left__item 商品一覧
-          %ul.nav--right
-            = link_to "#", class:"login-link" do
-              %li.right__item マイページ
-            = link_to new_user_session_path, class:"login-link" do
-              %li.right__item ログイン
-            = link_to  new_user_registration_path, class: "signup-link" do
-              %li.right__item 新規会員登録
-            .image-box{style:"background-image: url(google.png);"}
+
+          %ul.header-nav--left
+            %li.header-nav--left__item.header-nav--left__item--first
+              = link_to "カテゴリー", categories_path,id:"categoryBtn"
+              .tree#tree
+                %ul.categoryTree.displayNone#categoryTree
+                -# 機能実装中のため、以下コメントアウト　ここから
+                  -# - @parents.each do |parent|
+                  -#   %li.categoryTree--item
+                  -#     =link_to parent.name, "", id:"#{parent.id}"
+                %ul.subcatTree.displayNone#subcatTree
+                  -#   - @lady_child.each do |child|
+                  -#     %li.subcatTree--item
+                  -#       =link_to child.name, ""
+                %ul.itemTree.displayNone
+                  -#   - @lady_children[0].children.each do |child|
+                  -#     %li.itemTree--item
+                  -#       = link_to child.name, ""
+                -#  機能実装中のため、コメントアウト　ここまで 
+            %li.header-nav--left__item
+              = link_to "ブランド", "#", id:"brandBtn"
+              %ul.brandsPulldown.displayNone
+          %ul.header-nav--right
+            %li.header-nav--right__item.header-nav--right__item-login
+              = link_to "ログイン", new_user_session_path
+            %li.header-nav--right__item.header-nav--right__item-new
+              = link_to "新規会員登録", new_user_registration_path
     = yield
     %footer.footer
       %ul.footer-contents
@@ -56,7 +71,7 @@
           %h2.footer-content__head FURIMAを見る
           %ul
             %li
-              = link_to 'カテゴリー一覧', "#"
+              = link_to 'カテゴリー一覧', categories_path
             %li
               = link_to 'ブランド一覧', "#"
         %li.footer-content

@@ -89,7 +89,6 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|
-|item_id|reference|foreign_key: true|
 
 ### Association
 - has_many :items
