@@ -1,171 +1,58 @@
-%main.main
-  %section.main-picture
-    .container
-      %h2.container__title 
-        %br/
-        人生を変えるフリマアプリ
-      %p.container__text
-        FURIMAはだれでもかんたんに出品・購入できる
-        %br>/
-        フリマアプリです。
-      .container__btn
-        = render partial: "top_banner"
+%main.index-main
+  %section.index-items
+    %h2.index-items__title
+      人気の商品一覧
+    .index-items__box
+      = link_to "#", class: "box__head--link" do
+        %h3.index-items__box--font レディース新着アイテム
+      .index-items__lists
+        .index-items__list
+          .index-items__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032",class: "index-items__image--size"
+            .index-items__price
+              ¥ 30000円
+          .index-items__body
+            %p.index-items__name 
+              product3
 
-  %section.main-introduction
-    %h2.section-title FURIMAが選ばれる3つの理由
-    %ul.reason-lists
-      %li.reason-list
-        .list--picture
-          %span.list--picture__number> 1
-          = image_tag 'pict-reason-01.jpg'
-        %h2.list--title
-          %span.title--green 3分
-          ですぐに出品
-        %p.list-description スマホで入力するだけで簡単に出品できる！
-      %li.reason-list
-        .list--picture
-          %span.list--picture__number> 2
-          = image_tag 'pict-reason-02.jpg'
-        %h2.list--title
-          %span.title--green シンプル
-          で使いやすい
-        %p.list-description めんどくさい入力は必要なく、検索も購入もスムーズ！
-      %li.reason-list--last
-        .list--picture
-          %span.list--picture__number> 3
-          = image_tag 'pict-reason-03.jpg'
-        %h2.list--title
-          手数料
-          %span.title--green 業界最安
-        %p.list-description 最大3%でお得に出品&amp;購入！
+    .index-items__box
+      = link_to "#", class: "box__head--link" do
+        %h3.index-items__box--font メンズ新着アイテム
+      .index-items__lists
+        .index-items__list
+          .index-items__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032",class: "index-items__image--size"
+            .index-items__price
+              ¥ 30000円
+          .index-items__body
+            %p.index-items__name 
+              product3
+    
+    .index-items__box
+      = link_to "#", class: "box__head--link" do
+        %h3.index-items__box--font 家電・スマホ・カメラ新着アイテム
+      .index-items__lists
+        .index-items__list
+          .index-items__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032",class: "index-items__image--size"
+            .index-items__price
+              ¥ 30000円
+          .index-items__body
+            %p.index-items__name 
+              product3
 
-  %section.main-dl-link
-    .container
-      %h2.main-dl-link__title 会員数日本一位
-      %p.main-dl-link__text 
-        FURIMAは、フリマアプリで最も人気。
-        %br>
-        出品・購入回数も業界最多です。
-        %br>
-        ほしかったあの商品に出会えるかもしれません。
-      .main-dl-link__btns
-        = render partial: "top_banner"
-
-  %section.main-features
-    %h2.section__title FURIMAの特徴
-    .feature-items
-      %section.feature-item
-        %figure.item__image
-          = image_tag 'icon-01.png'
-        %h3.item__head
-          簡単に売り買いできる
-        %p.item__text
-          スマホひとつで、いつでもどこでも簡単に出品、購入が可能！
-      %section.feature-item
-        %figure.item__image
-          = image_tag 'icon-03.png'
-        %h3.item__head
-          売上金は即日振込みに対応
-        %p.item__text
-          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします！
-      %section.feature-item
-        %figure.item__image
-          = image_tag 'icon-04.png'
-        %h3.item__head
-          様々な支払いに対応
-        %p.item__text
-          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
-
-  %section.main-pickup-items
-    %h2.main-pickup-items__title
-      ピックアップカテゴリー
-    .main-pickup-items__box
-      = link_to "#", class: "box__head" do
-        %h3 新規投稿商品
-      .item-lists
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a007.png'
-            .item__body
-              %h3.item--name product3
-              .item--detail
-                %ul
-                  %li 30000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a004.png'
-            .item__body
-              %h3.item--name product2
-              .item--detail
-                %ul
-                  %li 20000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a001.png'
-            .item__body
-              %h3.item--name product1
-              .item--detail
-                %ul
-                  %li 10000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-
-  %section.main-pickup-blands
-    %h2.main-pickup-blands__title
-      ピックアップブランド
-    .main-pickup-blands__box
-      = link_to "#", class: "box__head" do
-        %h3 アーカイバ
-      .item-lists
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a007.png'
-            .item__body
-              %h3.item--name product3
-              .item--detail
-                %ul
-                  %li 30000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a004.png'
-            .item__body
-              %h3.item--name product2
-              .item--detail
-                %ul
-                  %li 20000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a001.png'
-            .item__body
-              %h3.item--name product1
-              .item--detail
-                %ul
-                  %li 10000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-
-%aside.banner
-  .banner__inner
-    %h2.banner__inner__title だれでもかんたん、人生を変えるフリマアプリ
-    %p.banner__inner__text 今すぐ無料ダウンロード！
-    .banner__inner__icon
-      = render partial: "top_banner"
-
-= link_to "#" do
-  .putup__btn
-    %span.putup__btn__text> 出品する
-    = image_tag 'icon_camera.png', alt: '出品する', height: '', width: '', class: 'putup__btn__icon'
+    .index-items__box
+      = link_to "#", class: "box__head--link" do
+        %h3.index-items__box--font おもちゃ・ホビー・グッズ新着アイテム
+      .index-items__lists
+        .index-items__list
+          .index-items__image
+            = image_tag "https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032",class: "index-items__image--size"
+            .index-items__price
+              ¥ 30000円
+          .index-items__body
+            %p.index-items__name 
+              product3
+        
+        
+  

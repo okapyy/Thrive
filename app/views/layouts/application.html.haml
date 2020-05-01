@@ -14,7 +14,8 @@
       .header-inner
         .header-top
           %h1.header-icon
-            %a= image_tag 'logo.png', size:"140x40"
+            = link_to root_path do
+              = image_tag 'logo.png', size:"140x40"
           .search-box
             %form
               %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
@@ -27,10 +28,14 @@
               %li.left__item カテゴリー
             = link_to "#", id:"blandBtn" do
               %li.left__item ブランド
+            = link_to items_path, id:"blandBtn" do
+              %li.left__item 商品一覧
           %ul.nav--right
-            %a{:href => "#", class:"login-link"}
+            = link_to "#", class:"login-link" do
+              %li.right__item マイページ
+            = link_to new_user_session_path, class:"login-link" do
               %li.right__item ログイン
-            %a{:href => "#", class:"signup-link"}
+            = link_to  new_user_registration_path, class: "signup-link" do
               %li.right__item 新規会員登録
             .image-box{style:"background-image: url(google.png);"}
     = yield
