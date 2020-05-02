@@ -1,6 +1,7 @@
 .main {
   height: 100%;
   width: 100%;
+  background-color: #f8f8f8;
   &-picture {
     height: 560px;
     width: 100%;
@@ -266,6 +267,7 @@
                 z-index: auto;
                 height: 150px;
                 object-fit: cover;
+                background-color: #fff;
               }
             }
             .item__body {
@@ -332,6 +334,7 @@
                 z-index: auto;
                 height: 150px;
                 object-fit: cover;
+                background-color: #fff;
               }
             }
             .item__body {

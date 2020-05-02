@@ -3,29 +3,51 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Thrive
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
     = csrf_meta_tags
     = csp_meta_tag
+    = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = include_gon 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header.header
       .header-inner
         .header-top
           %h1.header-icon
-            %a= image_tag 'logo.png', size:"140x40"
+
+            =link_to image_tag('logo.png', size:"140x41"), root_path 
+
           .search-box
             %form
               %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
               %button{:type => "submit"}
                 .search-box--icon
                   = image_tag 'icon-search 1.png', size:"20x20"
+          %ul.resultLists
         .header-nav
-          %ul.nav--left
-            = link_to "#", id:"categoryBtn" do
-              %li.left__item カテゴリー
-            = link_to "#", id:"blandBtn" do
-              %li.left__item ブランド
-          %ul.nav--right
+          %ul.header-nav--left
+            %li.header-nav--left__item.header-nav--left__item--first
+              = link_to "カテゴリー", categories_path,id:"categoryBtn"
+              .tree#tree
+                %ul.categoryTree.displayNone#categoryTree
+                -# 機能実装中のため、以下コメントアウト　ここから
+                  -# - @parents.each do |parent|
+                  -#   %li.categoryTree--item
+                  -#     =link_to parent.name, "", id:"#{parent.id}"
+                %ul.subcatTree.displayNone#subcatTree
+                  -#   - @lady_child.each do |child|
+                  -#     %li.subcatTree--item
+                  -#       =link_to child.name, ""
+                %ul.itemTree.displayNone
+                  -#   - @lady_children[0].children.each do |child|
+                  -#     %li.itemTree--item
+                  -#       = link_to child.name, ""
+                -#  機能実装中のため、コメントアウト　ここまで 
+            %li.header-nav--left__item
+              = link_to "ブランド", "#", id:"brandBtn"
+              %ul.brandsPulldown.displayNone
+          %ul.header-nav--right
             - if user_signed_in?
               = link_to "#", class: "login-link" do
                 %li.right__item マイページ
@@ -55,7 +77,7 @@
           %h2.footer-content__head FURIMAを見る
           %ul
             %li
-              = link_to 'カテゴリー一覧', "#"
+              = link_to 'カテゴリー一覧', categories_path
             %li
               = link_to 'ブランド一覧', "#"
         %li.footer-content
