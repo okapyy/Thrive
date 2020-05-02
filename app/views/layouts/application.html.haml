@@ -26,11 +26,17 @@
             = link_to "#", id:"blandBtn" do
               %li.left__item ブランド
           %ul.nav--right
-            %a{:href => "#", class:"login-link"}
-              %li.right__item ログイン
-            %a{:href => "#", class:"signup-link"}
-              %li.right__item 新規会員登録
-            .image-box{style:"background-image: url(google.png);"}
+            - if user_signed_in?
+              = link_to "#", class: "login-link" do
+                %li.right__item マイページ
+              = link_to destroy_user_session_path, method: :delete, class: "login-link" do
+                %li.right__item ログアウト
+            - else
+              = link_to new_user_session_path, class: "login-link" do
+                %li.right__item ログイン
+              = link_to new_user_registration_path, class: "signup-link" do
+                %li.right__item 新規会員登録
+              .image-box{style:"background-image: url(google.png);"}
     = yield
     %footer.footer
       %ul.footer-contents
