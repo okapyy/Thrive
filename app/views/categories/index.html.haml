@@ -11,11 +11,10 @@
           .catContents
             - parent.children.each do |children|
               .catContent
-                = link_to children.name, "", class:"subTitle"
+                = link_to children.name, category_path(children.id), class:"subTitle"
                 .catItems
                   - children.children.each do |item|
                     .catItem
-                      = link_to item.name, "/", class:"itemTitle"
-          .topBtn
-            = link_to "#" do
-              = icon('fas', 'arrow-up', 'ページトップへ')
+                      = link_to item.name, "/", class:"itemTitle", name:"#{item.name}"
+          .topBtn#topBtn
+            = icon('fas', 'arrow-up','ページトップへ')

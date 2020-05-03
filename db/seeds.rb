@@ -44,7 +44,7 @@ ladies_suits = ["スカートスーツ上下", "パンツスーツ上下", "ド�
 ladies_matanity = ["トップス", "アウター", "インナー", "ワンピース", "パンツ/スパッツ", "スカート", "パジャマ", "授乳服", "その他"]
 ladies_others = ["コスプレ", "下着", "その他"]
 
-ladies_grandchildren = [ladies_tops,ladies_jacket,ladies_socks,ladies_roomwear,ladies_shoes, ladies_onepiece, ladies_skirt, ladies_pants, ladies_hats, ladies_bag, ladies_accessory, ladies_hairaccessory, ladies_komono, ladies_watch, ladies_wig, ladies_yukata, ladies_suits, ladies_matanity, ladies_others]
+ladies_grandchildren = [ladies_tops, ladies_jacket, ladies_pants, ladies_skirt, ladies_onepiece, ladies_shoes, ladies_roomwear, ladies_socks, ladies_hats, ladies_bag, ladies_accessory, ladies_hairaccessory, ladies_komono, ladies_watch, ladies_wig, ladies_yukata, ladies_suits, ladies_matanity, ladies_others]
 
 # メンズ
 mens_tops = ["Tシャツ/カットソー(半袖/袖なし)", "Tシャツ/カットソー(七分/長袖)", "シャツ", "ポロシャツ", "タンクトップ", "ニット/セーター", "パーカー", "カーディガン", "スウェット", "ジャージ", "ベスト", "その他"]
