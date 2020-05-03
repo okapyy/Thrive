@@ -47,11 +47,7 @@
         = f.select :category_id, options_for_select(@parents.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category", id:"catParent"}
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__select#selectChildren
-        -# = f.select :category_id, options_for_select(@parents[1].children.map {|c| [c.name, c.id]}),{},{class:"exhibition__box__image__select--category displayNone", id:"catChildren"}
-        -# %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__select#selectGrandChildren
-        -# = f.select :category_id, options_for_select(@parents[0].children[0].children.map {|p| [p.name, p.id]}),{},{class:"exhibition__box__image__select--category displayNone", id:"catGrandChildren"}
-        -# %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__form
         .exhibition__box__image__form__lavel
           サイズ
