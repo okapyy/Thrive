@@ -104,12 +104,7 @@ window.addEventListener('load', () => {
         const options = selectedChild.options;
 
         // 選択された値を配列に渡し、<option>の作成
-        console.log(gon.children);
-        console.log(`親のvalue${selectedParent.value}`);
-        console.log(`子のindex${options.selectedIndex}`);
-        console.log(gon.children[selectedParent.value - 1]);
         gon.children[selectedParent.value - 1][options.selectedIndex - 1].forEach((child) => {
-          console.log(child);
           child.forEach((grandchildren) => {
             const gcoption = document.createElement('option');
             gcoption.value = grandchildren.id;
