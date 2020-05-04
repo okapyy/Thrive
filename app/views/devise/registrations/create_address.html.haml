@@ -1,0 +1,32 @@
+.user-body
+  .user-body__header
+    .user-body__header__box
+      .user-body__header__box__left
+        = link_to root_path, class: "user-body__header__box__left__logo" do
+          = image_tag 'logo.png', size: '170x46'
+      .user-body__header__box__nav
+        %ol.user-body__header__box__nav__ol
+          %li.user-body__header__box__nav__ol__li--active
+            会員情報
+            .user-body__header__box__nav__ol__li__ball__left--active
+          %li.user-body__header__box__nav__ol__li--active
+            住所入力
+            .user-body__header__box__nav__ol__li__ball__center--active
+          %li.user-body__header__box__nav__ol__li--active
+            完了
+            .user-body__header__box__nav__ol__li__ball__right--active
+  .user-body__main
+    .user-body__main__container
+      .user-body__main__container__upper-row
+        %p 登録が完了しました！
+        = link_to root_path do
+          トップページへ戻る
+  .user-body__bottom
+    .user-body__bottom__nav
+      %ul
+        %li プライバシーポリシー
+        %li FURIMA利用規約
+        %li 特定商取引に関する表記
+    = link_to root_path, class: "user-body__bottom__icon" do
+      = image_tag 'logo-white.png', size: '150x40'
+    %p ©️ FURIMA, inc.

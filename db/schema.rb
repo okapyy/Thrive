@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_084503) do
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
     t.string "postal_code", null: false
-    t.string "prefecture_id"
+    t.integer "prefecture_id", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 2020_04_28_084503) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
+end
+
+ActiveRecord::Schema.define(version: 2020_04_24_075352) do
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -62,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_084503) do
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
