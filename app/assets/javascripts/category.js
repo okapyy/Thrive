@@ -1,6 +1,4 @@
-window.addEventListener('load', ()=> {
-// ブラウザバックだと動作しません！！！リロードしましょう！
-
+document.addEventListener("turbolinks:load", ()=> {
   // ページ内スクロール機能
   const parentIndex = document.getElementsByClassName('parentIndex');
   const catTitles = document.getElementsByClassName('catTitle');
