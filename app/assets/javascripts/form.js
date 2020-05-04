@@ -28,7 +28,6 @@ window.addEventListener('load', () => {
     }
   });
 
-
   // カテゴリーフォームの追加関数
     // 変数定義
   const catParent = document.getElementById('catParent');
@@ -49,7 +48,7 @@ window.addEventListener('load', () => {
     childBox.insertAdjacentElement('afterbegin', iselect);
     childBox.insertAdjacentElement('afterbegin', select);
     select.insertAdjacentHTML('afterbegin', `<option value="", label="選択してください"></options>`);
-    gon.categories[selectedParent.value - 1].forEach((parentArray) => {
+    gon.children[selectedParent.value - 1].forEach((parentArray) => {
       parentArray.forEach((child) => {
         const option = document.createElement('option');
         option.value = child.id;
@@ -78,7 +77,7 @@ window.addEventListener('load', () => {
         const options = selectedChild.options;
 
         // 選択された値を配列に渡し、<option>の作成
-        gon.children[selectedParent.value - 1][options.selectedIndex - 1].forEach((child) => {
+        gon.grandchildren[selectedParent.value - 1][options.selectedIndex - 1].forEach((child) => {
           child.forEach((grandchildren) => {
             const gcoption = document.createElement('option');
             gcoption.value = grandchildren.id;
@@ -104,7 +103,7 @@ window.addEventListener('load', () => {
         const options = selectedChild.options;
 
         // 選択された値を配列に渡し、<option>の作成
-        gon.children[selectedParent.value - 1][options.selectedIndex - 1].forEach((child) => {
+        gon.grandchildren[selectedParent.value - 1][options.selectedIndex - 1].forEach((child) => {
           child.forEach((grandchildren) => {
             const gcoption = document.createElement('option');
             gcoption.value = grandchildren.id;

@@ -11,11 +11,9 @@ class ItemsController < ApplicationController
     @item = Item.new
     @parents = Category.all.limit(13)
     @categories = Category.all
-    gon.oya = @parents
-
     @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
-    gon.categories = @parents.map {|p| Array.new << p.children}
-    gon.children = @children
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
   end
 
   def create
