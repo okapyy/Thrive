@@ -49,15 +49,15 @@
               %ul.brandsPulldown.displayNone
           %ul.header-nav--right
             - if user_signed_in?
-              = link_to "#", class: "login-link" do
-                %li.right__item マイページ
-              = link_to destroy_user_session_path, method: :delete, class: "login-link" do
-                %li.right__item ログアウト
+              = link_to user_path(current_user.id), class: "header-nav--right__item" do
+                %li マイページ
+              = link_to destroy_user_session_path, method: :delete, class: "header-nav--right__item" do
+                %li ログアウト
             - else
-              = link_to new_user_session_path, class: "login-link" do
-                %li.right__item ログイン
-              = link_to new_user_registration_path, class: "signup-link" do
-                %li.right__item 新規会員登録
+              = link_to new_user_session_path, class: "header-nav--right__item" do
+                %li ログイン
+              = link_to new_user_registration_path, class: "header-nav--right__item" do
+                %li 新規会員登録
               .image-box{style:"background-image: url(google.png);"}
     = yield
     %footer.footer
