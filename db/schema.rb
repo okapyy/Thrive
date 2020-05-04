@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_134405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+end
 
 ActiveRecord::Schema.define(version: 2020_04_24_075352) do
 
@@ -38,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_04_24_075352) do
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
+end
 
 ActiveRecord::Schema.define(version: 2020_04_28_084503) do
 
