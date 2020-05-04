@@ -331,6 +331,7 @@ DEPENDENCIES
 
   ancestry
   active_hash
+  ancestry
   bootsnap (>= 1.1.0)
   byebug
   capistrano
@@ -344,8 +345,6 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   factory_bot_rails
-
-
   dotenv-rails
   font-awesome-sass (~> 5.4.1)
   gon
