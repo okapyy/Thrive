@@ -19,7 +19,6 @@ document.addEventListener('turbolinks:load', () => {
 
   textArea.addEventListener('input', () => {
     const num = textArea.value;
-    console.log(num);
     counter.textContent = `${num.length}/1000`;
     if (num.length > 1000) {
       counter.style.color = "tomato";
