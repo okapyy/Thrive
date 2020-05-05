@@ -1,7 +1,8 @@
 .user-body
   .user-body__header
-    = link_to root_path, class: "user-body__header__logo" do
-      = image_tag 'logo.png', size: '170x46'
+    .user-body__header__box
+      = link_to root_path, class: "user-body__header__box__logo" do
+        = image_tag 'logo.png', size: '170x46'
   .user-body__main
     .user-body__main__container
       .user-body__main__container__upper-row
@@ -17,6 +18,7 @@
             = icon('fab', 'google', class: "user-body__main__container__row__var__google--icon")
             Googleでログイン
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = render "devise/shared/error_messages", resource: resource
           .user-body__main__container__row__form
             .user-body__main__container__row__form__field
               = f.email_field :email, autofocus: true, placeholder: 'メールアドレス', class: "user-body__main__container__row__form__field__input"
