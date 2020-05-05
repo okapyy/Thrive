@@ -40,7 +40,9 @@
             %span
             送料込み
         .item-box__description
+
           %p=@item.description
+
         .item-box__table
           %table
             %tbody
@@ -57,22 +59,40 @@
                   = link_to @item.category.name, category_path(@item.category.id)
               %tr
                 %th ブランド
-                %td= @item.bland
+                %td
+                  = @item.bland
               %tr
                 %th 商品のサイズ
-                %td= @item.size
+                %td
+                  = @item.size
               %tr
                 %th 商品の状態
-                %td=@item.condition
+                %td 
+                  = @item.condition
               %tr
                 %th 配送料の負担
-                %td=@item.delivery_fee
+                %td 
+                  = @item.delivery_fee
               %tr
                 %th 発送元の地域
-                %td= link_to "青森県", "#"
+                %td= @item.delivery_from
               %tr
                 %th 発送日の目安
-                %td=@item.delivery_day
+                %td 
+                  = @item.delivery_day
+        .item-box__btn
+          - if current_user&.id == @item.user_id
+            = link_to edit_item_path do
+              %button.item-box__btn__edit 編集
+            = link_to item_path(@item), method: :delete do
+              %button.item-box__btn__edit 削除
+          - elsif user_signed_in?
+            = link_to item_buypage_path(@item) do
+              %button.item-box__btn__edit 購入する
+          - else 
+            = link_to new_user_session_path do
+              %button.item-box__btn__edit 購入する
+
         .additional-area
           %ul
             %li.like-btn
@@ -95,6 +115,7 @@
     %ul.links
       %li
         %i.fa.fa-angle-left
+
         = link_to "前の商品", item_path(@item.id - 1)
       %li
         = link_to "次の商品", item_path(@item.id + 1) 

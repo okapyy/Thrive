@@ -15,7 +15,9 @@
       .header-inner
         .header-top
           %h1.header-icon
+
             =link_to image_tag('logo.png', size:"140x41"), root_path 
+
           .search-box
             %form
               %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
@@ -46,10 +48,17 @@
               = link_to "ブランド", "#", id:"brandBtn"
               %ul.brandsPulldown.displayNone
           %ul.header-nav--right
-            %li.header-nav--right__item.header-nav--right__item-login
-              = link_to "ログイン", new_user_session_path
-            %li.header-nav--right__item.header-nav--right__item-new
-              = link_to "新規会員登録", new_user_registration_path
+            - if user_signed_in?
+              = link_to user_path(current_user.id), class: "header-nav--right__item" do
+                %li マイページ
+              = link_to destroy_user_session_path, method: :delete, class: "header-nav--right__item" do
+                %li ログアウト
+            - else
+              = link_to new_user_session_path, class: "header-nav--right__item" do
+                %li ログイン
+              = link_to new_user_registration_path, class: "header-nav--right__item" do
+                %li 新規会員登録
+              .image-box{style:"background-image: url(google.png);"}
     = yield
     %footer.footer
       %ul.footer-contents
