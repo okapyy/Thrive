@@ -49,11 +49,11 @@
               %tr
                 %th カテゴリー
                 %td
-                  = link_to "レディース", "#"
+                  = link_to @item.category.root.name, category_path(@item.category.root.id)
                   %br/
-                  = link_to "トップス", "#"
+                  = link_to @item.category.parent.name, category_path(@item.category.parent.id)
                   %br/
-                  = link_to "Tシャツ/カットソー(半袖/袖なし)", "#"
+                  = link_to @item.category.name, category_path(@item.category.id)
               %tr
                 %th ブランド
                 %td
@@ -87,7 +87,7 @@
             = link_to item_buypage_path(@item) do
               %button.item-box__btn__edit 購入する
           - else 
-            = link_to new_user_registration_path do
+            = link_to new_user_session_path do
               %button.item-box__btn__edit 購入する
 
         .additional-area
@@ -112,10 +112,10 @@
     %ul.links
       %li
         %i.fa.fa-angle-left
-        = link_to "前の商品"
+        = link_to "前の商品" , item_path(@item.id - 1)
       %li
-        = link_to "後ろの商品" 
+        = link_to "後ろの商品" , item_path(@item.id + 1)
         %i.fa.fa-angle-right
     .related-items
-      = link_to "レディースをもっと見る"
+      = link_to "#{@item.category.root.name}をもっと見る", category_path(@item.category.root.id)
       .item-lists

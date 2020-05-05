@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_084503) do
+ActiveRecord::Schema.define(version: 2020_05_05_022324) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
@@ -28,17 +28,6 @@ ActiveRecord::Schema.define(version: 2020_04_28_084503) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
-end
-
-ActiveRecord::Schema.define(version: 2020_04_24_075352) do
-
-  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
-end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -55,7 +44,7 @@ end
     t.datetime "updated_at", null: false
     t.string "ancestry"
     t.index ["ancestry"], name: "index_categories_on_ancestry"
-ActiveRecord::Schema.define(version: 2020_05_04_022509) do
+  end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_022509) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "delivery_from"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -91,8 +82,8 @@ ActiveRecord::Schema.define(version: 2020_05_04_022509) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
 end
