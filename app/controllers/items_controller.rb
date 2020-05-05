@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_category
-
+  before_action :set_items, only:[:show, :edit, :update, :destroy]
   def index
     @parents = Category.all.order("id ASC").limit(13)
     @lady = Category.find(1)
@@ -27,23 +27,25 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
-    @item.update(item_params)
-    redirect_to item_path(@item.id)
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to root_path
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
   
   private
@@ -51,5 +53,8 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :price, )
   end
 
-
+  def set_items
+    @item = Item.find(params[:id])
+  end
+  
 end
