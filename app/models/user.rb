@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :email,    presence: true, uniqueness: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   validates :password, presence: true, length: { minimum: 7 }
   validates :birthday, presence: true
+  has_many :items
 
   def create
     @user = User.new(user_params)
