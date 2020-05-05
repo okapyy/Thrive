@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+document.addEventListener('turbolinks:load', () => {
   // 金額の計算関数
   const serviceCharge = document.getElementById('serviceCharge');
   const price = document.getElementById('item_price');
@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
 
   textArea.addEventListener('input', () => {
     const num = textArea.value;
+    console.log(num);
     counter.textContent = `${num.length}/1000`;
     if (num.length > 1000) {
       counter.style.color = "tomato";

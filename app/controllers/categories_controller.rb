@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  # アクションごとの処理をわかりやすくするため、before_actionでのレコードの全取得は定義しない。
+  # アクションごとの処理をわかりやすくするため、before_actionでのレコードの取得は定義しない。
 
   def index
     @parents = Category.all.order("id ASC").limit(13)
