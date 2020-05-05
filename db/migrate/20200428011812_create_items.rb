@@ -4,10 +4,12 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name,                null: false
       t.string :description,         null: false
       t.string :brand
-      t.string :size_id
-      t.string :condition_id,           null: false
-      t.string :delivery_fee_id,        null: false
-      t.string :delivery_day_id,        null: false
+      t.integer :size_id
+      t.integer :condition_id,           null: false
+      t.integer :prefecture_id,          null: false
+      t.integer :delivery_method_id,        null: false
+      t.integer :delivery_fee_id,        null: false
+      t.integer :delivery_day_id,        null: false
       t.integer :price,              null: false
       t.boolean :is_deleted,         default: 0
       t.timestamps

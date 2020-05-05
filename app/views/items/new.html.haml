@@ -1,1 +1,123 @@
-= render partial: "form"
+.sell-page
+  .sell-page__box
+    %h2.sell-page__box__heading
+      商品情報を入力
+    .sell-page__box__body
+      = form_with(model: @item, local: true) do |f|
+        .item-image
+          %h3.item-image__heading
+            出品画像
+            %span.require 必須
+            %p.item-image__heading__message
+              最大10枚アップロードできます
+          .item-image__box
+            = f.fields_for :item_images do |i|
+              .item-image__box__lists
+              .item-image__box__upload
+                = i.file_field :image, type: 'file',  id: "image-file", name: "item[item_images_attributes][][image]"
+                %label{for: "img-file"}
+                  -# %i.fas.fa-camera
+                  
+              
+                
+                -# %i.fas.fa-camera
+                -#     %p ドラッグアンドドロップ
+                -#     %p またはクリックしてファイルをアップロード
+
+
+              -# = f.fields_for :item_images do |i|
+              -# = i.label :image do
+              -#   .item-image__box__upload
+              -#     .ite-image__box__upload__message
+              -#       %i.fas.fa-camera
+              -#       %p ドラッグアンドドロップ
+              -#       %p またはクリックしてファイルをアップロード
+              -#     = i.file_field :image, id: "image-file", name: "item[item_images_attributes][][image]"
+                  
+                    
+              
+        .item-info
+          .item-info__box
+            .item-info__box__name
+              = f.label "商品名"
+              %span.require 必須
+            .item-info__box__input
+              = f.text_field :name, class: "item_name", placeholder: "40文字まで"
+            %br/
+          .item-info__container
+            .item-info__box__name
+              = f.label "商品の説明"
+              %span.require 必須
+            .item-info__box__input
+              .item-info__box__input__description
+                = f.text_area :description, class: "item_description", placeholder: "商品の説明（1000文字以内）"
+              %br/
+          .item-info__box
+            .item-info__box__name
+              = f.label "カテゴリー"
+              %span.require 必須
+            .item-info__box__input
+              = f.collection_select :category_id, Category.all, :id, :name, prompt: "選択してください"
+            %br/
+          .item-info__box
+            .item-info__box__name
+              = f.label "ブランド"
+              %span.option 任意
+            .item-info__box__input
+              = f.text_field :brand, class: "item_brand", placeholder: "例)シャネル"
+            %br/
+          .item-info__box
+            .item-info__box__name
+              = f.label "サイズ"
+              %span.require 必須
+            .item-info__box__input
+              = f.collection_select :size_id, Size.all, :id, :name, prompt: "選択してください"
+            %br/
+          .item-info__box
+            .item-info__box__name
+              = f.label "商品の状態"
+              %span.require 必須
+            .item-info__box__input
+              = f.collection_select :condition_id, Condition.all, :id, :name, prompt: "選択してください"
+            %br/
+          .item-info__box
+            .item-info__box__name
+              = f.label "配送料の負担"
+              %span.require 必須
+            .item-info__box__input
+              = f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, prompt: "選択してください"
+            %br/
+          .item-info__box
+            .item-info__box__name
+              = f.label "配送の方法"
+              %span.require 必須
+            .item-info__box__input
+              = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name, prompt: "選択してください"
+            %br/
+          .item-info__box
+            .item-info__box__name
+              = f.label "発送元の地域"
+              %span.require 必須
+            .item-info__box__input
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください"
+            %br/
+          .item-info__box
+            .item-info__box__name
+              = f.label "発送までの日数"
+              %span.require 必須
+            .item-info__box__input
+              = f.collection_select :delivery_day_id, DeliveryDay.all, :id, :name, prompt: "選択してください"
+            %br/
+          .item-info__box
+            .item-info__box__name
+              = f.label "販売価格"
+              %span.require 必須
+              %p ¥
+            .item-info__box__input
+              .item-info__box__input__price
+              = f.number_field :price, class: "item_price"
+        .send-btn
+          .send-btn__ship
+            = f.submit "出品する"
+
+
