@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_084503) do
+ActiveRecord::Schema.define(version: 2020_05_05_022324) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
@@ -46,6 +46,25 @@ ActiveRecord::Schema.define(version: 2020_04_28_084503) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.string "bland"
+    t.string "size"
+    t.string "condition", null: false
+    t.string "delivery_fee", null: false
+    t.string "delivery_day", null: false
+    t.integer "price", null: false
+    t.boolean "is_deleted", default: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "delivery_from"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.text "description"
@@ -65,4 +84,6 @@ ActiveRecord::Schema.define(version: 2020_04_28_084503) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "users"
 end

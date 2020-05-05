@@ -121,6 +121,17 @@
             }
           }
         }
+        &__btn {
+          width: 100%;
+          text-align: right;
+          padding-right: 2px;
+          button {
+            margin-left: 5px;
+          }
+          a {
+            text-decoration: none;
+          }
+        }
         .additional-area {
           width: 100%;
           display: flex;
