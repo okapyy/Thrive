@@ -72,6 +72,7 @@
         }
         .topBtn {
           padding-left: 20px;
+          cursor: pointer;
           a {
             text-decoration: none;
             color: #333;
@@ -80,7 +81,7 @@
         }
       }
     }
-    .content {
+    .maincontent {
       width: 700px;
       margin: 0 auto;
       .titleBox {

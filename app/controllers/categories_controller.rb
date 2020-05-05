@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  # アクションごとの処理をわかりやすくするため、before_actionでのレコードの全取得は定義しない。
+  # アクションごとの処理をわかりやすくするため、before_actionでのレコードの取得は定義しない。
 
   def index
     @parents = Category.all.order("id ASC").limit(13)
@@ -9,10 +9,12 @@ class CategoriesController < ApplicationController
     params_id = params[:id].to_i - 1
     @parents = Category.all.order("id ASC").limit(13)
     @categories = Category.all
-    if params_id <= 12
-      @parent = @parents[params_id]
-    else
+    if params_id >= 0 && params_id <= 12
+      @parent = @parents[params_id] 
+    elsif params_id >= 13 && params_id < @categories.length
       @parent = @categories[params_id]
+    else
+      redirect_to categories_path
     end
   end
 end

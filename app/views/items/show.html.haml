@@ -16,36 +16,39 @@
   .content
     .top-content
       .item-box
-        %h2.item-box__name
-          = @item.name
+        %h2.item-box__name= @item.name
         .item-box__picture
           %ul
             %li
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
+              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", id:"bigPic"
               %ul
                 %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class:"thumb"
                 %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/8/a002.png"
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/8/a002.png",class:"thumb"
                 %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/9/a003.png"
+                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/9/a003.png", class:"thumb"
+        #modal.displayNone
+          .iconroom
+            = icon('fa', 'times-circle' '', id:"close")
+          = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png",size:"700x600", id:"modalImage"
         .item-box__price
-          %span
-            = "#{@item.price.to_s(:delimited)}円"
+          %span= "#{@item.price.to_s(:delimited)}円"
           .item-box__price__extra
             %span
             (税込)
             %span
             送料込み
         .item-box__description
-          = @item.description
+
+          %p=@item.description
+
         .item-box__table
           %table
             %tbody
               %tr
                 %th 出品者
                 %td= @item.user.nickname
-                  
               %tr
                 %th カテゴリー
                 %td
@@ -112,10 +115,12 @@
     %ul.links
       %li
         %i.fa.fa-angle-left
-        = link_to "前の商品" , item_path(@item.id - 1)
+
+        = link_to "前の商品", item_path(@item.id - 1)
       %li
-        = link_to "後ろの商品" , item_path(@item.id + 1)
+        = link_to "次の商品", item_path(@item.id + 1) 
         %i.fa.fa-angle-right
     .related-items
       = link_to "#{@item.category.root.name}をもっと見る", category_path(@item.category.root.id)
       .item-lists
+
