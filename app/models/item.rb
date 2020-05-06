@@ -20,7 +20,7 @@ class Item < ApplicationRecord
   validates :item_images, 
             :category_id, 
             :size_id, 
-            :prefecture_id, 
+            :delivery_from_id, 
             :condition_id, 
             :delivery_fee_id, 
             :delivery_method_id, 

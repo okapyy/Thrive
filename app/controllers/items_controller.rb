@@ -1,11 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_items, only:[:show, :edit, :update, :destroy]
+
   def index
-    @parents = Category.where('ancestry is null')
-    @lady = Category.find(1)
-    @lady_children = @lady.children
-    @ladies_item = Category.where(ancestry: "1/14")
-    gon.names = @parents
   end
 
   def new
@@ -20,8 +16,8 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-
+    binding.pry
+    if @item.save!
       redirect_to root_path, notice: '商品の出品に成功しました'
     else
       flash.now[:alert] = '出品に失敗しました'
@@ -83,7 +79,7 @@ class ItemsController < ApplicationController
       :size_id, 
       :condition_id, 
       :delivery_fee_id, 
-      :prefecture_id, 
+      :delivery_from_id, 
       :delivery_method_id, 
       :delivery_day_id, 
       :price, 

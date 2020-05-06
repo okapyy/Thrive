@@ -54,7 +54,7 @@
         .exhibition__box__image__form__required
           任意
       .exhibition__box__image__select
-        = f.select :size, @parents.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.select :size_id, options_for_select(Size.all.map {|s| [s.name, s.id]}), {}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__line
         .exhibition__box__image__line__bland
@@ -69,7 +69,7 @@
         .exhibition__box__image__form__required
           任意
       .exhibition__box__image__select
-        = f.select :condition, @parents, {}, class:"exhibition__box__image__select--category"
+        = f.select :condition_id, options_for_select(Condition.all.map {|c| [c.name, c.id]}), {}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
     .exhibition__box__image
       .exhibition__box__image__details
@@ -82,7 +82,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :delivery_fee, Prefecture.all.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.select :delivery_fee_id, options_for_select(DeliveryFee.all.map {|d| [d.name, d.id]}), {}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__carry
         .exhibition__box__image__carry__lavel
@@ -90,7 +90,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :delivery_day, @parents.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.select :delivery_method_id, options_for_select(DeliveryMethod.all.map {|d| [d.name, d.id]}), {}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__carry
         .exhibition__box__image__carry__lavel
@@ -98,7 +98,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :delivery_from, Prefecture.all.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.select :delivery_from_id, options_for_select(Prefecture.all.map {|p| [p.name, p.id]}), {}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__carry
         .exhibition__box__image__carry__lavel
@@ -106,7 +106,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :delivery_day, @parents.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.select :delivery_day_id, options_for_select(DeliveryDay.all.map {|d| [d.name, d.id]}), {}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
     .exhibition__box__image
       .exhibition__box__image__details
