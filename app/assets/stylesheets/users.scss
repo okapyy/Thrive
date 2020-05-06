@@ -451,4 +451,55 @@
       padding-left: 10px;
     }
   }
+  .container {
+    margin: 0 auto;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .tab {
+    width: calc(100% * 1/3);
+    background-color: lightgray;
+    outline: 1px solid;
+    border-collapse: collapse;
+  }
+  
+  .tab p {
+    text-align: center;
+    color: tomato;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul div {
+    // border-bottom: 1px solid;
+    border-collapse: collapse;
+  }
+  
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid;
+  }
+  
+  .image-box {
+    width: 10%;
+  }
+  
+  .item-name {
+    width: 85%;
+    padding: 5px;
+  }
+  
+  .icon {
+    width: 5%;
+  }
 }

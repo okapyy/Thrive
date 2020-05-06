@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 7 }
   validates :birthday, presence: true
   has_many :items
+  has_many :purchases
 
   def create
     @user = User.new(user_params)

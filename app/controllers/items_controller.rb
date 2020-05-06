@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_category
   before_action :set_items, only:[:show, :edit, :update, :destroy]
   def index
-    @parents = Category.all.limit(13)
+    @parents = Category.where('ancestry is null')
     @lady = Category.find(1)
     @lady_children = @lady.children
     @ladies_item = Category.where(ancestry: "1/14")
@@ -11,7 +10,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @parents = Category.all.limit(13)
+    @parents = Category.where('ancestry is null')
     @categories = Category.all
     @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
     gon.children = @parents.map {|p| Array.new << p.children}
@@ -26,16 +25,54 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  
   def show
-    @item = Item.find(params[:id])
+  end
+
+  def edit
+    @parents = Category.where('ancestry is null')
+    @categories = Category.all
+    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
+    @child = Category.find(14)
+    @childrens = @child.siblings 
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
+  end
+
+  def update
+    @parents = Category.where('ancestry is null')
+    @categories = Category.all
+    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
+    if @item.update!(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def buypage
+    @item = Item.find(params[:item_id])
+  end
+
+  def buy
+    item = Item.find(params[:item_id])
+    item.update(is_deleted: 1, buyer_id: current_user.id)
   end
 
   private 
   def item_params
-    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :price, :category_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :delivery_from, :price, :category_id).merge(user_id: current_user.id)
   end
-end
 
   def top
     # @ladys = Item.where(category_id: 1)
@@ -54,35 +91,15 @@ end
     gon.indirects = @lady_children[0].children
   end
   
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    if @item.update(item_params)
-      redirect_to item_path(@item.id)
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    if @item.destroy
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
-  
-  private
-  def item_params
-    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :price, )
-  end
-
   def set_items
     @item = Item.find(params[:id])
   end
-  
+
+  def set_categories
+    @parents = Category.all.limit(13)
+    @categories = Category.all
+    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
+  end
 end

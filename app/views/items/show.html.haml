@@ -16,6 +16,10 @@
   .content
     .top-content
       .item-box
+        - if @item.is_deleted
+          .salestatus--sold SOLD OUT
+        - else
+          .salestatus--selling NOW ON SALE!
         %h2.item-box__name= @item.name
         .item-box__picture
           %ul
@@ -52,11 +56,18 @@
               %tr
                 %th カテゴリー
                 %td
-                  = link_to @item.category.root.name, category_path(@item.category.root.id)
-                  %br/
-                  = link_to @item.category.parent.name, category_path(@item.category.parent.id)
-                  %br/
-                  = link_to @item.category.name, category_path(@item.category.id)
+                  - if @item.category.depth == 0
+                    = link_to @item.category.name, category_path(@item.category.id)
+                  - elsif @item.category.depth == 1
+                    = link_to @item.category.root&.name, category_path(@item.category.root&.id)
+                    %br/
+                    = link_to @item.category.name, category_path(@item.cateogry.id)
+                  - else
+                    = link_to @item.category.root&.name, category_path(@item.category.root&.id)
+                    %br/
+                    = link_to @item.category.parent&.name, category_path(@item.category.parent&.id)
+                    %br/
+                    = link_to @item.category.name, category_path(@item.category.id)
               %tr
                 %th ブランド
                 %td
@@ -81,17 +92,18 @@
                 %td 
                   = @item.delivery_day
         .item-box__btn
-          - if current_user&.id == @item.user_id
-            = link_to edit_item_path do
-              %button.item-box__btn__edit 編集
-            = link_to item_path(@item), method: :delete do
-              %button.item-box__btn__edit 削除
-          - elsif user_signed_in?
-            = link_to item_buypage_path(@item) do
-              %button.item-box__btn__edit 購入する
-          - else 
-            = link_to new_user_session_path do
-              %button.item-box__btn__edit 購入する
+          - unless @item.is_deleted
+            - if current_user&.id == @item.user_id
+              = link_to edit_item_path do
+                %button.item-box__btn__edit 編集
+              = link_to item_path(@item), method: :delete do
+                %button.item-box__btn__edit 削除
+            - elsif user_signed_in?
+              = link_to item_buypage_path(@item) do
+                %button.item-box__btn__edit 購入する
+            - else 
+              = link_to new_user_session_path do
+                %button.item-box__btn__edit 購入する
 
         .additional-area
           %ul

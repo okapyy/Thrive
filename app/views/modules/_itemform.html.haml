@@ -44,7 +44,7 @@
         .exhibition__box__image__form__required
           必須
       .exhibition__box__image__select
-        = f.select :category_id, options_for_select(@parents.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category", id:"catParent"}
+        = f.select :category_id, options_for_select(@parents.map {|p| [p.name, p.id]}),{prompt:"選択してください"},{class:"exhibition__box__image__select--category", id:"catParent"}
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__select#selectChildren
       .exhibition__box__image__select#selectGrandChildren
@@ -98,7 +98,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :deliver_from, Prefecture.all.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.select :delivery_from, Prefecture.all.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__carry
         .exhibition__box__image__carry__lavel
@@ -131,7 +131,7 @@
         .exhibition__box__image__profit__rod#profit
           0円
       .exhibition__box__image__button
-        = f.submit :"出品する", class:"exhibition__box__image__button--do"
+        = f.submit :"#{submitBtn}", class:"exhibition__box__image__button--do"
         %button{class: "exhibition__box__image__button--draft", type: "submit"}
           下書きに保存
       .exhibition__box__image__back

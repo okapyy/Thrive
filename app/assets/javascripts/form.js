@@ -5,6 +5,8 @@ document.addEventListener('turbolinks:load', () => {
   const rate = 0.1;
   const profit = document.getElementById('profit');
 
+  console.log(document.forms);
+
   price.addEventListener('input', () => {
     const priceValue = (price.value);
     const addCharge = (priceValue * rate);
@@ -31,7 +33,6 @@ document.addEventListener('turbolinks:load', () => {
   // カテゴリーフォームの追加関数
     // 変数定義
   const catParent = document.getElementById('catParent');
-  const selectedParent = document.forms[1].elements[4];
 
   // フォーム作成関数
   function createForm() {
@@ -47,8 +48,8 @@ document.addEventListener('turbolinks:load', () => {
     const childBox = document.getElementById('selectChildren');
     childBox.insertAdjacentElement('afterbegin', iselect);
     childBox.insertAdjacentElement('afterbegin', select);
-    select.insertAdjacentHTML('afterbegin', `<option value="", label="選択してください"></options>`);
-    gon.children[selectedParent.value - 1].forEach((parentArray) => {
+    select.insertAdjacentHTML('afterbegin', `<option value=1326, label="選択してください"></options>`);
+    gon.children[catParent.value - 1].forEach((parentArray) => {
       parentArray.forEach((child) => {
         const option = document.createElement('option');
         option.value = child.id;
@@ -73,11 +74,10 @@ document.addEventListener('turbolinks:load', () => {
         grandChildrenBox.insertAdjacentElement('afterbegin', gcSelect);
   
         // 子カテゴリで選択されたvalueを取得
-        const selectedChild = document.forms[1].elements[5];
-        const options = selectedChild.options;
+        const catChildren = document.getElementById('catChildren')
 
         // 選択された値を配列に渡し、<option>の作成
-        gon.grandchildren[selectedParent.value - 1][options.selectedIndex - 1].forEach((child) => {
+        gon.grandchildren[catParent.value - 1][catChildren.selectedIndex - 1].forEach((child) => {
           child.forEach((grandchildren) => {
             const gcoption = document.createElement('option');
             gcoption.value = grandchildren.id;
@@ -99,11 +99,10 @@ document.addEventListener('turbolinks:load', () => {
         grandChildrenBox.insertAdjacentElement('afterbegin', gcSelect);
   
         // 子カテゴリで選択されたvalueを取得
-        const selectedChild = document.forms[1].elements[5];
-        const options = selectedChild.options;
+        const catChildren = document.getElementById('catChildren')
 
         // 選択された値を配列に渡し、<option>の作成
-        gon.grandchildren[selectedParent.value - 1][options.selectedIndex - 1].forEach((child) => {
+        gon.grandchildren[catParent.value - 1][catChildren.selectedIndex - 1].forEach((child) => {
           child.forEach((grandchildren) => {
             const gcoption = document.createElement('option');
             gcoption.value = grandchildren.id;

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'purchases/create'
   root 'items#index'
   devise_for :users, controllers: {
     registrations: 'wizard/registrations'
@@ -14,11 +15,15 @@ Rails.application.routes.draw do
     get 'top', to: 'items#top'  
     get 'buypage', to: 'items#buypage'
     get 'list', to: 'items#list'
+    patch 'buy', to: 'items#buy'
   end
   resources :users, only: :show do
     get 'logout', to: 'users#logout'
     get 'cash', to: 'users#cash'
     get 'address', to: 'users#address'
+    get 'nowonsale', to: 'users#nowonsale'
+    get 'completed', to: 'users#completed'
+    get 'purchasehistory', to: 'users#purchasehistory'
   end
   resources :cards, only: [:show, :new, :create, :destroy]
 end

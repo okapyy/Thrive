@@ -11,9 +11,9 @@
           .buypage-content__image
             = image_tag 'https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032',class: "buypage-content__image--item"
           .buypage-content__description
-            %p ニッセン 新品未開封 ワイドパンツ ガウチョパンツ 2L xL 濃いピンク
+            %p=@item.name
             .buypage-content__description__price
-              ¥800 (税込) 送料込み
+              = "¥#{@item.price.to_s(:delimited)} (税込) 送料込み"
 
     %section.buypage-content
       .buypage-content__inner
@@ -22,7 +22,7 @@
             .buypage-form__cash__info
               支払い金額
             .buypage-form__cash__total
-              ¥800
+              = "¥#{@item.price.to_s(:delimited)}"
           .buypage-form__point
             %i.fas.fa-square.fa-lg
             %p.buypage-form__point__use ポイントを使用(所持ポイント:P0)
@@ -42,15 +42,16 @@
             =link_to "#",class: "buypage-user__change" do
               %p 変更する
           .buypage-user__street-address
-            %p 〒999-0000
-            %p 大阪府大阪市中央区難波５丁目１−６０ テックキャンプ難波校15F
+            %p=current_user.address.postal_code
+            %p="#{current_user.address.prefecture.name}#{current_user.address.city}#{current_user.address.address}"
             %p 大阪 難波
         
         .buypage-user
           .buypage-user__infomation
             %p 郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
         
-        %input.buypage-user__buybtn{type: "submit", value: "購入する"}
+        = form_with(model:@item, url: item_buy_path, local: true) do |f|
+          = f.submit "購入する", class:"buypage-user__buybtn"
   
   .buypage-footer
     %ul.buypage-footer__nav

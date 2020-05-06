@@ -15,17 +15,17 @@
               .itemContainer
                 = image_tag '/images/shooes.jpeg', size: "200x150"
                 .itemInfo
-                  %p.item__name 革靴
+                  %p.item__name=child.items.name
                   %p.item__price 36,000円
             %li.item
               .itemContainer
                 = image_tag '/images/shooes.jpeg', size: "200x150"
                 .itemInfo
-                  %p.item__name 革靴
+                  %p.item__name=child.items.name
                   %p.item__price 36,000円
             %li.item
               .itemContainer
                 = image_tag '/images/shooes.jpeg', size: "200x150"
                 .itemInfo
-                  %p.item__name 革靴
-                  %p.item__price 36,000円
+                  %p.item__name=Item.where('category_id', "#{params[:id]}").first.name
+                  %p.item__price=Item.where('category_id', "#{child.id}").first.price
