@@ -27,4 +27,11 @@
 /config/master.key
 
 secrets.yml
+
+
+public/uploads/*
+
+
+
 /.env
+

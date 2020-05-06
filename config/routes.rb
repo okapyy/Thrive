@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'purchases/create'
   root 'items#index'
+
   devise_for :users, controllers: {
     registrations: 'wizard/registrations'
   }
@@ -17,6 +18,9 @@ Rails.application.routes.draw do
     get 'list', to: 'items#list'
     patch 'buy', to: 'items#buy'
   end
+  
+  resources :items
+  
   resources :users, only: :show do
     get 'logout', to: 'users#logout'
     get 'cash', to: 'users#cash'
@@ -26,4 +30,5 @@ Rails.application.routes.draw do
     get 'purchasehistory', to: 'users#purchasehistory'
   end
   resources :cards, only: [:show, :new, :create, :destroy]
+
 end

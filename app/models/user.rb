@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :items
   has_many :purchases
 
+  has_many :items
+
   def create
     @user = User.new(user_params)
     if @user.save

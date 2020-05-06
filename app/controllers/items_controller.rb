@@ -10,7 +10,8 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @parents = Category.where('ancestry is null')
+    @item.item_images.new
+    @parents = Category.all.limit(13)
     @categories = Category.all
     @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
     gon.children = @parents.map {|p| Array.new << p.children}
@@ -20,15 +21,18 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+
+      redirect_to root_path, notice: '商品の出品に成功しました'
     else
+      flash.now[:alert] = '出品に失敗しました'
       render :new
     end
   end
-  
-  def show
-  end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+  
   def edit
     @parents = Category.where('ancestry is null')
     @categories = Category.all
@@ -38,7 +42,7 @@ class ItemsController < ApplicationController
     gon.children = @parents.map {|p| Array.new << p.children}
     gon.grandchildren = @children
   end
-
+  
   def update
     @parents = Category.where('ancestry is null')
     @categories = Category.all
@@ -59,19 +63,31 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
+  
   def buypage
     @item = Item.find(params[:item_id])
   end
-
+  
   def buy
     item = Item.find(params[:item_id])
     item.update(is_deleted: 1, buyer_id: current_user.id)
   end
-
-  private 
+  
+  private
   def item_params
-    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :delivery_from, :price, :category_id).merge(user_id: current_user.id)
+    params.require(:item).permit(
+      :name, 
+      :description, 
+      :brand, 
+      :category_id, 
+      :size_id, 
+      :condition_id, 
+      :delivery_fee_id, 
+      :prefecture_id, 
+      :delivery_method_id, 
+      :delivery_day_id, 
+      :price, 
+      item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def top
@@ -93,13 +109,5 @@ class ItemsController < ApplicationController
   
   def set_items
     @item = Item.find(params[:id])
-  end
-
-  def set_categories
-    @parents = Category.all.limit(13)
-    @categories = Category.all
-    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
-    gon.children = @parents.map {|p| Array.new << p.children}
-    gon.grandchildren = @children
   end
 end
