@@ -48,6 +48,8 @@ group :development, :test do
   gem 'capistrano-rails-console'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+
 end
 
 group :development do
@@ -79,6 +81,12 @@ gem 'haml-rails'
 
 gem 'font-awesome-sass', '~> 5.4.1'
 
+gem 'active_hash'
+
+gem 'carrierwave'
+gem 'mini_magick'
+
+gem 'jquery-rails'
 
 
 gem 'pry-rails'

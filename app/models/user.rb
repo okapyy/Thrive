@@ -15,6 +15,8 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   has_many :items
 
+  has_many :items
+
   def create
     @user = User.new(user_params)
     if @user.save

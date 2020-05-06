@@ -11,29 +11,45 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.item_images.new
     @parents = Category.all.limit(13)
     @categories = Category.all
     @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
     gon.children = @parents.map {|p| Array.new << p.children}
     gon.grandchildren = @children
+
   end
 
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+
+      redirect_to root_path, notice: '商品の出品に成功しました'
     else
+      flash.now[:alert] = '出品に失敗しました'
       render :new
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
+  private
+  def item_params
+    params.require(:item).permit(
+      :name, 
+      :description, 
+      :brand, 
+      :category_id, 
+      :size_id, 
+      :condition_id, 
+      :delivery_fee_id, 
+      :prefecture_id, 
+      :delivery_method_id, 
+      :delivery_day_id, 
+      :price, 
+      item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
-  private 
-  def item_params
-    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :price, :category_id).merge(user_id: current_user.id)
+  def show
+    @item = Item.find(params[:id])
   end
 end
 
@@ -54,8 +70,7 @@ end
     gon.indirects = @lady_children[0].children
   end
   
-  def show
-  end
+
 
   def edit
   end
@@ -76,13 +91,10 @@ end
     end
   end
   
-  private
-  def item_params
-    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :price, )
-  end
 
   def set_items
     @item = Item.find(params[:id])
   end
   
+
 end

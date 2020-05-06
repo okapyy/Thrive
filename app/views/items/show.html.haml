@@ -10,12 +10,13 @@
     %li
       %i.fa.fa-angle-right
     %li
-      %p Product1
+      = @item.name
 
 .main
   .content
     .top-content
       .item-box
+
         %h2.item-box__name= @item.name
         .item-box__picture
           %ul
@@ -40,9 +41,7 @@
             %span
             送料込み
         .item-box__description
-
           %p=@item.description
-
         .item-box__table
           %table
             %tbody
@@ -60,26 +59,30 @@
               %tr
                 %th ブランド
                 %td
-                  = @item.bland
+                  = @item.brand
               %tr
                 %th 商品のサイズ
                 %td
-                  = @item.size
+                  = @item.size.name
               %tr
                 %th 商品の状態
                 %td 
-                  = @item.condition
+                  = @item.condition.name
               %tr
                 %th 配送料の負担
-                %td 
-                  = @item.delivery_fee
+                %td
+                = @item.delivery_fee.name
+
+
               %tr
                 %th 発送元の地域
-                %td= @item.delivery_from
+                %td
+                = @item.prefecture.name
               %tr
                 %th 発送日の目安
-                %td 
-                  = @item.delivery_day
+                %td
+                = @item.delivery_day.name
+                
         .item-box__btn
           - if current_user&.id == @item.user_id
             = link_to edit_item_path do
@@ -112,6 +115,7 @@
           %button.comment-btn{name: "button", type: "submit"}
             %i.fa.fa-comment
             コメントする
+
     %ul.links
       %li
         %i.fa.fa-angle-left

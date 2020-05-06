@@ -10,6 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2020_04_28_042804) do
+
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id"
+    t.text "image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id"
+
 
 ActiveRecord::Schema.define(version: 2020_05_01_025640) do
 
@@ -43,16 +52,20 @@ ActiveRecord::Schema.define(version: 2020_05_05_022324) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.text "description", null: false
-    t.string "bland"
-    t.string "size"
-    t.string "condition", null: false
-    t.string "delivery_fee", null: false
-    t.string "delivery_day", null: false
+    t.string "description", null: false
+    t.string "brand"
+    t.integer "size_id"
+    t.integer "condition_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "delivery_method_id", null: false
+    t.integer "delivery_fee_id", null: false
+    t.integer "delivery_day_id", null: false
     t.integer "price", null: false
     t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
@@ -65,24 +78,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_022324) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
-  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
-    t.string "bland"
-    t.string "size"
-    t.string "condition", null: false
-    t.string "delivery_fee", null: false
-    t.string "delivery_day", null: false
-    t.integer "price", null: false
-    t.boolean "is_deleted", default: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "delivery_from"
-    t.bigint "category_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
-  end
+ 
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
@@ -101,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_022324) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "item_images", "items"
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
   add_foreign_key "items", "categories"
