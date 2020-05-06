@@ -3,6 +3,7 @@ FactoryBot.define do
   factory :item do
 
     name                    {"Tシャツ"}
+    description             {"商品説明"}
     brand                   {"ユニクロ"}
     size_id                 {"1"}
     condition_id            {"1"}
@@ -13,6 +14,7 @@ FactoryBot.define do
     price                   {"1000"}
     user_id                 {"1"}
     category_id             {"1"}
+
 
   end
 

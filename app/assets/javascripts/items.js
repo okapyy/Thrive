@@ -25,7 +25,8 @@ $(document).on('turbolinks:load', function() {
                         <div class='image-delete__btn'>削除</div>
                         </div>
                       </div>`
-        $(".item-image__box__lists").append(html);
+        $(".item-image__box__preview__lists").append(html);
+
       }
     })
   });
@@ -41,8 +42,17 @@ $(document).on('turbolinks:load', function() {
         data.items.remove(dataDelete -1)
         }
     })
+    $("#camera").show();
   }
     imageDelete.remove();
     fileSet.files = data.files
     })
+
+  $(document).on("change", ".item-image__box__preview__lists", function(){
+    let classNumber = $(".image-top").length + 1
+    if(classNumber==10){
+      $('#camera').hide();
+    }
+  });
+
 });
