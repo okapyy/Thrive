@@ -1,0 +1,67 @@
+.buypage-header
+  .buypage-header__logo
+    = link_to "#" do
+      = image_tag 'logo.png',class: "buypage-header__logo--position", size:"185x50"
+  .buypage-main
+    .buypage-top
+      %h2.buypage-top__check  購入内容の確認
+    %section.buypage-content
+      .buypage-content__inner
+        .buypage-content__box 
+          .buypage-content__image
+            = image_tag 'https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032',class: "buypage-content__image--item"
+          .buypage-content__description
+            %p ニッセン 新品未開封 ワイドパンツ ガウチョパンツ 2L xL 濃いピンク
+            .buypage-content__description__price
+              ¥800 (税込) 送料込み
+
+    %section.buypage-content
+      .buypage-content__inner
+        .buypage-form
+          .buypage-form__cash
+            .buypage-form__cash__info
+              支払い金額
+            .buypage-form__cash__total
+              ¥800
+          .buypage-form__point
+            %i.fas.fa-square.fa-lg
+            %p.buypage-form__point__use ポイントを使用(所持ポイント:P0)
+    
+        .buypage-user
+          .buypage-user__cash
+            %h3 支払い方法
+          .buypage-user__credit
+            = link_to "#" ,class: "buypage-user__credit-card" do
+              %i.fas.fa-plus-circle
+              %p 登録してください
+
+        .buypage-user
+          .buypage-user__address
+            .buypage-user__destination
+              %h3 配送先
+            =link_to "#",class: "buypage-user__change" do
+              %p 変更する
+          .buypage-user__street-address
+            %p 〒999-0000
+            %p 大阪府大阪市中央区難波５丁目１−６０ テックキャンプ難波校15F
+            %p 大阪 難波
+        
+        .buypage-user
+          .buypage-user__infomation
+            %p 郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
+        
+        %input.buypage-user__buybtn{type: "submit", value: "購入する"}
+  
+  .buypage-footer
+    %ul.buypage-footer__nav
+      = link_to "#" ,class: "buypage-footer__private" do
+        %li プライバシーポリシー
+      = link_to "#" ,class: "buypage-footer__private" do
+        %li メルカリ利用規約
+      = link_to "#" ,class: "buypage-footer__private" do
+        %li 特定商取引に関する表記
+    .buypage-footer__logo
+      = link_to "#" do
+        = image_tag 'logo.png',class: "buypage-footer__logo--position", size:"185x50"
+      .buypage-footer__link
+        %p © Furima, Inc.

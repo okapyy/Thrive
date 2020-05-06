@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+@mixin logohover() {
+  &__logo {
+    display: block;
+    margin: 0 auto;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
 @mixin forminput() {
   height: 48px;
   padding: 10px 16px 8px;
@@ -15,8 +25,8 @@
   height: 48px;
   margin-top: 24px;
   display: block;
-  background-color: #13e0e0;
-  border: 1px solid #13e0e0;
+  background-color: #14d3d3;
+  border: 1px solid #14d3d3;
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -46,6 +56,37 @@
   }
 }
 
+@mixin span() {
+  border-radius: 2px;
+  font-size: 12px;
+  color: #333;
+  padding: 2px 4px;
+  margin-left: 8px;
+}
+
+@mixin statusball($color: #ccc) {
+  width: 12px;
+  height: 12px;
+  margin: 8px auto 0;
+  border: 1px solid $color;
+  border-radius: 50%;
+  background-color: $color;
+  position: relative;
+}
+@mixin before($color: #ccc) {
+  &::before {
+    right: 50%;
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    z-index: -1;
+    width: 82px;
+    height: 2px;
+    background-color: $color;
+  }
+}
+
 
 .user-body {
   background-color: rgb(245,245,245);
@@ -54,11 +95,62 @@
     height: 128px;
     display: flex;
     align-items: center;
-    &__logo {
-      display: block;
+    &__box {
+      display: flex;
       margin: 0 auto;
-      &:hover {
-        opacity: 0.7;
+      text-align: center;
+      @include logohover();
+      &__left {
+        display: block;
+        @include logohover();
+      }
+      &__nav {
+        padding-left: 40px;
+        &__ol {
+          width: 272px;
+          display: flex;
+          &__li {
+            position: relative;
+            width: 48px;
+            font-size: 12px;
+            color: #888;
+            margin-right: 40px;
+            z-index: 1;
+            &--active {
+              position: relative;
+              width: 48px;
+              font-size: 12px;
+              font-weight: 600;
+              color: #888;
+              margin-right: 40px;
+              z-index: 1;
+              color: #13c9c9;
+            }
+            &__ball {
+              &__left {
+                &--active {
+                  @include statusball(#13c9c9);
+                }
+              }
+              &__center {
+                @include statusball(#ccc);
+                @include before(#ccc);
+                &--active {
+                  @include statusball(#13c9c9);
+                  @include before(#13c9c9);
+                }
+              }
+              &__right {
+                @include statusball(#ccc);
+                @include before(#ccc);
+                &--active {
+                  @include statusball(#13c9c9);
+                  @include before(#13c9c9);
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -83,17 +175,23 @@
             font-weight: 600;
             font-size: 14px;
           }
-          span {
-            background-color: #13e0e0;
-            border-radius: 2px;
-            font-size: 12px;
-            color: #333;
-            padding: 2px 4px;
-            margin-left: 8px;
+          span.blue {
+            background-color: #14d3d3;
+            @include span();
+          }
+          span.gray {
+            background-color: rgb(245,245,245);
+            @include span();
           }
           &--input {
             width: 100%;
             margin-top: 5px;
+            @include forminput();
+          }
+          select {
+            width: 100%;
+            margin-top: 5px;
+            background-color: #fff;
             @include forminput();
           }
           &__half {

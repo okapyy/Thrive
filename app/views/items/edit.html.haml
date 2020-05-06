@@ -1,0 +1,165 @@
+.exhibition
+  .exhibition__header
+    = image_tag 'logo.png', size:"140x50", class:"exhibition__header__frima"
+  = form_with(model: @item, local: true) do |f|
+    .exhibition__box
+      .exhibition__box__image
+        .exhibition__box__image__form
+          .exhibition__box__image__form__lavel
+            出品画像
+          .exhibition__box__image__form__required
+            必須
+        .exhibition__box__image__max
+          最大10枚までアップロードできます
+        .exhibition__box__image__upload
+          .exhibition__box__image__upload__camera
+            = icon 'fas', 'camera', class:"exhibition__box__image__upload__camera--icon"
+          .exhibition__box__image__upload__sentence
+            ドラッグアンドドロップ
+            %br
+            またはクリックしてファイルをアップロード
+      .exhibition__box__image
+        .exhibition__box__image__form
+          .exhibition__box__image__form__lavel
+            商品名
+          .exhibition__box__image__form__required
+            必須
+        .exhibition__box__image__input
+          = f.text_field :name, placeholder: '40文字まで', class: 'exhibition__box__image__input--size'
+        .exhibition__box__image__form
+          .exhibition__box__image__form__lavel
+            商品の説明
+          .exhibition__box__image__form__required
+            必須
+        .exhibition__box__image__input
+          = f.text_area :description, placeholder: "商品の説明（必須1000文字以内）\r\n(色、素材、重さ、定価、注意点など）\r\n\r\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありませ\r\nん。あわせやすのでおすすめです。", class: "exhibition__box__image__input--text"
+        .exhibition__box__image__count
+          0/1000
+      .exhibition__box__image
+        .exhibition__box__image__details
+          .exhibition__box__image__details__goods
+            商品の詳細
+          = icon 'far', 'question-circle', class:"exhibition__box__image__details__question"
+        .exhibition__box__image__form
+          .exhibition__box__image__form__lavel
+            カテゴリー
+          .exhibition__box__image__form__required
+            必須
+        .exhibition__box__image__select
+          = f.select :category_id, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+        .exhibition__box__image__select
+          = f.select :category_id, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+        .exhibition__box__image__select
+          = f.select :category_id, ["選択してください"], {}, class: "exhibition__box__image__select--categorys"
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+        .exhibition__box__image__form
+          .exhibition__box__image__form__lavel
+            サイズ
+          .exhibition__box__image__form__required
+            必須
+        .exhibition__box__image__select
+          = f.select :size, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+        .exhibition__box__image__line
+          .exhibition__box__image__line__bland
+            ブランド
+          .exhibition__box__image__line__any
+            任意
+        .exhibition__box__image__input
+          = f.text_field :bland, placeholder: "例）シャネル", class: "exhibition__box__image__input--size"
+        .exhibition__box__image__line
+          .exhibition__box__image__form__lavel
+            商品の状態
+          .exhibition__box__image__form__required
+            任意
+        .exhibition__box__image__select
+          = f.select :condition, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+      .exhibition__box__image
+        .exhibition__box__image__details
+          .exhibition__box__image__details__goods
+            配送について
+          = icon 'far', 'question-circle', class:"exhibition__box__image__details__question"
+        .exhibition__box__image__carry
+          .exhibition__box__image__carry__lavel
+            配送料の負担
+          .exhibition__box__image__carry__required
+            必須
+        .exhibition__box__image__select
+          = f.select :delivery_fee, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+        .exhibition__box__image__carry
+          .exhibition__box__image__carry__lavel
+            配送の方法
+          .exhibition__box__image__carry__required
+            必須
+        .exhibition__box__image__select
+          = f.select :delivery_way, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+        .exhibition__box__image__carry
+          .exhibition__box__image__carry__lavel
+            発送元の地域
+          .exhibition__box__image__carry__required
+            必須
+        .exhibition__box__image__select
+          = f.select :prefecture, Prefecture.all.map {|p| p.name}, {},class:"exhibition__box__image__select--category"
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+        .exhibition__box__image__carry
+          .exhibition__box__image__carry__lavel
+            発送までの日数
+          .exhibition__box__image__carry__required
+            必須
+        .exhibition__box__image__select
+          = f.select :delivery_day, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+      .exhibition__box__image
+        .exhibition__box__image__details
+          .exhibition__box__image__details__goods
+            価格（¥300〜9,999,999）
+          = icon 'far', 'question-circle', class:"exhibition__box__image__details__question"
+        .exhibition__box__image__square
+          .exhibition__box__image__square__lavel
+            販売価格
+          .exhibition__box__image__square__required
+            必須
+          .exhibition__box__image__square__input
+            = f.text_field :price, type: 'number', placeholder: '0', class: "exhibition__box__image__square__input--size"
+        .exhibition__box__image__cash
+          .exhibition__box__image__cash__fee
+            販売手数料（10%）
+          .exhibition__box__image__cash__rod
+            ー
+        .exhibition__box__image__profit
+          .exhibition__box__image__profit__fee
+            販売利益
+          .exhibition__box__image__profit__rod
+            ー
+        .exhibition__box__image__button
+          = f.submit "編集する", class: "exhibition__box__image__button--do" 
+        .exhibition__box__image__back
+          =link_to "もどる"
+        .exhibition__box__image__note
+          %p 
+            禁止されている
+            =link_to "行為"
+            及び
+            =link_to "出品物"
+            を必ずご確認ください。
+            =link_to "偽ブランド品"
+            や
+            =link_to "盗品物"
+            などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
+            =link_to "加盟店規約"
+            に同意したことになります。  
+  .exhibition__footer     
+    .exhibition__footer__box
+      .exhibition__footer__box__policy
+        =link_to "プライバシーポリシー"
+      .exhibition__footer__box__terms
+        =link_to "メルカリ利用規約"
+      .exhibition__footer__box__notation
+        =link_to "特定商取引に関する表記"
+    = image_tag 'logo.png', size:"140x50", class:"exhibition__footer__frima"   
+    %p ©️FURIMA

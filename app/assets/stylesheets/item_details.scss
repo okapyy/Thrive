@@ -77,6 +77,25 @@
               }
             }
         }
+        #modal {
+          background-color: rgba(0,0,0,0.2);
+          z-index: 2;
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left:0;
+          right: 0;
+          margin: auto;
+          width: 800px;
+          height: 600px;
+          padding: 20px;
+          .iconroom {
+            text-align: left;
+          }
+        }
+        .displayNone {
+          display: none;
+        }
         &__price {
           margin: 5px 0 24px;
           span {
@@ -119,6 +138,17 @@
                 }
               }
             }
+          }
+        }
+        &__btn {
+          width: 100%;
+          text-align: right;
+          padding-right: 2px;
+          button {
+            margin-left: 5px;
+          }
+          a {
+            text-decoration: none;
           }
         }
         .additional-area {

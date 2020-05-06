@@ -13,7 +13,6 @@
 
  */
 
-
 @import 'reset';
 @import 'mixins';
 @import 'font-awesome-sprockets';
@@ -22,7 +21,12 @@
 @import 'footer';
 @import 'items';
 @import "devise";
-@import "item_details";
 @import "new_item";
 
+@import 'buypage';
+@import 'categories';
+@import 'users';
+@import 'exhibition';
 
+@import 'item_details';
+@import 'item_index';
