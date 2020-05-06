@@ -10,14 +10,38 @@
           .exhibition__box__image__form__required
             必須
         .exhibition__box__image__max
-          最大10枚までアップロードできます
-        .exhibition__box__image__upload
-          .exhibition__box__image__upload__camera
-            = icon 'fas', 'camera', class:"exhibition__box__image__upload__camera--icon"
-          .exhibition__box__image__upload__sentence
-            ドラッグアンドドロップ
-            %br
-            またはクリックしてファイルをアップロード
+          %p 最大10枚までアップロードできます
+        .exhibition__box__image__main
+          .exhibition__box__image__label
+          = f.label :"item_images_attributes_#{@count}_image", class: "exhibition__box__image__box", id: "exhibition__box__image__box--#{@count}" do
+            %i.exhibition__box__image__iconlarge.fas.fa-camera.fa-lg
+            %i.exhibition__box__image__iconlarge--right.fas.fa-camera.fa-lg
+            %p.exhibition__box__image__texts カメラをクリックしてファイルをアップロード
+          .exhibition__box__image__image-form
+            = f.fields_for :item_images do |i|
+              .exhibition__box__image__image-list{id: i.index} 
+                = image_tag "#{i.object.image}",size:"117x116",class:"exhibition__box__image__image-photo"
+                .exhibition__box__image__field-label{id: i.index}
+                  %label{for: "item_#{i.index}_image"}
+                    .exhibition__box__image__change
+                      .exhibition__box__image__change--btn 編集 
+                  = i.file_field :image,"data-id": "#{i.index}",class: "exhibition__box__image__image-field",id: "item_#{i.index}_image", name:"item[item_images_attributes][#{i.index}][image]",style: "display:none"
+                  %label{for: "item[item_images_attributes][#{i.index}][_destroy]",class: "exhibition__box__image__image-flex"}
+                    .exhibition__box__image__image-delete
+                      .exhibition__box__image__image-delete--btns 削除 
+                    = i.check_box:_destroy, data:{ index: i.index},id:"item[item_images_attributes][#{i.index}][_destroy]", class: 'exhibition__box__image__hidden-destroy'
+            .exhibition__box__image__sub
+          - @item.item_images.length.upto(9) do |i|
+            .exhibition__box__image__image-edit{id: "#{i}"}
+              %label{for: "item_item_images_attributes_#{i}_image"}
+              %input{name: "item[item_images_attributes][#{i}][image]",id: "item_item_images_attributes_#{i}_image", class:"exhibition__box__image__hidden-edit", type:"file",style: "display:none"}
+
+
+
+
+
+
+
       .exhibition__box__image
         .exhibition__box__image__form
           .exhibition__box__image__form__lavel
@@ -25,15 +49,15 @@
           .exhibition__box__image__form__required
             必須
         .exhibition__box__image__input
-          = f.text_field :name, placeholder: '40文字まで', class: 'exhibition__box__image__input--size'
+          = f.text_field :name, placeholder: '40文字まで', class:"exhibition__box__image__input--size"
         .exhibition__box__image__form
           .exhibition__box__image__form__lavel
             商品の説明
           .exhibition__box__image__form__required
             必須
         .exhibition__box__image__input
-          = f.text_area :description, placeholder: "商品の説明（必須1000文字以内）\r\n(色、素材、重さ、定価、注意点など）\r\n\r\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありませ\r\nん。あわせやすのでおすすめです。", class: "exhibition__box__image__input--text"
-        .exhibition__box__image__count
+          = f.text_area :description, placeholder: "商品の説明（必須1000文字以内）\r\n(色、素材、重さ、定価、注意点など）\r\n\r\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありませ\r\nん。あわせやすいのでおすすめです。", class:"exhibition__box__image__input--text"
+        .exhibition__box__image__count#textCount
           0/1000
       .exhibition__box__image
         .exhibition__box__image__details
@@ -46,21 +70,17 @@
           .exhibition__box__image__form__required
             必須
         .exhibition__box__image__select
-          = f.select :category_id, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          = f.select :category_id, options_for_select(@parents.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category", id:"catParent"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
-        .exhibition__box__image__select
-          = f.select :category_id, ["選択してください"], {}, class: "exhibition__box__image__select--category"
-          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
-        .exhibition__box__image__select
-          = f.select :category_id, ["選択してください"], {}, class: "exhibition__box__image__select--categorys"
-          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+        .exhibition__box__image__select#selectChildren
+        .exhibition__box__image__select#selectGrandChildren
         .exhibition__box__image__form
           .exhibition__box__image__form__lavel
             サイズ
           .exhibition__box__image__form__required
-            必須
+            任意
         .exhibition__box__image__select
-          = f.select :size, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          = f.select :size, @parents.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__line
           .exhibition__box__image__line__bland
@@ -68,14 +88,14 @@
           .exhibition__box__image__line__any
             任意
         .exhibition__box__image__input
-          = f.text_field :bland, placeholder: "例）シャネル", class: "exhibition__box__image__input--size"
+          = f.text_field :bland, placeholder:'例）シャネル', class:"exhibition__box__image__input--size"
         .exhibition__box__image__line
           .exhibition__box__image__form__lavel
             商品の状態
           .exhibition__box__image__form__required
             任意
         .exhibition__box__image__select
-          = f.select :condition, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          = f.select :condition, @parents, {}, class:"exhibition__box__image__select--category"
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image
         .exhibition__box__image__details
@@ -88,7 +108,7 @@
           .exhibition__box__image__carry__required
             必須
         .exhibition__box__image__select
-          = f.select :delivery_fee, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          = f.select :delivery_fee, Prefecture.all.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__carry
           .exhibition__box__image__carry__lavel
@@ -96,7 +116,7 @@
           .exhibition__box__image__carry__required
             必須
         .exhibition__box__image__select
-          = f.select :delivery_way, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          = f.select :delivery_day, @parents.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__carry
           .exhibition__box__image__carry__lavel
@@ -104,7 +124,7 @@
           .exhibition__box__image__carry__required
             必須
         .exhibition__box__image__select
-          = f.select :prefecture, Prefecture.all.map {|p| p.name}, {},class:"exhibition__box__image__select--category"
+          = f.select :deliver_from, Prefecture.all.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__carry
           .exhibition__box__image__carry__lavel
@@ -112,12 +132,12 @@
           .exhibition__box__image__carry__required
             必須
         .exhibition__box__image__select
-          = f.select :delivery_day, ["選択してください"], {}, class: "exhibition__box__image__select--category"
+          = f.select :delivery_day, @parents.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image
         .exhibition__box__image__details
           .exhibition__box__image__details__goods
-            価格（¥300〜9,999,999）
+            価格（¥300〜¥9,999,999）
           = icon 'far', 'question-circle', class:"exhibition__box__image__details__question"
         .exhibition__box__image__square
           .exhibition__box__image__square__lavel
@@ -125,19 +145,21 @@
           .exhibition__box__image__square__required
             必須
           .exhibition__box__image__square__input
-            = f.text_field :price, type: 'number', placeholder: '0', class: "exhibition__box__image__square__input--size"
+            = f.number_field :price, placeholder: "0", class: "exhibition__box__image__square__input--size" 
         .exhibition__box__image__cash
           .exhibition__box__image__cash__fee
             販売手数料（10%）
-          .exhibition__box__image__cash__rod
-            ー
+          .exhibition__box__image__cash__rod#serviceCharge
+            0円
         .exhibition__box__image__profit
           .exhibition__box__image__profit__fee
             販売利益
-          .exhibition__box__image__profit__rod
-            ー
+          .exhibition__box__image__profit__rod#profit
+            0円
         .exhibition__box__image__button
-          = f.submit "編集する", class: "exhibition__box__image__button--do" 
+          = f.submit :"出品する", class:"exhibition__box__image__button--do"
+          %button{class: "exhibition__box__image__button--draft", type: "submit"}
+            下書きに保存
         .exhibition__box__image__back
           =link_to "もどる"
         .exhibition__box__image__note
@@ -153,13 +175,13 @@
             などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
             =link_to "加盟店規約"
             に同意したことになります。  
-  .exhibition__footer     
-    .exhibition__footer__box
-      .exhibition__footer__box__policy
-        =link_to "プライバシーポリシー"
-      .exhibition__footer__box__terms
-        =link_to "メルカリ利用規約"
-      .exhibition__footer__box__notation
-        =link_to "特定商取引に関する表記"
-    = image_tag 'logo.png', size:"140x50", class:"exhibition__footer__frima"   
-    %p ©️FURIMA
+    .exhibition__footer     
+      .exhibition__footer__box
+        .exhibition__footer__box__policy
+          =link_to "プライバシーポリシー"
+        .exhibition__footer__box__terms
+          =link_to "メルカリ利用規約"
+        .exhibition__footer__box__notation
+          =link_to "特定商取引に関する表記"
+      = image_tag 'logo.png', size:"140x50", class:"exhibition__footer__frima"   
+      %p ©️FURIMA

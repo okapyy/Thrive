@@ -155,31 +155,87 @@
       }
       &__max {
         width: 620px;
-        height: 19px;
         margin: 0 auto;
         font-size: 14px;
         margin-top: 16px;
       }
-
-      &__upload {
-        width: 100%;
-        height: 150px;
-        background-color: #F5F5F5;
-        margin-top: 16px;
-        border: 1px dashed lightgray;
-        &__sentence {
-          font-size: 12px;
-          text-align: center;
-          margin-top: 5px;
+      &__main{
+        position: relative;
         }
-        &__camera {
+        &__label{
+          width: 620px;
+          margin: 0 auto;
           text-align: center;
-          margin-top: 45px;
-          &--icon {
-            font-size: x-large;
+          height: 307px;
+          background-color: #F5F5F5;
+          margin-top: 16px;
+          border: 1px dashed lightgray;
+        }
+        &__iconlarge{
+          font-size: 50px;
+          position: absolute;
+          top: -50px;
+          right: 0;
+          cursor: pointer;
+          &--right{
+            font-size: 50px;
+            margin-top: 10px;
+            cursor: pointer;
           }
         }
-      }
+        &__texts{
+          width: 620px;
+          height: 320px;
+          line-height: 320px;
+          text-align: center;
+          position: absolute;
+          top: 0;
+          left: 0; 
+        }
+        &__image-form{
+          display: flex;
+          flex-wrap: wrap;
+          position: absolute;
+          top: 0;
+          left:0;
+          z-index: 1;
+        }
+        &__image-list{
+          background-color: #fff;
+          border-radius: 5px;
+          padding: 0 2px;
+          margin:1px 0 2px 2px;
+        }
+        &__image-photo{
+          padding: 2px;
+          border-radius: 5px;
+        }
+        &__field-label{
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          padding-bottom: 1px;
+        }
+        &__image-flex,&__image-delete__btn-delete{
+          display: flex;
+          align-items: center;
+          margin-bottom: 2px;
+          padding: 1px 5px;
+          border-radius: 3px;
+          background-color: #CBFFD3;
+          cursor: pointer;
+        }
+        &__hidden-destroy{
+          margin: 1px 2px 4px 4px;
+          cursor: pointer;
+        }
+        &__change{
+          margin-bottom: 2px;
+          padding: 1px 5px;
+          border-radius: 3px;
+          background-color: #BAD3FF;
+          cursor: pointer;
+        }
       &__price {
         font-size: 14px;
         color: #888888;

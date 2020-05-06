@@ -20,7 +20,7 @@
         .item-box__picture
           %ul
             %li
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", id:"bigPic"
+              = image_tag "#{@image.image}", id:"bigPic"
               %ul
                 %li
                   = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class:"thumb"
@@ -52,11 +52,11 @@
               %tr
                 %th カテゴリー
                 %td
-                  = link_to @item.category.root.name, category_path(@item.category.root.id)
-                  %br/
-                  = link_to @item.category.parent.name, category_path(@item.category.parent.id)
-                  %br/
-                  = link_to @item.category.name, category_path(@item.category.id)
+                  -# = link_to @item.category.root.name, category_path(@item.category.root.id)
+                  -# %br/
+                  -# = link_to @item.category.parent.name, category_path(@item.category.parent.id)
+                  -# %br/
+                  -# = link_to @item.category.name, category_path(@item.category.id)
               %tr
                 %th ブランド
                 %td
@@ -121,6 +121,6 @@
         = link_to "次の商品", item_path(@item.id + 1) 
         %i.fa.fa-angle-right
     .related-items
-      = link_to "#{@item.category.root.name}をもっと見る", category_path(@item.category.root.id)
+      -# = link_to "#{@item.category.root.name}をもっと見る", category_path(@item.category.root.id)
       .item-lists
 

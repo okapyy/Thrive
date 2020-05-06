@@ -27,16 +27,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
-  end
 
-  private 
-  def item_params
-    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :price, :category_id).merge(user_id: current_user.id)
-  end
-end
-
+  
+  
   def top
     # @ladys = Item.where(category_id: 1)
     # @mens = Item.where(category_id: 2)
@@ -55,13 +48,24 @@ end
   end
   
   def show
+    @images = ItemImage.where(item_id: @item.id)
+    @image = ItemImage.where(item_id: @item.id).first
   end
-
+  
   def edit
-  end
+    @image = ItemImage.where(item_id: @item.id)
+    @count = @item.item_images.count
 
+    @parents = Category.all.limit(13)
+    @categories = Category.all
+    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
+  end
+  
   def update
-    if @item.update(item_params)
+    # binding.pry
+    if @item.update(item_update_params)
       redirect_to item_path(@item.id)
     else
       render :edit
@@ -78,7 +82,11 @@ end
   
   private
   def item_params
-    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :price, )
+    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :price, :category_id).merge(user_id: current_user.id)
+  end
+  
+  def item_update_params
+    params.require(:item).permit(:name, :description, :bland, :size, :condition, :delivery_fee, :delivery_day, :price, :category_id, item_images_attributes: [:image,:_destroy,:id]).merge(user_id: current_user.id)
   end
 
   def set_items
