@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :delivery_day
   belongs_to_active_hash :delivery_fee
@@ -11,7 +12,7 @@ class Item < ApplicationRecord
   belongs_to :user, optional: true
   has_one :purchase
   has_many :item_images, dependent: :destroy
-  has_many :categories
+  belongs_to :category
   
 
   accepts_nested_attributes_for :item_images, allow_destroy: true
@@ -29,4 +30,5 @@ class Item < ApplicationRecord
   validates :name, length: {maximum: 40}, presence: true
   validates :description, length: {maximum: 1000}, presence: true
   validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9999999}, presence: true
+
 end

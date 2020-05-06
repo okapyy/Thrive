@@ -1,0 +1,32 @@
+.mypage
+  .mypage-main.clearfix
+    .mypage-content
+      .mypage-card
+        %h2.mypage-card__cash 支払い方法
+        -if @cards
+          .mypage-card__list 
+            %h2.mypage-card__list--font クレジットカード登録詳細
+            .mypage-card__list__card
+              .mypage-card__list__image
+                = image_tag "#{@card_brand}",class: "mypage-card__list__image--size"
+              .mypage-card__list__limit
+                = "**** **** **** " + @cards.last4
+                .mypage-card__list__limit--right month/year
+                .mypage-card__list__term
+                  %p 有効期限
+                  = "#{@month} / #{@year}"
+            = link_to card_path(current_user.id),method: :delete do
+              %button.mypage-card__btn--color
+                %i.mypage-card__icon.far.fa-credit-card
+                クレジットカードを削除する
+        
+        .mypage-card-way
+          .mypage-card-way__show
+            = link_to "#" do
+              %p 支払い方法について
+            %i.angre-cardbtn.fas.fa-angle-right.fa-2x
+
+    .mypage-side
+      = render partial: "users/side_menu"
+
+

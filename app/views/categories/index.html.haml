@@ -1,0 +1,20 @@
+.main
+  .showMain
+    .categories
+      .indexBox
+        .catIndex
+          - @parents.each do |parent|
+            = link_to parent.name, "", class:"parentIndex parent#{parent.id}", id:"parent#{parent.id}"
+      - @parents.each do |parent|
+        .titleBox.titleBox--index
+          = link_to parent.name, category_path(parent.id), class:"catTitle parent#{parent.id}", id:"parent#{parent.id}", data: {id: "#{parent.id}"}
+          .catContents
+            - parent.children.each do |children|
+              .catContent
+                = link_to children.name, category_path(children.id), class:"subTitle"
+                .catItems
+                  - children.children.each do |item|
+                    .catItem
+                      = link_to item.name, category_path(item.id), class:"itemTitle", name:"#{item.name}"
+          .topBtn
+            = icon('fas', 'arrow-up','ページトップへ')

@@ -43,3 +43,17 @@
 @mixin after_number() {
   content: "1"
 }
+
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}

@@ -1,6 +1,8 @@
+
 class Category < ActiveHash::Base
   include ActiveHash::Associations
   has_many :items
+  has_ancestry
   
   self.data = [
     {:id => 1, :name => "レディース"},
@@ -11,3 +13,4 @@ class Category < ActiveHash::Base
     {:id => 6, :name => "おもちゃ・ホビー"},
   ]
 end
+
