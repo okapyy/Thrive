@@ -10,32 +10,15 @@
             %span.require 必須
             %p.item-image__heading__message
               最大10枚アップロードできます
+            %label{for: "image-file"}
+              %i.fas.fa-camera#camera
           .item-image__box
             = f.fields_for :item_images do |i|
-              .item-image__box__lists
-              .item-image__box__upload
-                = i.file_field :image, type: 'file',  id: "image-file", name: "item[item_images_attributes][][image]"
-                %label{for: "img-file"}
-                  -# %i.fas.fa-camera
-                  
-              
-                
-                -# %i.fas.fa-camera
-                -#     %p ドラッグアンドドロップ
-                -#     %p またはクリックしてファイルをアップロード
-
-
-              -# = f.fields_for :item_images do |i|
-              -# = i.label :image do
-              -#   .item-image__box__upload
-              -#     .ite-image__box__upload__message
-              -#       %i.fas.fa-camera
-              -#       %p ドラッグアンドドロップ
-              -#       %p またはクリックしてファイルをアップロード
-              -#     = i.file_field :image, id: "image-file", name: "item[item_images_attributes][][image]"
-                  
-                    
-              
+              .item-image__box__preview
+                %p カメラをクリックしてファイルをアップロード
+                .item-image__box__preview__lists
+                  = i.file_field :image, type: 'file',  id: "image-file", name: "item[item_images_attributes][][image]"  
+                                
         .item-info
           .item-info__box
             .item-info__box__name
