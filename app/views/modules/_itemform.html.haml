@@ -62,7 +62,7 @@
         .exhibition__box__image__line__any
           任意
       .exhibition__box__image__input
-        = f.text_field :bland, placeholder:'例）シャネル', class:"exhibition__box__image__input--size"
+        = f.text_field :brand, placeholder:'例）シャネル', class:"exhibition__box__image__input--size"
       .exhibition__box__image__line
         .exhibition__box__image__form__lavel
           商品の状態
@@ -98,7 +98,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :delivery_from_id, options_for_select(Prefecture.all.map {|p| [p.name, p.id]}), {}, class:"exhibition__box__image__select--category"
+        = f.select :delivery_from_id, options_for_select(DeliveryFrom.all.map {|pr| [pr.name, pr.id]}), {}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__carry
         .exhibition__box__image__carry__lavel

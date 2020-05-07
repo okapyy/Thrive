@@ -16,7 +16,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    binding.pry
     if @item.save!
       redirect_to root_path, notice: '商品の出品に成功しました'
     else
@@ -66,7 +65,11 @@ class ItemsController < ApplicationController
   
   def buy
     item = Item.find(params[:item_id])
-    item.update(is_deleted: 1, buyer_id: current_user.id)
+    item.update!(is_deleted: 1, buyer_id: current_user.id)
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
   end
   
   private
@@ -93,15 +96,15 @@ class ItemsController < ApplicationController
     # @hobby = Item.where(category_id: 6)
   end
 
-  def set_category
-    @parents = Category.parent
-    gon.categories = @category
-    @lady = Category.find(1)
-    @lady_children = @lady.children
-    # @lady_child = @lady.children 
-    gon.lady_children = @lady_children
-    gon.indirects = @lady_children[0].children
-  end
+  # def set_category
+  #   @parents = Category.parent
+  #   gon.categories = @category
+  #   @lady = Category.find(1)
+  #   @lady_children = @lady.children
+  #   # @lady_child = @lady.children 
+  #   gon.lady_children = @lady_children
+  #   gon.indirects = @lady_children[0].children
+  # end
   
   def set_items
     @item = Item.find(params[:id])

@@ -409,14 +409,14 @@ Item.create!(
       name: "阪神巨人戦のチケット＠甲子園",
       description:"2020年8月20日、オールスター明け初めての伝統の一戦。首位阪神と猛追する2位巨人の互いに負けられない戦いがそこにある",
       brand: "阪神タイガース",
-      size_id:"",
+      size_id:1,
       condition_id: 1,
       delivery_fee_id: 1,
       delivery_method_id: 1,
       delivery_day_id: "2〜3日以内に発送",
       delivery_from_id: 27,
       price: 8000,
-      buyer_id: 0
+      buyer_id: 0,
       user_id: 1,
       category_id: 1174,
       is_deleted: 0,
@@ -428,7 +428,7 @@ Item.create!(
       size_id: 5,
       condition_id: 4,
       delivery_fee_id: 2,
-      delivery_day_id: "7日以内に発送",
+      delivery_day_id: 4,
       delivery_method_id: 2,
       delivery_from_id: 26,
       price: 12000, 
@@ -444,7 +444,7 @@ Item.create!(
       size_id: 5,
       condition_id: 2,
       delivery_fee_id: 1,
-      delivery_day_id: "2〜3日以内に発送",
+      delivery_day_id: 1,
       delivery_method_id: 3,
       delivery_from_id: 28,
       price: 60000,
@@ -457,10 +457,10 @@ Item.create!(
       name: "チャイルドシート",
       description:"新品未使用のチャイルドシートです。使用予定がなくなりましたのでお譲りします。",
       brand: "アカチャンホンポ",
-      size_id:"",
+      size_id:2,
       condition_id: 1,
       delivery_fee_id: 2,
-      delivery_day_id: "4~5日以内に発送",
+      delivery_day_id: 2,
       delivery_method_id: 4,
       delivery_from_id: 30,
       price: 40000,
@@ -473,10 +473,10 @@ Item.create!(
       name: "不織布マスク100枚セット",
       description:"不織布マスク100枚セット。期間限定品。かき集めたため銘柄が異なるものも混在しています。",
       brand:"",
-      size_id:"",
+      size_id:4,
       condition_id: 1,
       delivery_fee_id: 1,
-      delivery_day_id: "2〜3日以内に発送",
+      delivery_day_id: 1,
       delivery_method_id: 5,
       delivery_from_id: 25,
       price: 10000,
@@ -485,5 +485,30 @@ Item.create!(
       category_id: 1300,
       buyer_id: 0
     }
+  ]
+)
+
+Item_image.create!(
+  [
+    {
+      item_id:1,
+      image: 'syamisen.jpg'
+    },
+    {
+      item_id:2,
+      image: 'syamisen.jpg'
+    },
+    {
+      item_id:3,
+      image: 'syamisen.jpg'
+    },
+    {
+      item_id:4,
+      image: 'syamisen.jpg'
+    },
+    {
+      item_id:5,
+      image: 'syamisen.jpg'
+    },
   ]
 )

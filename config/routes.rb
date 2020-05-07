@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     patch 'buy', to: 'items#buy'
   end
   
-  resources :items
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
   
   resources :users, only: :show do
     get 'logout', to: 'users#logout'

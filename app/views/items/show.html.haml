@@ -24,7 +24,7 @@
         .item-box__picture
           %ul
             %li
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", id:"bigPic"
+              = image_tag "/images/#{@item.item_images}", id:"bigPic"
               %ul
                 %li
                   = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class:"thumb"
@@ -68,30 +68,22 @@
                     = link_to @item.category.name, category_path(@item.category.id)
               %tr
                 %th ブランド
-                %td
-                  = @item.brand
+                %td= @item.brand
               %tr
                 %th 商品のサイズ
-                %td
-                  = @item.size.name
+                %td= @item.size.name
               %tr
                 %th 商品の状態
-                %td 
-                  = @item.condition.name
+                %td= @item.condition.name
               %tr
                 %th 配送料の負担
-                %td
-                = @item.delivery_fee.name
-
-
+                %td= @item.delivery_fee.name
               %tr
                 %th 発送元の地域
-                %td
-                = @item.prefecture.name
+                %td= @item.delivery_from.name
               %tr
                 %th 発送日の目安
-                %td
-                = @item.delivery_day.name
+                %td= @item.delivery_day.name
                 
         .item-box__btn
           - unless @item.is_deleted
