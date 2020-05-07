@@ -6,7 +6,6 @@ class Item < ApplicationRecord
   belongs_to_active_hash :size
   belongs_to_active_hash :delivery_method
   belongs_to_active_hash :delivery_from
-  belongs_to_active_hash :category
 
   belongs_to :user
   has_one :purchase
