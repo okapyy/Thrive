@@ -16,7 +16,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save!
+    @parents = Category.all.limit(13)
+    @categories = Category.all
+    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
+    if @item.save
       redirect_to root_path, notice: '商品の出品に成功しました'
     else
       flash.now[:alert] = '出品に失敗しました'
