@@ -8,13 +8,17 @@
           必須
       .exhibition__box__image__max
         最大10枚までアップロードできます
+        .exhibition__box__image__max__camera
+          %label{for: "image-file"}
+            %i.fas.fa-camera#camera    
       .exhibition__box__image__upload
-        .exhibition__box__image__upload__camera
-          = icon 'fas', 'camera', class:"exhibition__box__image__upload__camera--icon"
-        .exhibition__box__image__upload__sentence
-          ドラッグアンドドロップ
-          %br
-          またはクリックしてファイルをアップロード
+        = f.fields_for :item_images do |i|
+          .exhibition__box__image__upload__sentence
+            %p カメラをクリックしてファイルをアップロード
+          .exhibition__box__image__upload__btn
+            = i.file_field :image, type: 'file',  id: "image-file", name: "item[item_images_attributes][][image]"  
+          
+
 
     .exhibition__box__image
       .exhibition__box__image__form
@@ -46,15 +50,15 @@
       .exhibition__box__image__select
         = f.select :category_id, options_for_select(@parents.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category", id:"catParent"}
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
-      .exhibition__box__image__select#selectChildren
-      .exhibition__box__image__select#selectGrandChildren
+      -# .exhibition__box__image__select#selectChildren
+      -# .exhibition__box__image__select#selectGrandChildren
       .exhibition__box__image__form
         .exhibition__box__image__form__lavel
           サイズ
         .exhibition__box__image__form__required
           任意
       .exhibition__box__image__select
-        = f.select :size, @parents.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.collection_select :size_id, Size.all, :id, :name, prompt: "選択してください", class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__line
         .exhibition__box__image__line__bland
@@ -69,7 +73,7 @@
         .exhibition__box__image__form__required
           任意
       .exhibition__box__image__select
-        = f.select :condition, @parents, {}, class:"exhibition__box__image__select--category"
+        = f.collection_select :condition_id, Condition.all, :id, :name, prompt: "選択してください", class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
     .exhibition__box__image
       .exhibition__box__image__details
@@ -82,7 +86,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :delivery_fee, Prefecture.all.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, prompt: "選択してください", class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__carry
         .exhibition__box__image__carry__lavel
@@ -90,7 +94,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :delivery_day, @parents.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.collection_select :delivery_method_id, DeliveryMethod.all, :id, :name, prompt: "選択してください", class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__carry
         .exhibition__box__image__carry__lavel
@@ -98,7 +102,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :deliver_from, Prefecture.all.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.collection_select :delivery_from_id, DeliveryFrom.all, :id, :name, prompt: "選択してください", class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__carry
         .exhibition__box__image__carry__lavel
@@ -106,7 +110,7 @@
         .exhibition__box__image__carry__required
           必須
       .exhibition__box__image__select
-        = f.select :delivery_day, @parents.map {|p| p.name}, {}, class:"exhibition__box__image__select--category"
+        = f.collection_select :delivery_day_id, DeliveryDay.all, :id, :name, prompt: "選択してください", class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
     .exhibition__box__image
       .exhibition__box__image__details
@@ -159,3 +163,6 @@
         =link_to "特定商取引に関する表記"
     = image_tag 'logo.png', size:"140x50", class:"exhibition__footer__frima"   
     %p ©️FURIMA
+
+
+

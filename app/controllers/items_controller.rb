@@ -22,8 +22,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @parents = Category.all.limit(13)
+    @categories = Category.all
+    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
     if @item.save
-
       redirect_to root_path, notice: '商品の出品に成功しました'
     else
       flash.now[:alert] = '出品に失敗しました'
@@ -41,7 +45,7 @@ class ItemsController < ApplicationController
       :size_id, 
       :condition_id, 
       :delivery_fee_id, 
-      :prefecture_id, 
+      :delivery_from_id, 
       :delivery_method_id, 
       :delivery_day_id, 
       :price, 
@@ -51,7 +55,6 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
   end
-end
 
   def top
     # @ladys = Item.where(category_id: 1)

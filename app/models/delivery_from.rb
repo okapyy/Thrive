@@ -1,4 +1,4 @@
-class Prefecture < ActiveHash::Base
+class DeliveryFrom < ActiveHash::Base
   include ActiveHash::Associations
   has_many :items
   has_many :addresses

@@ -25,7 +25,7 @@ $(document).on('turbolinks:load', function() {
                         <div class='image-delete__btn'>削除</div>
                         </div>
                       </div>`
-        $(".item-image__box__preview__lists").append(html);
+        $(".exhibition__box__image__upload").append(html);
 
       }
     })
@@ -48,7 +48,7 @@ $(document).on('turbolinks:load', function() {
     fileSet.files = data.files
     })
 
-  $(document).on("change", ".item-image__box__preview__lists", function(){
+  $(document).on("change", ".exhibition__box__image__upload", function(){
     let classNumber = $(".image-top").length + 1
     if(classNumber==10){
       $('#camera').hide();
