@@ -1,5 +1,6 @@
-class Prefecture < ActiveHash::Base
+class DeliveryFrom < ActiveHash::Base
   include ActiveHash::Associations
+  has_many :items
   has_many :addresses
 
   self.data = [
@@ -21,3 +22,4 @@ class Prefecture < ActiveHash::Base
       {id: 46, name: '鹿児島県'}, {id: 47, name: '沖縄県'}
   ]
 end
+

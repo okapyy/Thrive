@@ -12,18 +12,16 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   resources :items do
-    get 'top', to: 'items#top'  
     get 'buypage', to: 'items#buypage'
     get 'list', to: 'items#list'
   end
-  
-  resources :items
-  
+  get 'top', to: 'items#top'  
   resources :users, only: :show do
     get 'logout', to: 'users#logout'
     get 'cash', to: 'users#cash'
     get 'address', to: 'users#address'
   end
+  resources :item_images
   resources :cards, only: [:show, :new, :create, :destroy]
 
 end

@@ -77,7 +77,7 @@ Things you may want to cover:
 - belongs_to :category
 - has_many :item_images
 
-## item-imagesテーブル
+## item_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item_id|reference|foreign_key: true|
