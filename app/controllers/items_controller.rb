@@ -65,12 +65,6 @@ class ItemsController < ApplicationController
   end
   
   def update
-    # @parents = Category.all.limit(13)
-    # @categories = Category.all
-    # @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
-    # gon.children = @parents.map {|p| Array.new << p.children}
-    # gon.grandchildren = @children
-    
     if @item.update(item_update_params)
       redirect_to item_path(@item.id)
     else
