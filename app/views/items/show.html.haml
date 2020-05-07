@@ -21,7 +21,7 @@
         .item-box__picture
           %ul
             %li
-              = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", id:"bigPic"
+              = image_tag "#{@image.image}", id:"bigPic"
               %ul
                 %li
                   = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class:"thumb"
@@ -71,17 +71,17 @@
               %tr
                 %th 配送料の負担
                 %td
-                = @item.delivery_fee.name
+                  = @item.delivery_fee.name
 
 
               %tr
                 %th 発送元の地域
                 %td
-                = @item.prefecture.name
+                  = @item.delivery_from.name
               %tr
                 %th 発送日の目安
                 %td
-                = @item.delivery_day.name
+                  = @item.delivery_day.name
                 
         .item-box__btn
           - if current_user&.id == @item.user_id
