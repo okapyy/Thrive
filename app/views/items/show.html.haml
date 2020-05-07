@@ -24,18 +24,15 @@
         .item-box__picture
           %ul
             %li
-              = image_tag "/images/#{@item.item_images}", id:"bigPic"
+              = image_tag "#{@item.item_images[0].image}", id:"bigPic"
               %ul
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class:"thumb"
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/8/a002.png",class:"thumb"
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/9/a003.png", class:"thumb"
+                - @item.item_images.each do |item|
+                  %li
+                    = image_tag "#{item.image}", class:"thumb"
         #modal.displayNone
           .iconroom
             = icon('fa', 'times-circle' '', id:"close")
-          = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png",size:"700x600", id:"modalImage"
+          = image_tag "",size:"700x600", id:"modalImage"
         .item-box__price
           %span= "#{@item.price.to_s(:delimited)}円"
           .item-box__price__extra

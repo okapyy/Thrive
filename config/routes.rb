@@ -35,4 +35,7 @@ Rails.application.routes.draw do
   end
   resources :cards, only: [:show, :new, :create, :destroy]
 
+  # resources :purchases, only: :create do
+  #   # get 'buypage', to: 'purchases#buypage'
+  # end
 end
