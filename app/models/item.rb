@@ -6,8 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to_active_hash :size
   belongs_to_active_hash :delivery_method
-  belongs_to_active_hash :prefecture
-  belongs_to_active_hash :category
+  belongs_to_active_hash :delivery_from
 
   belongs_to :user, optional: true
   has_one :purchase
@@ -20,7 +19,7 @@ class Item < ApplicationRecord
   validates :item_images, 
             :category_id, 
             :size_id, 
-            :prefecture_id, 
+            :delivery_from_id, 
             :condition_id, 
             :delivery_fee_id, 
             :delivery_method_id, 
