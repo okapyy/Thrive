@@ -15,9 +15,8 @@ class Item < ApplicationRecord
 
   accepts_nested_attributes_for :item_images, allow_destroy: true
   
-  # validates :item_images, 
-  
-  validates :category_id, 
+  validates :item_images, 
+            :category_id, 
             :size_id, 
             :delivery_from_id, 
             :condition_id, 
@@ -39,18 +38,11 @@ class Item < ApplicationRecord
     end 
   end
 
-  def self.search(search)
-    return Item.all unless search
-    Item.where('name like(?)', "%#{search}%")
-  end
-
   def create_purchase
     updates = self.saved_changes
 
     if updates.include?('is_deleted')
-      binding.pry
       Purchase.create!(seller_id: self.user_id, item_id: self.id, buyer_id: self.buyer_id)
-      binding.pry
     else
       return
     end

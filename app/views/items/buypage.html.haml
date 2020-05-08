@@ -9,7 +9,7 @@
       .buypage-content__inner
         .buypage-content__box 
           .buypage-content__image
-            = image_tag 'https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032',class: "buypage-content__image--item"
+            = image_tag "#{@item.item_image[0].image}",class: "buypage-content__image--item"
           .buypage-content__description
             %p=@item.name
             .buypage-content__description__price
