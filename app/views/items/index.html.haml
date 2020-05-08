@@ -81,82 +81,24 @@
       ピックアップカテゴリー
     .main-pickup-items__box
       = link_to "#", class: "box__head" do
-        %h3 新規投稿商品
+        %h3 新規出品商品の一覧
       .item-lists
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a007.png'
-            .item__body
-              %h3.item--name product3
-              .item--detail
-                %ul
-                  %li 30000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a004.png'
-            .item__body
-              %h3.item--name product2
-              .item--detail
-                %ul
-                  %li 20000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a001.png'
-            .item__body
-              %h3.item--name product1
-              .item--detail
-                %ul
-                  %li 10000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-
+        - @items.each do |item|
+          .item-list
+            = link_to item_path(item.id) do
+              %figure.item__image
+                = image_tag "#{item.item_images[0].image}"
+              .item__body
+                %h3.item--name 
+                  = item.description
+                .item--detail
+                  %ul
+                    %li="¥ #{item.price}"
+                    %li=icon 'far','star', class:"after_number"
+                  %p (税込)
+        
   %section.main-pickup-blands
     %h2.main-pickup-blands__title
-      ピックアップブランド
-    .main-pickup-blands__box
-      = link_to "#", class: "box__head" do
-        %h3 アーカイバ
-      .item-lists
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a007.png'
-            .item__body
-              %h3.item--name product3
-              .item--detail
-                %ul
-                  %li 30000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a004.png'
-            .item__body
-              %h3.item--name product2
-              .item--detail
-                %ul
-                  %li 20000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
-        .item-list
-          = link_to "#" do
-            %figure.item__image
-              = image_tag 'a001.png'
-            .item__body
-              %h3.item--name product1
-              .item--detail
-                %ul
-                  %li 10000円
-                  %li=icon 'far','star', class:"after_number"
-                %p (税込)
 
 %aside.banner
   .banner__inner

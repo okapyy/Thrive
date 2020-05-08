@@ -44,6 +44,8 @@
             %li.header-nav--left__item
               = link_to "ブランド", "#", id:"brandBtn"
               %ul.brandsPulldown.displayNone
+            %li.header-nav--left__item
+              = link_to "商品一覧", top_path
           %ul.header-nav--right
             - if user_signed_in?
               = link_to user_path(current_user.id), class: "header-nav--right__item" do
