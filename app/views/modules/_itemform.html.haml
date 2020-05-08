@@ -50,8 +50,8 @@
       .exhibition__box__image__select
         = f.select :category_id, options_for_select(@parents.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category", id:"catParent"}
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
-      -# .exhibition__box__image__select#selectChildren
-      -# .exhibition__box__image__select#selectGrandChildren
+      .exhibition__box__image__select#selectChildren
+      .exhibition__box__image__select#selectGrandChildren
       .exhibition__box__image__form
         .exhibition__box__image__form__lavel
           サイズ
