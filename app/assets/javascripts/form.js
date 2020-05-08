@@ -117,4 +117,10 @@ document.addEventListener('turbolinks:load', () => {
       formCounter = 0;
     }
   });
+  const childCategory = document.getElementById('child_category');
+  const grandCategory = document.getElementById('grandchild_category');
+  catParent.addEventListener('click',() =>{
+    childCategory.remove();
+    grandCategory.remove();
+  })
 });

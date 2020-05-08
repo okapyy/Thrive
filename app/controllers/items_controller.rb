@@ -96,6 +96,4 @@ private
   def set_items
     @item = Item.find(params[:id])
   end
-  
-
 end

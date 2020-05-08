@@ -36,12 +36,6 @@
               %label{for: "item_item_images_attributes_#{i}_image"}
               %input{name: "item[item_images_attributes][#{i}][image]",id: "item_item_images_attributes_#{i}_image", class:"exhibition__box__image__hidden-edit", type:"file",style: "display:none"}
 
-
-
-
-
-
-
         .exhibition__box__image
         .exhibition__box__image__form
           .exhibition__box__image__form__lavel
@@ -70,17 +64,21 @@
           .exhibition__box__image__form__required
             必須
         .exhibition__box__image__select
-          = f.select :category_id, options_for_select(@parents.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category", id:"catParent"}
+          = f.select :category_id, options_for_select(@parents.map {|p| [p.name, p.id]},selected: @item.category.root.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category", id:"catParent"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__select#selectChildren
+          = f.select :category_id, options_for_select(@item.category.parent.parent.children.map{|c|[c[:name], c[:id]]}, selected: @item.category.parent.id), {}, {class:"exhibition__box__image__select--child", id: 'child_category'}
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__select#selectGrandChildren
+          = f.select :category_id, options_for_select(@item.category.parent.children.map{|c|[c[:name], c[:id]]}, selected: @item.category.id), {}, {class: "exhibition__box__image__select--grandchild", id: 'grandchild_category'}
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__form
           .exhibition__box__image__form__lavel
             サイズ
           .exhibition__box__image__form__required
             任意
         .exhibition__box__image__select
-          = f.select :size_id, options_for_select(Size.all.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
+          = f.select :size_id, options_for_select(Size.all.map {|p| [p.name, p.id]},selected: @item.size.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__line
           .exhibition__box__image__line__bland
@@ -95,7 +93,7 @@
           .exhibition__box__image__form__required
             任意
         .exhibition__box__image__select
-          = f.select :condition_id,options_for_select(Condition.all.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
+          = f.select :condition_id,options_for_select(Condition.all.map {|p| [p.name, p.id]},selected: @item.condition.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image
         .exhibition__box__image__details
@@ -108,7 +106,7 @@
           .exhibition__box__image__carry__required
             必須
         .exhibition__box__image__select
-          = f.select :delivery_fee_id, options_for_select(DeliveryFee.all.map {|p| [p.name, p.id]}),{prompt: "選択してください"}, {class:"exhibition__box__image__select--category"}
+          = f.select :delivery_fee_id, options_for_select(DeliveryFee.all.map {|p| [p.name, p.id]},selected: @item.delivery_fee.id),{prompt: "選択してください"}, {class:"exhibition__box__image__select--category"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__carry
           .exhibition__box__image__carry__lavel
@@ -116,7 +114,7 @@
           .exhibition__box__image__carry__required
             必須
         .exhibition__box__image__select
-          = f.select :delivery_method_id, options_for_select(DeliveryMethod.all.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
+          = f.select :delivery_method_id, options_for_select(DeliveryMethod.all.map {|p| [p.name, p.id]},selected: @item.delivery_method.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__carry
           .exhibition__box__image__carry__lavel
@@ -124,7 +122,7 @@
           .exhibition__box__image__carry__required
             必須
         .exhibition__box__image__select
-          = f.select :delivery_from_id, options_for_select(DeliveryFrom.all.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
+          = f.select :delivery_from_id, options_for_select(DeliveryFrom.all.map {|p| [p.name, p.id]},selected: @item.delivery_from.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__carry
           .exhibition__box__image__carry__lavel
@@ -132,7 +130,7 @@
           .exhibition__box__image__carry__required
             必須
         .exhibition__box__image__select
-        = f.select :delivery_day_id, options_for_select(DeliveryDay.all.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
+        = f.select :delivery_day_id, options_for_select(DeliveryDay.all.map {|p| [p.name, p.id]},selected: @item.delivery_day.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image
         .exhibition__box__image__details
