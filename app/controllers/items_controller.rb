@@ -68,9 +68,11 @@ class ItemsController < ApplicationController
   end
   
   def buypage
+    @item = Item.find(params[:item_id])
   end
   
   def buy
+    @item = Item.find(params[:item_id])
     @item.update!(is_deleted: 1, buyer_id: current_user.id)
   end
   
