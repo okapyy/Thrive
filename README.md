@@ -98,7 +98,6 @@ Things you may want to cover:
 - has_many :items
 - has_ancestry
 
-# 実装検討中
 ## purchasesテーブル
 |Column|Type|Options|
 |------|----|-------|
