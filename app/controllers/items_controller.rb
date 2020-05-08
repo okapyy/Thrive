@@ -1,32 +1,18 @@
 class ItemsController < ApplicationController
   before_action :set_items, only:[:show, :edit, :update, :destroy]
+  before_action :set_category, only:[:index, :new, :create, :edit]
+  
   def index
-    @parents = Category.all.limit(13)
-    @lady = Category.find(1)
-    @lady_children = @lady.children
-    @ladies_item = Category.where(ancestry: "1/14")
-    gon.names = @parents
     @items = Item.where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
   end
 
   def new
     @item = Item.new
     @item.item_images.new
-    @parents = Category.all.limit(13)
-    @categories = Category.all
-    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
-    gon.children = @parents.map {|p| Array.new << p.children}
-    gon.grandchildren = @children
-
   end
 
   def create
     @item = Item.new(item_params)
-    @parents = Category.all.limit(13)
-    @categories = Category.all
-    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
-    gon.children = @parents.map {|p| Array.new << p.children}
-    gon.grandchildren = @children
     if @item.save
       redirect_to root_path, notice: '商品の出品に成功しました'
     else
@@ -40,7 +26,6 @@ class ItemsController < ApplicationController
     @mens= Item.where(category_id: 337..466).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
     @electricals = Item.where(category_id: 953..1027).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
     @hobbys = Item.where(category_id: 764..864).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-
   end
   
   def show
@@ -51,12 +36,6 @@ class ItemsController < ApplicationController
   def edit
     @image = ItemImage.where(item_id: @item.id)
     @count = @item.item_images.count
-
-    @parents = Category.all.limit(13)
-    @categories = Category.all
-    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
-    gon.children = @parents.map {|p| Array.new << p.children}
-    gon.grandchildren = @children
   end
   
   def update
@@ -73,6 +52,14 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def set_category
+    @parents = Category.first(13)
+    @categories = Category.all
+    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
   end
   
 private
