@@ -14,12 +14,16 @@ Rails.application.routes.draw do
   resources :items do
     get 'buypage', to: 'items#buypage'
     get 'list', to: 'items#list'
+    patch 'buy', to: 'items#buy'
   end
   get 'top', to: 'items#top'  
   resources :users, only: :show do
     get 'logout', to: 'users#logout'
     get 'cash', to: 'users#cash'
     get 'address', to: 'users#address'
+    get 'nowonsale', to: 'users#nowonsale'
+    get 'completed', to: 'users#completed'
+    get 'purchasehistory', to: 'users#purchasehistory'
   end
   resources :item_images
   resources :cards, only: [:show, :new, :create, :destroy]

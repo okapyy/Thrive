@@ -14,10 +14,7 @@
     %header.header
       .header-inner
         .header-top
-          %h1.header-icon
-
-            =link_to image_tag('logo.png', size:"140x41"), root_path 
-
+          %h1.header-icon=link_to image_tag('logo.png', size:"140x41"), root_path 
           .search-box
             %form
               %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/

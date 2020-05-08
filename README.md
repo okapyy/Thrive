@@ -46,7 +46,7 @@ Things you may want to cover:
 |last_name_kana|string|null: false|
 |first_name_kana|string|null: false|
 |postal_code|string|null: false|
-|prefectures|string|null: false|
+|prefecture_id|integer|null: false|
 |city|string|null: false|
 |address|string|null: false|
 |building|string|
@@ -61,15 +61,17 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|bland|string|
-|size|string|
-|condition|string|null: false|
-|delivery_fee|string|null: false|
-|delivery_day|string|null: false|
+|brand|string|
+|size_id|string|
+|condition_id|string|null: false|
+|delivery_fee_id|integer|null: false|
+|delivery_day_id|integer|null: false|
+|delivery_from_id|integer|null: false|
 |price|integer|null: false|
 |is_deleted|boolean|default: 0|
 |user_id|reference|null: false, foreign_key: true|
 |category_id|reference|foreign_key true|
+|buyer_id|integer|default: 0|
 
 ### Association
 - belongs_to :user
@@ -90,6 +92,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|
+|ancestry|string|
 
 ### Association
 - has_many :items
@@ -105,7 +108,7 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :item
 
-## cardテーブル
+## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|reference|foreign_key: true|
@@ -115,6 +118,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 
+# 未実装
 ## destinationsテーブル
 |Column|Type|Options|
 |--------|----|--------|

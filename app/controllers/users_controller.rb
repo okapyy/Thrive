@@ -11,4 +11,23 @@ class UsersController < ApplicationController
     
     end
   end
+
+  # 販売中のitem
+  def nowonsale
+    @items = current_user.items.where('is_deleted is false')
+  end
+
+  # 売れたitem
+  def completed
+    @items = current_user.items.where('is_deleted', 0)
+  end
+
+  # 取引中のitem
+  def inprogress
+  end
+
+  # 購入履歴
+  def purchasehistory
+    @purchases = Item.where(buyer_id: current_user.id).order(id: :desc)
+  end
 end
