@@ -50,13 +50,13 @@
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__select#selectChildren
       .exhibition__box__image__select#selectGrandChildren
-      .exhibition__box__image__form
-        .exhibition__box__image__form__lavel
+      .exhibition__box__image__line
+        .exhibition__box__image__line__bland
           サイズ
-        .exhibition__box__image__form__required
+        .exhibition__box__image__line__any
           任意
       .exhibition__box__image__select
-        = f.select :size_id, options_for_select(Size.all.map {|s| [s.name, s.id]}), {}, class:"exhibition__box__image__select--category"
+        = f.select :size_id, options_for_select(Size.all.map {|s| [s.name, s.id]}), {prompt: "-------"}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image__line
         .exhibition__box__image__line__bland
@@ -66,12 +66,12 @@
       .exhibition__box__image__input
         = f.text_field :brand, placeholder:'例）シャネル', class:"exhibition__box__image__input--size"
       .exhibition__box__image__line
-        .exhibition__box__image__form__lavel
+        .exhibition__box__image__line__bland
           商品の状態
-        .exhibition__box__image__form__required
+        .exhibition__box__image__line__any
           任意
       .exhibition__box__image__select
-        = f.select :condition_id, options_for_select(Condition.all.map {|c| [c.name, c.id]}), {}, class:"exhibition__box__image__select--category"
+        = f.select :condition_id, options_for_select(Condition.all.map {|c| [c.name, c.id]}), {prompt: "-------"}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
     .exhibition__box__image
       .exhibition__box__image__details
