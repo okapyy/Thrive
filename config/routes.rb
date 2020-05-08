@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'purchases/create'
   root 'items#index'
 
   devise_for :users, controllers: {
@@ -13,18 +12,11 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   resources :items do
-    get 'top', to: 'items#top'  
     get 'buypage', to: 'items#buypage'
     get 'list', to: 'items#list'
     patch 'buy', to: 'items#buy'
   end
-  
-  resources :items do
-    collection do
-      get 'search'
-    end
-  end
-  
+  get 'top', to: 'items#top'  
   resources :users, only: :show do
     get 'logout', to: 'users#logout'
     get 'cash', to: 'users#cash'
@@ -33,9 +25,7 @@ Rails.application.routes.draw do
     get 'completed', to: 'users#completed'
     get 'purchasehistory', to: 'users#purchasehistory'
   end
+  resources :item_images
   resources :cards, only: [:show, :new, :create, :destroy]
 
-  # resources :purchases, only: :create do
-  #   # get 'buypage', to: 'purchases#buypage'
-  # end
 end

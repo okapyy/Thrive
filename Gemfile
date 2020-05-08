@@ -49,7 +49,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-
 end
 
 group :development do
@@ -97,5 +96,7 @@ gem 'payjp'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'gon'
+gem 'carrierwave'
+gem 'mini_magick'
 
 

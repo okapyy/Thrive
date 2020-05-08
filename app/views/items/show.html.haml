@@ -24,7 +24,7 @@
         .item-box__picture
           %ul
             %li
-              = image_tag "#{@item.item_images[0].image}", id:"bigPic"
+              = image_tag "#{@image.image}", id:"bigPic"
               %ul
                 - @item.item_images.each do |item|
                   %li

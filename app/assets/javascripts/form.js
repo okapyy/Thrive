@@ -4,9 +4,6 @@ document.addEventListener('turbolinks:load', () => {
   const price = document.getElementById('item_price');
   const rate = 0.1;
   const profit = document.getElementById('profit');
-
-  console.log(document.forms);
-
   price.addEventListener('input', () => {
     const priceValue = (price.value);
     const addCharge = (priceValue * rate);
@@ -14,11 +11,9 @@ document.addEventListener('turbolinks:load', () => {
     serviceCharge.textContent = `${addCharge.toLocaleString()}円`;
     profit.textContent = `${calcProfit.toLocaleString()}円`;
   });
-
   // 文字数の計算関数
   const counter = document.getElementById('textCount');
   const textArea = document.getElementById('item_description');
-
   textArea.addEventListener('input', () => {
     const num = textArea.value;
     counter.textContent = `${num.length}/1000`;
@@ -29,11 +24,9 @@ document.addEventListener('turbolinks:load', () => {
       counter.style.color = "black";
     }
   });
-
   // カテゴリーフォームの追加関数
     // 変数定義
   const catParent = document.getElementById('catParent');
-
   // フォーム作成関数
   function createForm() {
     // HTMLエレメントを生成
@@ -44,7 +37,6 @@ document.addEventListener('turbolinks:load', () => {
     select.setAttribute('id', 'catChildren');
     select.name = 'item[category_id]';
     iselect.setAttribute('class', "exhibition__box__image__select__arrow fas fa-chevron-down fa-lg");
-
     const childBox = document.getElementById('selectChildren');
     childBox.insertAdjacentElement('afterbegin', iselect);
     childBox.insertAdjacentElement('afterbegin', select);
@@ -72,10 +64,8 @@ document.addEventListener('turbolinks:load', () => {
         const grandChildrenBox = document.getElementById('selectGrandChildren');
         grandChildrenBox.insertAdjacentElement('afterbegin', gcIselect);
         grandChildrenBox.insertAdjacentElement('afterbegin', gcSelect);
-  
         // 子カテゴリで選択されたvalueを取得
         const catChildren = document.getElementById('catChildren')
-
         // 選択された値を配列に渡し、<option>の作成
         gon.grandchildren[catParent.value - 1][catChildren.selectedIndex - 1].forEach((child) => {
           child.forEach((grandchildren) => {
@@ -97,10 +87,8 @@ document.addEventListener('turbolinks:load', () => {
         const grandChildrenBox = document.getElementById('selectGrandChildren');
         grandChildrenBox.insertAdjacentElement('afterbegin', gcIselect);
         grandChildrenBox.insertAdjacentElement('afterbegin', gcSelect);
-  
         // 子カテゴリで選択されたvalueを取得
         const catChildren = document.getElementById('catChildren')
-
         // 選択された値を配列に渡し、<option>の作成
         gon.grandchildren[catParent.value - 1][catChildren.selectedIndex - 1].forEach((child) => {
           child.forEach((grandchildren) => {
@@ -114,7 +102,6 @@ document.addEventListener('turbolinks:load', () => {
       }
     });
   }
-  
   // 親カテゴリにイベント設定
   catParent.addEventListener('change',() => {
     // フォーム数を条件分岐で制御
@@ -130,4 +117,10 @@ document.addEventListener('turbolinks:load', () => {
       formCounter = 0;
     }
   });
-}); 
+  const childCategory = document.getElementById('child_category');
+  const grandCategory = document.getElementById('grandchild_category');
+  catParent.addEventListener('click',() =>{
+    childCategory.remove();
+    grandCategory.remove();
+  })
+});
