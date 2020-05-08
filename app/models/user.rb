@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :cards
   has_many :items
   has_one :address
+  has_many :purchases
 
   validates :nickname, presence: true, uniqueness: true
   validates :email,    presence: true, uniqueness: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }

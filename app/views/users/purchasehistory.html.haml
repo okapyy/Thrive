@@ -1,0 +1,19 @@
+.mypage
+  .mypage-main.clearfix
+    .mypage-content
+      .mypage-card
+      .container
+        %h1.title 購入した商品
+        %ul
+          - @purchases.each do |purchase|
+            %li
+              .item
+                .image-box
+                  = image_tag 'a001.png', size: '50x50'
+                .item-name
+                  %p=purchase.name
+                .icon
+                  \&gt;&gt;
+    
+    .mypage-side
+      = render partial: "side_menu"

@@ -5,7 +5,7 @@
         .mypage-list__image
           =link_to "#" ,class: "mypage-list__image--color" do
             = image_tag 'member_photo_noimage_thumb.png',class: "mypage-list__image--size"
-            %h2.mypage-list__name 大阪 難波
+            %h2.mypage-list__name=current_user.nickname
           %ul.mypage-list__show
             %li.mypage-list__valuation
               評価
@@ -13,8 +13,7 @@
               0
             %li.mypage-list__valuation
               出品数
-            %li.mypage-list__valuation--padding
-              0
+            %li.mypage-list__valuation--padding=current_user.items.all.length
       .mypage-tab
         .mypage-tab__info
           %p お知らせ

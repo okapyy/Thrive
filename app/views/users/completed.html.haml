@@ -1,0 +1,26 @@
+.mypage
+  .mypage-main.clearfix
+    .mypage-content
+      .mypage-card
+      .container
+        %h1.title 完売した商品
+        .tabs
+          .tab
+            %p 出品中
+          .tab
+            %p 取引中
+          .tab
+            %p 取引終了
+        %ul
+          - @items.each do |item|
+            %li
+              .item
+                .image-box
+                  %img{:src => ""}/
+                .item-name
+                  %p=item.name
+                .icon
+                  \&gt;&gt;
+    
+    .mypage-side
+      = render partial: "side_menu"
