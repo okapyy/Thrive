@@ -68,7 +68,8 @@
                 %td= @item.brand
               %tr
                 %th 商品のサイズ
-                %td= @item.size.name
+                - if @item.size.present?
+                  %td= @item.size.name
               %tr
                 %th 商品の状態
                 %td= @item.condition.name
