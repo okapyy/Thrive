@@ -67,7 +67,7 @@
           = f.select :category_id, options_for_select(@parents.map {|p| [p.name, p.id]},selected: @item.category.root.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category", id:"catParent"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__select#selectChildren
-          = f.select :category_id, options_for_select(@item.category.parent.parent.children.map{|c|[c[:name], c[:id]]}, selected: @item.category.parent.id), {}, {class:"exhibition__box__image__select--child", id: 'child_category'}
+          = f.select :category_id, options_for_select(@item.category.parent.siblings.map{|c|[c[:name], c[:id]]}, selected: @item.category.parent.id), {}, {class:"exhibition__box__image__select--child", id: 'child_category'}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__select#selectGrandChildren
           = f.select :category_id, options_for_select(@item.category.parent.children.map{|c|[c[:name], c[:id]]}, selected: @item.category.id), {}, {class: "exhibition__box__image__select--grandchild", id: 'grandchild_category'}
