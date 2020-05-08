@@ -65,11 +65,11 @@
           任意
       .exhibition__box__image__input
         = f.text_field :brand, placeholder:'例）シャネル', class:"exhibition__box__image__input--size"
-      .exhibition__box__image__line
-        .exhibition__box__image__line__bland
+      .exhibition__box__image__form
+        .exhibition__box__image__form__lavel
           商品の状態
-        .exhibition__box__image__line__any
-          任意
+        .exhibition__box__image__form__required
+          必須
       .exhibition__box__image__select
         = f.select :condition_id, options_for_select(Condition.all.map {|c| [c.name, c.id]}), {prompt: "-------"}, class:"exhibition__box__image__select--category"
         %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
