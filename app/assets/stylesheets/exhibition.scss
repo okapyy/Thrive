@@ -176,7 +176,6 @@
       }
       &__main{
         position: relative;
-        }
         &__label{
           width: 620px;
           margin: 0 auto;
@@ -269,18 +268,18 @@
           position: absolute;
           top: 60px;
           left: 200px;
-      }
+        }
         &__btn {
             display: none;
         }
-      .image-top {
+        .image-top {
           padding: 3px 1px;
           z-index: 100;
           .image-delete {
             text-align: center;
+          }
         }
       }
-    } 
       &__price {
         font-size: 14px;
         color: #888888;

@@ -16,23 +16,23 @@
   .content
     .top-content
       .item-box
-
+        - if @item.is_deleted
+          .salestatus--sold SOLD OUT
+        - else
+          .salestatus--selling NOW ON SALE!
         %h2.item-box__name= @item.name
         .item-box__picture
           %ul
             %li
               = image_tag "#{@image.image}", id:"bigPic"
               %ul
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png", class:"thumb"
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/8/a002.png",class:"thumb"
-                %li
-                  = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/9/a003.png", class:"thumb"
+                - @item.item_images.each do |item|
+                  %li
+                    = image_tag "#{item.image}", class:"thumb"
         #modal.displayNone
           .iconroom
             = icon('fa', 'times-circle' '', id:"close")
-          = image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png",size:"700x600", id:"modalImage"
+          = image_tag "",size:"700x600", id:"modalImage"
         .item-box__price
           %span= "#{@item.price.to_s(:delimited)}円"
           .item-box__price__extra
@@ -51,50 +51,50 @@
               %tr
                 %th カテゴリー
                 %td
-                  = link_to @item.category.root.name, category_path(@item.category.root.id)
-                  %br/
-                  = link_to @item.category.parent.name, category_path(@item.category.parent.id)
-                  %br/
-                  = link_to @item.category.name, category_path(@item.category.id)
+                  - if @item.category.depth == 0
+                    = link_to @item.category.name, category_path(@item.category.id)
+                  - elsif @item.category.depth == 1
+                    = link_to @item.category.root&.name, category_path(@item.category.root&.id)
+                    %br/
+                    = link_to @item.category.name, category_path(@item.cateogry.id)
+                  - else
+                    = link_to @item.category.root&.name, category_path(@item.category.root&.id)
+                    %br/
+                    = link_to @item.category.parent&.name, category_path(@item.category.parent&.id)
+                    %br/
+                    = link_to @item.category.name, category_path(@item.category.id)
               %tr
                 %th ブランド
-                %td
-                  = @item.brand
+                %td= @item.brand
               %tr
                 %th 商品のサイズ
-                %td
-                  = @item.size.name
+                %td= @item.size.name
               %tr
                 %th 商品の状態
-                %td 
-                  = @item.condition.name
+                %td= @item.condition.name
               %tr
                 %th 配送料の負担
-                %td
-                  = @item.delivery_fee.name
-
-
+                %td= @item.delivery_fee.name
               %tr
                 %th 発送元の地域
-                %td
-                  = @item.delivery_from.name
+                %td= @item.delivery_from.name
               %tr
                 %th 発送日の目安
-                %td
-                  = @item.delivery_day.name
+                %td= @item.delivery_day.name
                 
         .item-box__btn
-          - if current_user&.id == @item.user_id
-            = link_to edit_item_path do
-              %button.item-box__btn__edit 編集
-            = link_to item_path(@item), method: :delete do
-              %button.item-box__btn__edit 削除
-          - elsif user_signed_in?
-            = link_to item_buypage_path(@item) do
-              %button.item-box__btn__edit 購入する
-          - else 
-            = link_to new_user_session_path do
-              %button.item-box__btn__edit 購入する
+          - unless @item.is_deleted
+            - if current_user&.id == @item.user_id
+              = link_to edit_item_path do
+                %button.item-box__btn__edit 編集
+              = link_to item_path(@item), method: :delete do
+                %button.item-box__btn__edit 削除
+            - elsif user_signed_in?
+              = link_to item_buypage_path(@item) do
+                %button.item-box__btn__edit 購入する
+            - else 
+              = link_to new_user_session_path do
+                %button.item-box__btn__edit 購入する
 
         .additional-area
           %ul

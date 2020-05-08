@@ -9,9 +9,10 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.integer :delivery_method_id,        null: false
       t.integer :delivery_fee_id,        null: false
       t.integer :delivery_day_id,        null: false
-      t.integer :delivery_from_id,        null: false
-      t.integer :price, null: false
-      t.boolean :is_deleted, default: 0
+      t.integer :delivery_from_id,          null: false
+      t.integer :price,              null: false
+      t.integer :buyer_id,           default: 0
+      t.boolean :is_deleted,         default: 0
       t.references :user, null: false, foreign_key: true
       t.references :category, foreign_key: true
       t.timestamps

@@ -39,6 +39,11 @@ class ItemsController < ApplicationController
   end
   
   def update
+    @parents = Category.where('ancestry is null')
+    @categories = Category.all
+    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
     if @item.update(item_update_params)
       redirect_to item_path(@item.id)
     else
@@ -62,7 +67,18 @@ class ItemsController < ApplicationController
     gon.grandchildren = @children
   end
   
-private
+  def buypage
+  end
+  
+  def buy
+    @item.update!(is_deleted: 1, buyer_id: current_user.id)
+  end
+  
+  def top
+  end
+
+
+  private
   def item_params
     params.require(:item).permit(:name, :description, :brand, :category_id, :size_id, :condition_id, :delivery_fee_id, :delivery_from_id, :delivery_method_id, :delivery_day_id, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end

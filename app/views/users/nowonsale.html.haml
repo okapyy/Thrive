@@ -1,0 +1,26 @@
+.mypage
+  .mypage-main.clearfix
+    .mypage-content
+      .mypage-card
+      .container
+        %h1.title 出品中の商品
+        .tabs
+          .tab
+            %p 出品中
+          .tab
+            %p 取引中
+          .tab
+            %p 取引終了
+        %ul
+          - @items.each do |item|
+            %li
+              .item
+                .image-box
+                  = image_tag 'a001.png', size: '50x50'
+                .item-name
+                  %p=item.name
+                .icon
+                  \&gt;&gt;
+    
+    .mypage-side
+      = render partial: "side_menu"
