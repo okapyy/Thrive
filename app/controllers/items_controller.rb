@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
   end
   
   def buy
-    item.update!(is_deleted: 1, buyer_id: current_user.id)
+    @item.update!(is_deleted: 1, buyer_id: current_user.id)
   end
   
   def top
