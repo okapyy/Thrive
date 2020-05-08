@@ -61,7 +61,7 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |description|text|null: false|
-|bland|string|
+|brand|string|
 |size_id|string|
 |condition_id|string|null: false|
 |delivery_fee_id|integer|null: false|
