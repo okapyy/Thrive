@@ -27,5 +27,25 @@ class Item < ApplicationRecord
   validates :name, length: {maximum: 40}, presence: true
   validates :description, length: {maximum: 1000}, presence: true
   validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9999999}, presence: true
+  before_validation :params_check 
+  after_update_commit :create_purchase
 
+  def params_check
+    if self.category_id == nil
+      self.category_id = 1326
+    else
+      return
+    end 
+  end
+
+  def create_purchase
+    updates = self.saved_changes
+
+    if updates.include?('is_deleted')
+      Purchase.create!(seller_id: self.user_id, item_id: self.id, buyer_id: self.buyer_id)
+    else
+      return
+    end
+  end
 end
+  

@@ -2,12 +2,12 @@ class CategoriesController < ApplicationController
   # アクションごとの処理をわかりやすくするため、before_actionでのレコードの取得は定義しない。
 
   def index
-    @parents = Category.all.order("id ASC").limit(13)
+    @parents = Category.where('ancestry is null')
   end
 
   def show
     params_id = params[:id].to_i - 1
-    @parents = Category.all.order("id ASC").limit(13)
+    @parents = Category.where('ancestry is null')
     @categories = Category.all
     if params_id >= 0 && params_id <= 12
       @parent = @parents[params_id] 
