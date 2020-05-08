@@ -4,6 +4,14 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
+    @ladys= Item.where(category_id: 158..336).where.not(is_deleted: 1).order(created_at: "DESC")
+  end
+  
+  def list
+    @ladys= Item.where(category_id: 158..336).where.not(is_deleted: 1).order(created_at: "DESC")
+    @mens= Item.where(category_id: 337..466).where.not(is_deleted: 1).order(created_at: "DESC")
+    @electricals = Item.where(category_id: 953..1027).where.not(is_deleted: 1).order(created_at: "DESC")
+    @hobbys = Item.where(category_id: 764..864).where.not(is_deleted: 1).order(created_at: "DESC")
   end
 
   def new
@@ -21,12 +29,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def top  
-    @ladys= Item.where(category_id: 158..336).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-    @mens= Item.where(category_id: 337..466).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-    @electricals = Item.where(category_id: 953..1027).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-    @hobbys = Item.where(category_id: 764..864).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-  end
   
   def show
     @images = ItemImage.where(item_id: @item.id)
@@ -68,16 +70,21 @@ class ItemsController < ApplicationController
   end
   
   def buypage
+    @item = Item.find(params[:item_id])
   end
   
   def buy
+    @item = Item.find(params[:item_id])
     @item.update!(is_deleted: 1, buyer_id: current_user.id)
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      @card = Card.find_by(user_id: current_user.id)
+      charge = Payjp::Charge.create(
+        amount: @item.price,
+        customer: Payjp::Customer.retrieve(@card.customer_id),
+        currency: 'jpy'
+      )
   end
   
-  def top
-  end
-
-
   private
   def item_params
     params.require(:item).permit(:name, :description, :brand, :category_id, :size_id, :condition_id, :delivery_fee_id, :delivery_from_id, :delivery_method_id, :delivery_day_id, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)

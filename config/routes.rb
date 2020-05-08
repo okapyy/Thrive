@@ -9,14 +9,13 @@ Rails.application.routes.draw do
     post 'addresses', to: 'wizard/registrations#create_address'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  get 'list',to: 'items#list'
   resources :categories, only: [:index, :show]
   resources :items do
     get 'buypage', to: 'items#buypage'
     get 'list', to: 'items#list'
     patch 'buy', to: 'items#buy'
   end
-  get 'top', to: 'items#top'  
   resources :users, only: :show do
     get 'logout', to: 'users#logout'
     get 'cash', to: 'users#cash'
