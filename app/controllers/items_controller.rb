@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
     @lady_children = @lady.children
     @ladies_item = Category.where(ancestry: "1/14")
     gon.names = @parents
+    @items = Item.where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
   end
 
   def new
@@ -34,7 +35,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  def top
+  def top  
+    @ladys= Item.where(category_id: 158..336).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
+    @mens= Item.where(category_id: 337..466).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
+    @electricals = Item.where(category_id: 953..1027).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
+    @hobbys = Item.where(category_id: 764..864).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
+
   end
   
   def show

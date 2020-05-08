@@ -3,56 +3,63 @@
     %h2.index-items__title
       人気の商品一覧
     .index-items__box
-      = link_to "#", class: "box__head--link" do
+      = link_to category_path(1), class: "box__head--link" do
         %h3.index-items__box--font レディース新着アイテム
       .index-items__lists
-        .index-items__list
-          .index-items__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032",class: "index-items__image--size"
-            .index-items__price
-              ¥ 30000円
-          .index-items__body
-            %p.index-items__name 
-              product3
+        -@ladys.each do |lady|
+          .index-items__list
+            = link_to item_path(lady.id),class: "index-item__list--link" do
+              .index-items__image
+                = image_tag "#{lady.item_images[0].image}",class: "index-items__image--size"
+                .index-items__price
+                  = "¥ #{lady.price}"
+              .index-items__body
+                %p.index-items__name 
+                  = lady.description
 
     .index-items__box
-      = link_to "#", class: "box__head--link" do
+      = link_to category_path(2), class: "box__head--link" do
         %h3.index-items__box--font メンズ新着アイテム
       .index-items__lists
-        .index-items__list
-          .index-items__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032",class: "index-items__image--size"
-            .index-items__price
-              ¥ 30000円
-          .index-items__body
-            %p.index-items__name 
-              product3
+        -@mens.each do |men|
+          .index-items__list
+            = link_to item_path(men.id),class: "index-item__list--link" do
+              .index-items__image
+                = image_tag "#{men.item_images[0].image}",class: "index-items__image--size"
+                .index-items__price
+                  = "¥ #{men.price}"
+              .index-items__body
+                %p.index-items__name 
+                  = men.description
     
     .index-items__box
-      = link_to "#", class: "box__head--link" do
+      = link_to category_path(8), class: "box__head--link" do
         %h3.index-items__box--font 家電・スマホ・カメラ新着アイテム
       .index-items__lists
-        .index-items__list
-          .index-items__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032",class: "index-items__image--size"
-            .index-items__price
-              ¥ 30000円
-          .index-items__body
-            %p.index-items__name 
-              product3
+        -@electricals.each do |ele|
+          .index-items__list
+            = link_to item_path(ele.id),class: "index-item__list--link" do
+              .index-items__image
+                = image_tag "#{ele.item_images[0].image}",class: "index-items__image--size"
+                .index-items__price
+                  = "¥ #{ele.price}"
+              .index-items__body
+                %p.index-items__name 
+                  = ele.description
 
     .index-items__box
-      = link_to "#", class: "box__head--link" do
+      = link_to category_path(6), class: "box__head--link" do
         %h3.index-items__box--font おもちゃ・ホビー・グッズ新着アイテム
       .index-items__lists
-        .index-items__list
-          .index-items__image
-            = image_tag "https://static.mercdn.net/thumb/photos/m34781506725_1.jpg?1587707032",class: "index-items__image--size"
-            .index-items__price
-              ¥ 30000円
-          .index-items__body
-            %p.index-items__name 
-              product3
-        
-        
+        -@hobbys.each do |hobby|
+          .index-items__list
+            = link_to item_path(hobby.id),class: "index-item__list--link" do
+              .index-items__image
+                = image_tag "#{hobby.item_images[0].image}",class: "index-items__image--size"
+                .index-items__price
+                  = "¥ #{hobby.price}"
+              .index-items__body
+                %p.index-items__name 
+                  = hobby.description
+          
   

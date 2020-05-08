@@ -252,6 +252,35 @@
           background-color: #BAD3FF;
           cursor: pointer;
         }
+      &__upload {
+        width: 100%;
+        min-height: 150px;
+        padding: 0 2px;
+        background-color: #F5F5F5;
+        margin-top: 16px;
+        border: 1px dashed lightgray;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        &__sentence {
+          font-size: 12px;
+          text-align: center;
+          margin-top: 5px;
+          position: absolute;
+          top: 60px;
+          left: 200px;
+      }
+        &__btn {
+            display: none;
+        }
+      .image-top {
+          padding: 3px 1px;
+          z-index: 100;
+          .image-delete {
+            text-align: center;
+        }
+      }
+    } 
       &__price {
         font-size: 14px;
         color: #888888;

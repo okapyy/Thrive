@@ -241,11 +241,13 @@
       }
       .item-lists {
         display: flex;
+        flex-wrap: wrap;
         margin: 26px auto auto;
-        width: 780px;
-        justify-content: space-around;
+        width: 1150px;
         .item-list {
           width: 220px;
+          margin: 10px 5px 0;
+          box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
           display: inline-block;
           & a {
             background-color: #fff;
@@ -274,6 +276,9 @@
               background-color: white;
               color: #333;
               padding: 16px;
+              .item--name{
+                margin-bottom: 5px;
+              }
               .item--detail {
                 & ul {
                   display: flex;
