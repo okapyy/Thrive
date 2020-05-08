@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_items, only:[:show, :edit, :update, :destroy]
+  before_action :set_items, only:[:show, :edit, :update, :destroy, :buy, :buypage]
 
   def index
   end
@@ -30,7 +30,6 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(params[:id])
     @images = ItemImage.where(item_id: @item.id)
     @image = ItemImage.where(item_id: @item.id).first
   end
@@ -44,20 +43,13 @@ class ItemsController < ApplicationController
     gon.children = @parents.map {|p| Array.new << p.children}
     gon.grandchildren = @children
   end
-
-  # def update
-  #   @parents = Category.where('ancestry is null')
-  #   @categories = Category.all
-  #   @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
-  #   gon.children = @parents.map {|p| Array.new << p.children}
-  #   gon.grandchildren = @children
-  #   if @item.update!(item_params)
-  #     redirect_to item_path(@item.id)
-  #   else
-  #     render :edit
-  #   end
-  # end
+  
   def update
+    @parents = Category.where('ancestry is null')
+    @categories = Category.all
+    @children = @parents.map {|p| p.children.map {|c| Array.new << c.children}}
+    gon.children = @parents.map {|p| Array.new << p.children}
+    gon.grandchildren = @children
     if @item.update(item_update_params)
       redirect_to item_path(@item.id)
     else
@@ -74,11 +66,9 @@ class ItemsController < ApplicationController
   end
   
   def buypage
-    @item = Item.find(params[:item_id])
   end
   
   def buy
-    item = Item.find(params[:item_id])
     item.update!(is_deleted: 1, buyer_id: current_user.id)
   end
   
