@@ -95,7 +95,7 @@
               = link_to item_path(@item), method: :delete do
                 %button.item-box__btn__edit 削除
             - elsif user_signed_in?
-              = link_to item_buypage_path(@item.id) do
+              = link_to buypage_item_path(@item) do
                 %button.item-box__btn__edit 購入する
             - else 
               = link_to new_user_session_path do

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_items, only:[:show, :edit, :update, :destroy]
+  before_action :set_items, only:[:show, :edit, :update, :destroy, :buy, :buypage]
   before_action :set_category, only:[:index, :new, :create, :edit]
   before_action :set_card, only:[:buy, :buypage]
   
@@ -70,11 +70,9 @@ class ItemsController < ApplicationController
   end
   
   def buypage
-    @item = Item.find(params[:item_id])
   end
 
   def buy
-    @item = Item.find(params[:item_id])
     @item.update!(is_deleted: 1, buyer_id: current_user.id)
       charge = Payjp::Charge.create(
         amount: @item.price,
