@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_items, only:[:show, :edit, :update, :destroy]
   before_action :set_category, only:[:index, :new, :create, :edit]
+  before_action :set_card, only:[:buy, :buypage]
   
   def index
     @items = Item.where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
@@ -70,40 +71,35 @@ class ItemsController < ApplicationController
   
   def buypage
     @item = Item.find(params[:item_id])
-    @card = Card.find_by(user_id: current_user.id)
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    customer = Payjp::Customer.retrieve(@card.customer_id)
-    @cards = customer.cards.retrieve(@card.card_id)
-    @brand = @cards.brand
-    case @brand
-      when "Visa"
-        @card_brand = "credit-card_visa.png"
-      when "MasterCard"
-        @card_brand = "credit-card_master.png"
-      when "JCB"
-        @card_brand = "credit-card_jcb.png"
-      when "American Express"
-        @card_brand = "credit-card_american.png"
-      when "Diners Club"
-        @card_brand = "credit-card_diners.png"
-      when "Discover"
-        @card_brand = "credit-card_discover.png"
-    end
-    @month = @cards.exp_month.to_s
-    @year = @cards.exp_year.to_s.slice(2,3)
   end
 
   def buy
     @item = Item.find(params[:item_id])
     @item.update!(is_deleted: 1, buyer_id: current_user.id)
-    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-    @card = Card.find_by(user_id: current_user.id)
       charge = Payjp::Charge.create(
         amount: @item.price,
         customer: Payjp::Customer.retrieve(@card.customer_id),
         currency: 'jpy'
       )
-      customer = Payjp::Customer.retrieve(@card.customer_id)
+  end
+  
+  private
+  def item_params
+    params.require(:item).permit(:name, :description, :brand, :category_id, :size_id, :condition_id, :delivery_fee_id, :delivery_from_id, :delivery_method_id, :delivery_day_id, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
+  end
+
+  def item_update_params
+    params.require(:item).permit(:name, :description, :brand, :category_id, :size_id, :condition_id, :delivery_fee_id, :delivery_from_id, :delivery_method_id, :delivery_day_id, :price, item_images_attributes: [:image,:_destroy,:id]).merge(user_id: current_user.id)
+  end
+
+  def set_items
+    @item = Item.find(params[:id])
+  end
+
+  def set_card
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    @card = Card.find_by(user_id: current_user.id)
+    customer = Payjp::Customer.retrieve(@card.customer_id)
       @cards = customer.cards.retrieve(@card.card_id)
       @brand = @cards.brand
       case @brand
@@ -122,18 +118,5 @@ class ItemsController < ApplicationController
       end
       @month = @cards.exp_month.to_s
       @year = @cards.exp_year.to_s.slice(2,3)
-  end
-  
-  private
-  def item_params
-    params.require(:item).permit(:name, :description, :brand, :category_id, :size_id, :condition_id, :delivery_fee_id, :delivery_from_id, :delivery_method_id, :delivery_day_id, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
-  end
-
-  def item_update_params
-    params.require(:item).permit(:name, :description, :brand, :category_id, :size_id, :condition_id, :delivery_fee_id, :delivery_from_id, :delivery_method_id, :delivery_day_id, :price, item_images_attributes: [:image,:_destroy,:id]).merge(user_id: current_user.id)
-  end
-
-  def set_items
-    @item = Item.find(params[:id])
   end
 end
