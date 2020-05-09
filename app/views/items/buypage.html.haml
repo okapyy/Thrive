@@ -30,10 +30,27 @@
         .buypage-user
           .buypage-user__cash
             %h3 支払い方法
-          .buypage-user__credit
-            = link_to "#" ,class: "buypage-user__credit-card" do
-              %i.fas.fa-plus-circle
-              %p 登録してください
+            -if @cards
+              .buypage-user__credit
+                %p クレジットカード決済
+                .buypage-user__card
+                  .buypage-user__card__image
+                    = image_tag "#{@card_brand}",class: "buypage-user__card__image--size"
+                  .buypage-user__card__limit
+                    = "**** **** **** " + @cards.last4
+                    .buypage-user__card__limit--right month/year
+                    .buypage-user__card__term
+                      %p 有効期限
+                      = "#{@month} / #{@year}"
+              .buypage-user__credit
+                = link_to "#" ,class: "buypage-user__credit-card" do
+                  %i.fas.fa-plus-circle
+                  %p 変更する
+            -else
+              .buypage-user__credit
+                = link_to "#" ,class: "buypage-user__credit-card" do
+                  %i.fas.fa-plus-circle
+                  %p 登録してください
 
         .buypage-user
           .buypage-user__address

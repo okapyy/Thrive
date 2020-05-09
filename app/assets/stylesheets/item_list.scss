@@ -71,5 +71,25 @@
       padding: 10px;
       word-wrap: break-word;
     }
+    &__sold{
+      width: 0;
+      height: 0;
+      border-top: 45px solid #ea352d ;
+      border-right: 45px solid transparent;
+      border-bottom: 45px solid transparent;
+      border-left: 45px solid #ea352d ;
+      opacity: 0.9;
+      z-index:1;
+      position: relative;
+      top:-238px;
+      &--position{
+        transform: rotate(-45deg);
+        font-size: 18px;
+        margin: -25px 0px 0px -42px;
+        color: #fff;
+        letter-spacing: 1px;
+        font-weight: bold;
+      }
+    }
   }
 }

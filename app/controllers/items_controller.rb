@@ -4,14 +4,13 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-    @ladys= Item.where(category_id: 158..336).where.not(is_deleted: 1).order(created_at: "DESC")
   end
   
   def list
-    @ladys= Item.where(category_id: 158..336).where.not(is_deleted: 1).order(created_at: "DESC")
-    @mens= Item.where(category_id: 337..466).where.not(is_deleted: 1).order(created_at: "DESC")
-    @electricals = Item.where(category_id: 953..1027).where.not(is_deleted: 1).order(created_at: "DESC")
-    @hobbys = Item.where(category_id: 764..864).where.not(is_deleted: 1).order(created_at: "DESC")
+    @ladys= Item.where(category_id: 158..336).order(created_at: "DESC").limit(10)
+    @mens= Item.where(category_id: 337..466).order(created_at: "DESC").limit(10)
+    @electricals = Item.where(category_id: 953..1027).order(created_at: "DESC").limit(10)
+    @hobbys = Item.where(category_id: 764..864).order(created_at: "DESC").limit(10)
   end
 
   def new
@@ -71,18 +70,58 @@ class ItemsController < ApplicationController
   
   def buypage
     @item = Item.find(params[:item_id])
+    @card = Card.find_by(user_id: current_user.id)
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    @cards = customer.cards.retrieve(@card.card_id)
+    @brand = @cards.brand
+    case @brand
+      when "Visa"
+        @card_brand = "credit-card_visa.png"
+      when "MasterCard"
+        @card_brand = "credit-card_master.png"
+      when "JCB"
+        @card_brand = "credit-card_jcb.png"
+      when "American Express"
+        @card_brand = "credit-card_american.png"
+      when "Diners Club"
+        @card_brand = "credit-card_diners.png"
+      when "Discover"
+        @card_brand = "credit-card_discover.png"
+    end
+    @month = @cards.exp_month.to_s
+    @year = @cards.exp_year.to_s.slice(2,3)
   end
-  
+
   def buy
     @item = Item.find(params[:item_id])
     @item.update!(is_deleted: 1, buyer_id: current_user.id)
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      @card = Card.find_by(user_id: current_user.id)
+    @card = Card.find_by(user_id: current_user.id)
       charge = Payjp::Charge.create(
         amount: @item.price,
         customer: Payjp::Customer.retrieve(@card.customer_id),
         currency: 'jpy'
       )
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @cards = customer.cards.retrieve(@card.card_id)
+      @brand = @cards.brand
+      case @brand
+      when "Visa"
+        @card_brand = "credit-card_visa.png"
+      when "MasterCard"
+        @card_brand = "credit-card_master.png"
+      when "JCB"
+        @card_brand = "credit-card_jcb.png"
+      when "American Express"
+        @card_brand = "credit-card_american.png"
+      when "Diners Club"
+        @card_brand = "credit-card_diners.png"
+      when "Discover"
+        @card_brand = "credit-card_discover.png"
+      end
+      @month = @cards.exp_month.to_s
+      @year = @cards.exp_year.to_s.slice(2,3)
   end
   
   private
