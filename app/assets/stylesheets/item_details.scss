@@ -43,21 +43,55 @@
         background-color: white;
         padding: 24px 40px;
         text-align: center;
-        .salestatus--selling {
-          background-color: blue;
-          color: #fff;
-        }
-        .salestatus--sold {
-          background-color: tomato;
-          color: #fff;
-        }
         &__name {
           font-size: 24px;
           font-weight: bold;
         }
+        &__sold{
+          width: 0;
+          height: 0;
+          border-top: 70px solid #ea352d ;
+          border-right: 70px solid transparent;
+          border-bottom: 70px solid transparent;
+          border-left: 70px solid #ea352d ;
+          opacity: 0.9;
+          z-index:1;
+          position: absolute;
+          &--position{
+            transform: rotate(-45deg);
+            font-size: 24px;
+            margin: -50px 0px 0px -55px;
+            color: #fff;
+            letter-spacing: 1px;
+            font-weight: bold;
+          }
+          &--center{
+            margin: 0px 0px 0px 7px;
+          }
+        }
+        &__sell{
+          width: 0;
+          height: 0;
+          border-top: 70px solid cornflowerblue ;
+          border-right: 70px solid transparent;
+          border-bottom: 70px solid transparent;
+          border-left: 70px solid cornflowerblue ;
+          opacity: 0.9;
+          z-index:1;
+          position: absolute;
+          &--position{
+            transform: rotate(-45deg);
+            font-size: 20px;
+            margin: -60px 0px 0px -50px;
+            color: #fff;
+            letter-spacing: 1px;
+            font-weight: bold;
+          }
+        }
         &__picture {
             display: flex;
             padding: 20px;
+            position: relative;
             ul {
               display: flex;
               width: 100%;
