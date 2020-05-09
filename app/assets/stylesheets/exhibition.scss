@@ -252,7 +252,6 @@
           background-color: #BAD3FF;
           cursor: pointer;
         }
-      }
       &__upload {
         width: 100%;
         min-height: 150px;
@@ -270,18 +269,18 @@
           position: absolute;
           top: 60px;
           left: 200px;
-        }
+      }
         &__btn {
             display: none;
         }
-        .image-top {
+      .image-top {
           padding: 3px 1px;
           z-index: 100;
           .image-delete {
             text-align: center;
-          }
         }
       }
+    } 
       &__price {
         font-size: 14px;
         color: #888888;
