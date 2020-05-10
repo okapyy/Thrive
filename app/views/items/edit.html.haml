@@ -72,10 +72,10 @@
         .exhibition__box__image__select#selectGrandChildren
           = f.select :category_id, options_for_select(@item.category.parent.children.map{|c|[c[:name], c[:id]]}, selected: @item.category.id), {}, {class: "exhibition__box__image__select--grandchild", id: 'grandchild_category'}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
-        .exhibition__box__image__form
-          .exhibition__box__image__form__lavel
+        .exhibition__box__image__line
+          .exhibition__box__image__line__bland
             サイズ
-          .exhibition__box__image__form__required
+          .exhibition__box__image__line__anyse
             任意
         .exhibition__box__image__select
           = f.select :size_id, options_for_select(Size.all.map {|p| [p.name, p.id]},selected: @item.size.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
@@ -91,7 +91,7 @@
           .exhibition__box__image__form__lavel
             商品の状態
           .exhibition__box__image__form__required
-            任意
+            必須
         .exhibition__box__image__select
           = f.select :condition_id,options_for_select(Condition.all.map {|p| [p.name, p.id]},selected: @item.condition.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
