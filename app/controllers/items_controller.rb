@@ -22,8 +22,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to item_path(@item), notice: '商品の出品に成功しました'
     else
+      flash.now[:alert] = '出品できませんでした。入力に不備があります'
       render :new
     end
   end
