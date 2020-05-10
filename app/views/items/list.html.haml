@@ -16,7 +16,11 @@
               .index-items__body
                 %p.index-items__name 
                   = lady.description
-
+            - if lady.is_deleted.present?
+              .index-items__sold
+                .index-items__sold--position
+                  %P SOLD
+          
     .index-items__box
       = link_to category_path(2), class: "box__head--link" do
         %h3.index-items__box--font メンズ新着アイテム
@@ -31,6 +35,10 @@
               .index-items__body
                 %p.index-items__name 
                   = men.description
+            - if men.is_deleted.present?
+              .index-items__sold
+                .index-items__sold--position
+                  %p SOLD
     
     .index-items__box
       = link_to category_path(8), class: "box__head--link" do
@@ -46,6 +54,10 @@
               .index-items__body
                 %p.index-items__name 
                   = ele.description
+            - if ele.is_deleted.present?
+              .index-items__sold
+                .index-items__sold--position
+                  %p SOLD
 
     .index-items__box
       = link_to category_path(6), class: "box__head--link" do
@@ -61,5 +73,7 @@
               .index-items__body
                 %p.index-items__name 
                   = hobby.description
-          
-  
+            - if hobby.is_deleted.present?
+              .index-items__sold
+                .index-items__sold--position
+                  %p SOLD
