@@ -186,8 +186,30 @@
           width: 100%;
           text-align: right;
           padding-right: 2px;
-          button {
+          &__edit {
+            height: 40px;
+            width: 80px;
+            font-size: 14px;
+            color: white;
+            background-color: rgb(40, 218, 40);
+            border-radius: 5px;
+          }
+          &__delete {
             margin-left: 5px;
+            height: 40px;
+            width: 80px;
+            font-size: 14px;
+            background-color: gainsboro;
+            border-radius: 5px;
+          }
+          &__purchace {
+            height: 50px;
+            width: 115px;
+            font-size: 15px;
+            color: white;
+            background-color: rgb(255, 115, 0);
+            border-radius: 5px;
+            margin: 3px 0;
           }
           a {
             text-decoration: none;
