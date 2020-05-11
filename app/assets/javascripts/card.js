@@ -28,3 +28,29 @@ $(function(){
     });
   })
 });
+//buypage 登録画面表示//
+$(function(){
+  $("#card-modal").on("click",function(){
+    $('#buypage-user__card__modal').fadeIn(300);
+    $('.buypage-header').css("background-color", "gray")
+    $('.buypage-main').css("background-color", "gray")
+  })
+  $(".buypage-user__card__modal-icon").on("click",function(){
+    $('#buypage-user__card__modal').fadeOut(300);
+    $('.buypage-header').css("background-color", "rgb(245, 245, 245)")
+    $('.buypage-main').css("background-color", "white")
+  })
+})
+//buypage 送り先登録画面表示//
+$(function(){
+  $(".buypage-user__change").on("click",function(){
+    $('#buypage-user__address__modal').fadeIn(300);
+    $('.buypage-header').css("background-color", "gray")
+    $('.buypage-main').css("background-color", "gray")
+  })
+  $(".buypage-user__card__modal-icon").on("click",function(){
+    $('#buypage-user__address__modal').fadeOut(300);
+    $('.buypage-header').css("background-color", "rgb(245, 245, 245)")
+    $('.buypage-main').css("background-color", "white")
+  })
+})

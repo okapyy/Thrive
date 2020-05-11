@@ -8,8 +8,11 @@ class UsersController < ApplicationController
     card = Card.where(user_id: current_user.id)
     if card.present?
       redirect_to controller: 'cards', action: 'show', id: current_user.id
-    
     end
+  end
+  def address
+    @user = User.find(params[:user_id])
+    @address = Address.find(params[:user_id])
   end
 
   # 販売中のitem
