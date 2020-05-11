@@ -2,54 +2,48 @@ crumb :root do
   link "FURIMA", root_path
 end
 
+## カテゴリー関連
 crumb :categories do
   link "カテゴリー一覧", categories_path
 end
 
-# crumb :category do |category|
-#   link category[params[:id].to_i-1].name, category_path(category)
-#   parent :categories
-# end
-
 crumb :category do |category|
-  link category.name, category_path(category)
-  if category.parent
-    parent :category, category[params[:id].to_i - 1]
-  else
-    parent :categories
-  end
+  link category[params[:id].to_i - 1].name, category_path(category)
+  parent :categories
+end
+
+## アイテム関連
+crumb :items do
+  link "商品一覧", list_items_path
+  parent :root
+end
+
+crumb :new_item do
+  link "新規出品", new_item_path
+  parent :root
 end
 
 crumb :item do |item|
   link item.name, item_path(item)
+  parent :items
 end
 
-crumb :user do |user|
-  link "マイページ", user_path(user)
+## マイページ関連
+crumb :user do
+  link "マイページ", user_path(current_user)
 end
 
-crumb :history do |history|
-  link "購入履歴", user_purchasehistory_path
+crumb :history do
+  link "購入履歴", purchasehistory_user_path
   parent :user
 end
 
+crumb :soldout do
+  link "完売した商品", soldout_user_path
+  parent :user
+end
 
-# crumb :users do
-#   link user.name, user_path(user)
-# end
-
-# crumb :project_issues do |project|
-#   link "Issues", project_issues_path(project)
-#   parent :project, project
-# end
-
-# crumb :issue do |issue|
-#   link issue.title, issue_path(issue)
-#   parent :project_issues, issue.project
-# end
-
-# If you want to split your breadcrumbs configuration over multiple files, you
-# can create a folder named `config/breadcrumbs` and put your configuration
-# files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that
-# folder are loaded and reloaded automatically when you change them, just like
-# this file (`config/breadcrumbs.rb`).
+crumb :nowonsale do
+  link "販売中の商品", nowonsale_user_path
+  parent :user
+end

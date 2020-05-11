@@ -1,16 +1,3 @@
-%nav.breadCrums
-  %ul
-    %li= link_to "FURIMA", root_path
-    %li
-      %i.fa.fa-angle-right
-    %li= link_to "レディース"
-    %li
-      %i.fa.fa-angle-right
-    %li= link_to "Tシャツ/カットソー(半袖/袖なし)"
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = @item.name
 = render partial:'modules/notification'
 - breadcrumb :item, @item
 .main

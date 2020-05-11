@@ -1,3 +1,4 @@
+- breadcrumb :soldout
 .mypage
   .mypage-main.clearfix
     .mypage-content
@@ -16,7 +17,7 @@
             %li
               .item
                 .image-box
-                  %img{:src => ""}/
+                  %img{:src => item.item_images[0].image}/
                 .item-name
                   %p=item.name
                 .icon

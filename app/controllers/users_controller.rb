@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   # 売れたitem
-  def completed
+  def soldout
     @items = current_user.items.where('is_deleted', 0)
   end
 
