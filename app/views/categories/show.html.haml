@@ -13,9 +13,8 @@
           %ul.itemList
             %li.item
               .itemContainer
-                -# = image_tag "#{child.items.item_images.image[0]}", size: "200x150"
+                = image_tag '/images/shooes.jpeg', size: "200x150"
                 .itemInfo
-                  = child.id
                   %p.item__name=child.items.name
                   %p.item__price 36,000円
             %li.item
