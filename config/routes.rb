@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :items do
     collection do
       get 'list', to: 'items#list'
+      get 'search'
     end
     member do
       get 'buypage', to: 'items#buypage'

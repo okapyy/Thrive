@@ -16,9 +16,9 @@
         .header-top
           %h1.header-icon=link_to image_tag('logo.png', size:"140x41"), root_path 
           .search-box
-            %form
-              %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
-              %button{:type => "submit"}
+            = form_with(url: search_items_path, method: :get, local: true) do |f|
+              = f.text_field :q, placeholder:"キーワードから探す", id:"search-input", class:"search-box--input"
+              =  button_tag  do
                 .search-box--icon
                   = image_tag 'icon-search 1.png', size:"20x20"
           %ul.resultLists

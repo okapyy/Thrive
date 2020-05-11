@@ -28,6 +28,11 @@ crumb :item do |item|
   parent :items
 end
 
+crumb :search do
+  link "商品検索結果", search_items_path
+  parent :root
+end
+
 ## マイページ関連
 crumb :user do
   link "マイページ", user_path(current_user)

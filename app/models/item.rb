@@ -37,6 +37,11 @@ class Item < ApplicationRecord
     end 
   end
 
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name like(?)', "%#{search}%")
+  end
+
   def create_purchase
     updates = self.saved_changes
 
