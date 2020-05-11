@@ -17,7 +17,7 @@
             %li
               .item
                 .image-box
-                  %img{:src => item.item_images[0].image}/
+                  = image_tag "#{item.item_images[0].image}", size: "50x50"
                 .item-name
                   %p=item.name
                 .icon

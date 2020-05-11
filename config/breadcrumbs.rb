@@ -7,8 +7,8 @@ crumb :categories do
   link "カテゴリー一覧", categories_path
 end
 
-crumb :category do |category|
-  link category[params[:id].to_i - 1].name, category_path(category)
+crumb :category do |categories|
+  link categories[params[:id].to_i - 1].name, category_path(categories)
   parent :categories
 end
 
