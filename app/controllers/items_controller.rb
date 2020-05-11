@@ -111,10 +111,11 @@ class ItemsController < ApplicationController
   end
 
   def set_items
-    if params[:id].to_i <= Item.pluck(:id).max
+    item_ids = Item.pluck(:id)
+    if (params[:id].to_i <= item_ids.max) && (item_ids.include?(params[:id].to_i))
       @item = Item.find(params[:id])
     else
-      redirect_to root_path
+      redirect_to list_items_path
     end
   end
 
