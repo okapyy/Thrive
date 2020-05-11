@@ -1,0 +1,19 @@
+.user-body
+  .user-body__header
+    .user-body__header__box
+      = link_to root_path, class: "user-body__header__box__logo" do
+        = image_tag 'logo.png', size: '170x46'
+  .user-body__main
+    .user-body__main__contents
+      .user-body__main__contents__title
+        %h2 会員情報入力
+      .user-body__main__contents__banner
+        = link_to user_facebook_omniauth_authorize_path, class:"user-body__main__contents__banner--email" do
+          = icon('fab', 'facebook-square', class: "user-body__main__contents__banner--email__icon")
+          メールアドレスでログイン
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class:"user-body__main__contents__banner--facebook" do
+          = icon('fab', 'facebook-square', class: "user-body__main__contents__banner--facebook__icon")
+          Facebookでログイン
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class:"user-body__main__ccontents__banner--google" do
+          = icon('fab', 'google', class: "user-body__main__contents__banner--google__icon")
+          Googleでログイン

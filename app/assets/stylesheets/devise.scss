@@ -169,6 +169,21 @@
         width: 343px;
         padding: 8px 0 64px;
         margin: 0 auto;
+        &__banner {
+          margin-top: 32px;
+          font-size: 12px;
+          &__facebook {
+            color: #fff;
+            background-color: #385185;
+            @include banner();
+          }
+          &__google {
+            margin: 16px 0 0;
+            color: #333;
+            border: 1px solid #979797;
+            @include banner();
+          }
+        }
         &__field {
           margin-top: 32px;
           label {

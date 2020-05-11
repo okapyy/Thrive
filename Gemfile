@@ -47,6 +47,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'capistrano-rails-console'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
 end
@@ -98,5 +99,10 @@ gem 'jquery-rails'
 gem 'gon'
 gem 'carrierwave'
 gem 'mini_magick'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
 
 
