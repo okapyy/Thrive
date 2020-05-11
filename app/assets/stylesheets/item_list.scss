@@ -37,7 +37,6 @@
       box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
       margin: 5px 5px;
       padding: 5px;
-      overflow: scroll;
       &--link{
         cursor: pointer;
       }
@@ -69,8 +68,12 @@
       left: 5%;
     }
     &__body{
-      padding: 10px;
+      padding: 5px 10px;
       word-wrap: break-word;
+    }
+    &__name{
+      overflow: scroll;
+      height: 70px;
     }
     &__sold{
       width: 0;
@@ -82,7 +85,7 @@
       opacity: 0.9;
       z-index:1;
       position: relative;
-      top:-238px;
+      top:-274px;
       &--position{
         transform: rotate(-45deg);
         font-size: 18px;

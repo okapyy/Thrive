@@ -124,17 +124,13 @@
 
     %ul.links
       %li
-        - if @beforeitem
+        - if @prevItem
           %i.fa.fa-angle-left
-          = link_to "前の商品", item_path(@item.id - 1)
-        - else
-          = link_to "前の商品", item_path(@item)
+          = link_to "前の商品", item_path(@prevItem)
       %li
-        - if @nextitem
-          = link_to "次の商品", item_path(@item.id + 1) 
+        - if @nextItem
+          = link_to "次の商品", item_path(@nextItem) 
           %i.fa.fa-angle-right
-        - else 
-          = link_to "次の商品", item_path(@item)
     .related-items
       = link_to "#{@item.category.root.name}をもっと見る", category_path(@item.category.root.id)
       .item-lists
