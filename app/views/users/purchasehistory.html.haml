@@ -1,3 +1,4 @@
+- breadcrumb :history, @history,@user
 .mypage
   .mypage-main.clearfix
     .mypage-content
@@ -9,7 +10,7 @@
             %li
               .item
                 .image-box
-                  = image_tag 'a001.png', size: '50x50'
+                  = image_tag "#{purchase.item_images[0].image}", size: '50x50'
                 .item-name
                   %p=purchase.name
                 .icon

@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @category = Category.all
     params_id = params[:id].to_i - 1
     @parents = Category.where('ancestry is null')
     @categories = Category.all
