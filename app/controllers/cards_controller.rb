@@ -28,6 +28,9 @@ class CardsController < ApplicationController
   
   def new
     gon.payjp_key = ENV["PAYJP_KEY"]
+    if @card
+      redirect_to controller: 'cards', action: 'show', id: current_user.id
+    end
   end
 
   def create
@@ -41,7 +44,7 @@ class CardsController < ApplicationController
         )
         @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
         if @card.save
-          redirect_to controller: 'cards', action: 'show', id: current_user.id
+          redirect_back(fallback_location: root_path)
           flash[:notice] = 'クレジットカードの登録が完了しました'
         else
           redirect_to controller: 'cards', action: 'new'

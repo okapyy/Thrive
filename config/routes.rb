@@ -21,13 +21,17 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: :show do
+    member do
+      get 'purchasehistory', to: 'users#purchasehistory'
+      get 'soldout', to: 'users#soldout'
+      get 'nowonsale', to: 'users#nowonsale'
+    end
+
     get 'logout', to: 'users#logout'
     get 'cash', to: 'users#cash'
     get 'address', to: 'users#address'
-    get 'nowonsale', to: 'users#nowonsale'
-    get 'completed', to: 'users#completed'
-    get 'purchasehistory', to: 'users#purchasehistory'
   end
+  resources :addresses, only: :update
   resources :item_images
   resources :cards, only: [:show, :new, :create, :destroy]
 

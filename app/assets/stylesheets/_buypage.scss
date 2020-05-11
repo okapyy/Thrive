@@ -99,8 +99,9 @@
         padding-top: 5px;
         color: #0099e8;
         text-decoration: none;
+        cursor: pointer;
       }
-      i{
+      &__credit--icon{
         color: #0099e8;
         padding-right: 5px;
       }
@@ -111,7 +112,7 @@
         padding-bottom: 5px;
       }
       &__change{
-        text-decoration: none;
+        cursor: pointer;
         color: #0099e8;
         font-size: 14px;
       }
@@ -214,4 +215,30 @@
     align-items: center;
     justify-content: space-between;
   }
+}
+#buypage-user__card__modal{
+  width: 500px;
+  padding-top: 10px;
+  position: absolute;
+  z-index: 1;
+  background-color: rgb(245, 245, 245);
+  top: 50%;
+  left: 33%;
+  display: none;
+}
+.buypage-user__card__modal-icon{
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  cursor: pointer;
+}
+#buypage-user__address__modal{
+  width: 500px;
+  padding-top: 10px;
+  position: absolute;
+  z-index: 1;
+  background-color: rgb(245, 245, 245);
+  top: 26%;
+  left: 33%;
+  display: none;
 }

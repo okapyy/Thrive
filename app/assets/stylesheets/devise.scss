@@ -25,8 +25,8 @@
   height: 48px;
   margin-top: 24px;
   display: block;
-  background-color: #14d3d3;
-  border: 1px solid #14d3d3;
+  background-color: #3ccace;
+  border: 1px solid #3ccace;
   color: #333;
   font-size: 14px;
   cursor: pointer;
@@ -191,7 +191,7 @@
             font-size: 14px;
           }
           span.blue {
-            background-color: #14d3d3;
+            background-color: #3ccace;
             @include span();
           }
           span.gray {
@@ -296,8 +296,8 @@
           height: 40px;
           line-height: 40px;
           margin: 8px 0 0;
-          background-color: #0099e8;
-          border: 1px solid #0099e8;
+          background-color: #3ccace;
+          border: 1px solid #3ccace;
           color: #fff;
           text-decoration: none;
           font-size: 14px;
