@@ -97,10 +97,10 @@
                 %button.item-box__btn__edit 削除
             - elsif user_signed_in?
               = link_to buypage_item_path(@item), data: {"turbolinks" => false} do
-                %button.item-box__btn__edit 購入する
+                %button.item-box__btn__purchace 購入する
             - else 
               = link_to new_user_session_path do
-                %button.item-box__btn__edit 購入する
+                %button.item-box__btn__purchace 購入する
 
         .additional-area
           %ul
