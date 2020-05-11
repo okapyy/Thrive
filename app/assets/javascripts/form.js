@@ -24,6 +24,7 @@ document.addEventListener('turbolinks:load', () => {
       counter.style.color = "black";
     }
   });
+
   // カテゴリーフォームの追加関数
     // 変数定義
   const catParent = document.getElementById('catParent');

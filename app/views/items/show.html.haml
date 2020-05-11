@@ -11,17 +11,22 @@
       %i.fa.fa-angle-right
     %li
       = @item.name
-
+= render partial:'modules/notification'
 .main
   .content
     .top-content
       .item-box
-        - if @item.is_deleted
-          .salestatus--sold SOLD OUT
-        - else
-          .salestatus--selling NOW ON SALE!
         %h2.item-box__name= @item.name
         .item-box__picture
+          - if @item.is_deleted.present?
+            .item-box__sold
+              .item-box__sold--position
+                %p SOLD 
+                %p.item-box__sold--center OUT
+          - else
+            .item-box__sell
+              .item-box__sell--position
+                %p NOW ON SALE!
           %ul
             %li
               = image_tag "#{@image.image}", id:"bigPic"
@@ -68,7 +73,8 @@
                 %td= @item.brand
               %tr
                 %th 商品のサイズ
-                %td= @item.size.name
+                - if @item.size.present?
+                  %td= @item.size.name
               %tr
                 %th 商品の状態
                 %td= @item.condition.name

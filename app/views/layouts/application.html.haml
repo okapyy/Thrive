@@ -45,7 +45,7 @@
               = link_to "ブランド", "#", id:"brandBtn"
               %ul.brandsPulldown.displayNone
             %li.header-nav--left__item
-              = link_to "商品一覧", top_path
+              = link_to "商品一覧", list_items_path
           %ul.header-nav--right
             - if user_signed_in?
               = link_to user_path(current_user.id), class: "header-nav--right__item" do
@@ -91,3 +91,13 @@
       .footer-logo
         = image_tag 'logo-white.png', size: '160x46', class:"footer-logo--image"
       %p © FURIMA
+    - if user_signed_in?
+      = link_to new_item_path do
+        .putup__btn
+          %span.putup__btn__text> 出品する
+          = image_tag 'icon_camera.png', alt: '出品する', height: '', width: '', class: 'putup__btn__icon'
+    - else
+      = link_to new_user_session_path do
+        .putup__btn
+          %span.putup__btn__text> 出品する
+          = image_tag 'icon_camera.png', alt: '出品する', height: '', width: '', class: 'putup__btn__icon'

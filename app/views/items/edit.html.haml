@@ -72,14 +72,18 @@
         .exhibition__box__image__select#selectGrandChildren
           = f.select :category_id, options_for_select(@item.category.parent.children.map{|c|[c[:name], c[:id]]}, selected: @item.category.id), {}, {class: "exhibition__box__image__select--grandchild", id: 'grandchild_category'}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
-        .exhibition__box__image__form
-          .exhibition__box__image__form__lavel
+        .exhibition__box__image__line
+          .exhibition__box__image__line__bland
             サイズ
-          .exhibition__box__image__form__required
+          .exhibition__box__image__line__any
             任意
         .exhibition__box__image__select
-          = f.select :size_id, options_for_select(Size.all.map {|p| [p.name, p.id]},selected: @item.size.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
-          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+          - if @item.size_id
+            = f.select :size_id, options_for_select(Size.all.map {|p| [p.name, p.id]},selected: @item.size.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
+            %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+          - else
+            = f.select :size_id, options_for_select(Size.all.map {|p| [p.name, p.id]}),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
+            %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
         .exhibition__box__image__line
           .exhibition__box__image__line__bland
             ブランド
@@ -91,7 +95,7 @@
           .exhibition__box__image__form__lavel
             商品の状態
           .exhibition__box__image__form__required
-            任意
+            必須
         .exhibition__box__image__select
           = f.select :condition_id,options_for_select(Condition.all.map {|p| [p.name, p.id]},selected: @item.condition.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
           %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
@@ -130,8 +134,8 @@
           .exhibition__box__image__carry__required
             必須
         .exhibition__box__image__select
-        = f.select :delivery_day_id, options_for_select(DeliveryDay.all.map {|p| [p.name, p.id]},selected: @item.delivery_day.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
-        %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
+          = f.select :delivery_day_id, options_for_select(DeliveryDay.all.map {|p| [p.name, p.id]},selected: @item.delivery_day.id),{prompt: "選択してください"},{class:"exhibition__box__image__select--category"}
+          %iselect.exhibition__box__image__select__arrow.fas.fa-chevron-down.fa-lg
       .exhibition__box__image
         .exhibition__box__image__details
           .exhibition__box__image__details__goods

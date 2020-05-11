@@ -1,9 +1,17 @@
 class ItemsController < ApplicationController
-  before_action :set_items, only:[:show, :edit, :update, :destroy]
+  before_action :set_items, only:[:show, :edit, :update, :destroy, :buy, :buypage]
   before_action :set_category, only:[:index, :new, :create, :edit]
+  before_action :set_card, only:[:buy, :buypage]
   
   def index
     @items = Item.where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
+  end
+  
+  def list
+    @ladys= Item.where(category_id: 158..336).order(created_at: "DESC").limit(10)
+    @mens= Item.where(category_id: 337..466).order(created_at: "DESC").limit(10)
+    @electricals = Item.where(category_id: 953..1027).order(created_at: "DESC").limit(10)
+    @hobbys = Item.where(category_id: 764..864).order(created_at: "DESC").limit(10)
   end
 
   def new
@@ -14,19 +22,13 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path, notice: '商品の出品に成功しました'
+      redirect_to item_path(@item), notice: '商品の出品に成功しました'
     else
-      flash.now[:alert] = '出品に失敗しました'
+      flash.now[:alert] = '出品できませんでした。入力に不備があります'
       render :new
     end
   end
 
-  def top  
-    @ladys= Item.where(category_id: 158..336).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-    @mens= Item.where(category_id: 337..466).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-    @electricals = Item.where(category_id: 953..1027).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-    @hobbys = Item.where(category_id: 764..864).where.not(is_deleted: 1).order(created_at: "DESC").limit(10)
-  end
   
   def show
     @images = ItemImage.where(item_id: @item.id)
@@ -36,8 +38,12 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    @image = ItemImage.where(item_id: @item.id)
-    @count = @item.item_images.count
+    if current_user.id == @item.user_id
+      @image = ItemImage.where(item_id: @item.id)
+      @count = @item.item_images.count
+    else
+      redirect_to item_path(@item)
+    end
   end
   
   def update
@@ -70,16 +76,26 @@ class ItemsController < ApplicationController
   end
   
   def buypage
+    if current_user.id == @item.user_id
+      redirect_to item_path(@item)
+    elsif @item.is_deleted
+      redirect_to item_path(@item)
+    end
   end
-  
+
   def buy
+    if @card.present?
     @item.update!(is_deleted: 1, buyer_id: current_user.id)
+      charge = Payjp::Charge.create(
+        amount: @item.price,
+        customer: Payjp::Customer.retrieve(@card.customer_id),
+        currency: 'jpy'
+      )
+    else
+      render :buypage
+    end
   end
   
-  def top
-  end
-
-
   private
   def item_params
     params.require(:item).permit(:name, :description, :brand, :category_id, :size_id, :condition_id, :delivery_fee_id, :delivery_from_id, :delivery_method_id, :delivery_day_id, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
@@ -90,6 +106,36 @@ class ItemsController < ApplicationController
   end
 
   def set_items
-    @item = Item.find(params[:id])
+    if params[:id].to_i  <= Item.all.length
+      @item = Item.find(params[:id])
+    else
+      redirect_to root_path
+    end
+  end
+
+  def set_card
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    @card = Card.find_by(user_id: current_user.id)
+    if @card
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+        @cards = customer.cards.retrieve(@card.card_id)
+        @brand = @cards.brand
+        case @brand
+        when "Visa"
+          @card_brand = "credit-card_visa.png"
+        when "MasterCard"
+          @card_brand = "credit-card_master.png"
+        when "JCB"
+          @card_brand = "credit-card_jcb.png"
+        when "American Express"
+          @card_brand = "credit-card_american.png"
+        when "Diners Club"
+          @card_brand = "credit-card_diners.png"
+        when "Discover"
+          @card_brand = "credit-card_discover.png"
+        end
+        @month = @cards.exp_month.to_s
+        @year = @cards.exp_year.to_s.slice(2,3)
+    end
   end
 end
