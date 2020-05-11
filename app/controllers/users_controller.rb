@@ -30,4 +30,10 @@ class UsersController < ApplicationController
   def purchasehistory
     @purchases = Item.where(buyer_id: current_user.id).order(id: :desc)
   end
+
+  #お気に入り一覧
+  def favoritelist
+    @favorites = current_user.favorites.order('id DESC')
+  end
+
 end

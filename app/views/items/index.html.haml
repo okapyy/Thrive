@@ -90,11 +90,11 @@
                 = image_tag "#{item.item_images[0].image}"
               .item__body
                 %h3.item--name 
-                  = item.description
+                  = item.name
                 .item--detail
                   %ul
                     %li="¥ #{item.price}"
-                    %li=icon 'far','star', class:"after_number"
+                    %li=icon 'far','star', "#{item.favorites.count}"
                   %p (税込)
         
   %section.main-pickup-blands

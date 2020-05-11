@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorites/create'
+  get 'favorites/destroy'
   root 'items#index'
 
   devise_for :users, controllers: {
@@ -15,7 +17,9 @@ Rails.application.routes.draw do
     get 'buypage', to: 'items#buypage'
     get 'list', to: 'items#list'
     patch 'buy', to: 'items#buy'
+    resources :favorites, only: [:create, :destroy]
   end
+
   get 'top', to: 'items#top'  
   resources :users, only: :show do
     get 'logout', to: 'users#logout'
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
     get 'nowonsale', to: 'users#nowonsale'
     get 'completed', to: 'users#completed'
     get 'purchasehistory', to: 'users#purchasehistory'
+    get 'favoritelist', to: 'users#favoritelist'
   end
   resources :item_images
   resources :cards, only: [:show, :new, :create, :destroy]
