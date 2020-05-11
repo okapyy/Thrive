@@ -96,7 +96,7 @@
               = link_to item_path(@item), method: :delete do
                 %button.item-box__btn__delete 削除
             - elsif user_signed_in?
-              = link_to item_buypage_path(@item) do
+              = link_to buypage_item_path(@item), data: {"turbolinks" => false} do
                 %button.item-box__btn__purchace 購入する
             - else 
               = link_to new_user_session_path do

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get 'completed', to: 'users#completed'
     get 'purchasehistory', to: 'users#purchasehistory'
   end
+  resources :addresses, only: :update
   resources :item_images
   resources :cards, only: [:show, :new, :create, :destroy]
 
