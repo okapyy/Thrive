@@ -29,6 +29,5 @@ class UsersController < ApplicationController
   # 購入履歴
   def purchasehistory
     @purchases = Item.where(buyer_id: current_user.id).order(id: :desc)
-    @user = current_user
   end
 end
