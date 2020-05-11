@@ -33,8 +33,9 @@ class ItemsController < ApplicationController
   def show
     @images = ItemImage.where(item_id: @item.id)
     @image = ItemImage.where(item_id: @item.id).first
-    @beforeitem = Item.find_by(id: @item.id - 1) 
-    @nextitem = Item.find_by(id: @item.id + 1)
+    item_ids = Item.pluck(:id)
+    @prevItem = item_ids.select {|id| id < @item.id}.max
+    @nextItem = item_ids.select {|id| id > @item.id}.min
   end
   
   def edit
@@ -110,7 +111,7 @@ class ItemsController < ApplicationController
   end
 
   def set_items
-    if params[:id].to_i  <= Item.all.length
+    if params[:id].to_i <= Item.pluck(:id).max
       @item = Item.find(params[:id])
     else
       redirect_to root_path
