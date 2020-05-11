@@ -31,6 +31,8 @@ class ItemsController < ApplicationController
   def show
     @images = ItemImage.where(item_id: @item.id)
     @image = ItemImage.where(item_id: @item.id).first
+    @beforeitem = Item.find_by(id: @item.id - 1) 
+    @nextitem = Item.find_by(id: @item.id + 1)
   end
   
   def edit
