@@ -1,27 +1,20 @@
-%nav.breadCrums
-  %ul
-    %li= link_to "FURIMA", root_path
-    %li
-      %i.fa.fa-angle-right
-    %li= link_to "レディース"
-    %li
-      %i.fa.fa-angle-right
-    %li= link_to "Tシャツ/カットソー(半袖/袖なし)"
-    %li
-      %i.fa.fa-angle-right
-    %li
-      = @item.name
-
+= render partial:'modules/notification'
+- breadcrumb :item, @item
 .main
   .content
     .top-content
       .item-box
-        - if @item.is_deleted
-          .salestatus--sold SOLD OUT
-        - else
-          .salestatus--selling NOW ON SALE!
         %h2.item-box__name= @item.name
         .item-box__picture
+          - if @item.is_deleted.present?
+            .item-box__sold
+              .item-box__sold--position
+                %p SOLD 
+                %p.item-box__sold--center OUT
+          - else
+            .item-box__sell
+              .item-box__sell--position
+                %p NOW ON SALE!
           %ul
             %li
               = image_tag "#{@image.image}", id:"bigPic"
@@ -89,13 +82,13 @@
               = link_to edit_item_path do
                 %button.item-box__btn__edit 編集
               = link_to item_path(@item), method: :delete do
-                %button.item-box__btn__edit 削除
+                %button.item-box__btn__delete 削除
             - elsif user_signed_in?
-              = link_to item_buypage_path(@item) do
-                %button.item-box__btn__edit 購入する
+              = link_to buypage_item_path(@item), data: {"turbolinks" => false} do
+                %button.item-box__btn__purchace 購入する
             - else 
               = link_to new_user_session_path do
-                %button.item-box__btn__edit 購入する
+                %button.item-box__btn__purchace 購入する
 
         .additional-area
           %ul
@@ -119,13 +112,13 @@
 
     %ul.links
       %li
-        %i.fa.fa-angle-left
-
-        = link_to "前の商品", item_path(@item.id - 1)
+        - if @prevItem
+          %i.fa.fa-angle-left
+          = link_to "前の商品", item_path(@prevItem)
       %li
-        = link_to "次の商品", item_path(@item.id + 1) 
-        %i.fa.fa-angle-right
+        - if @nextItem
+          = link_to "次の商品", item_path(@nextItem) 
+          %i.fa.fa-angle-right
     .related-items
       = link_to "#{@item.category.root.name}をもっと見る", category_path(@item.category.root.id)
       .item-lists
-

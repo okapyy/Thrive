@@ -1,0 +1,47 @@
+.mypage-card__form 
+  = form_with model: @address, local: true do |f|
+    .mypage-card__form__input
+      %p.mypage-card__form__number お名前
+      %p.mypage-card__form__require 必須
+    = f.text_field :last_name,value: @address.last_name, class: "mypage-card__form__text",placeholder: "例）山田" 
+    = f.text_field :first_name, value: @address.first_name, class: "mypage-card__form__text",placeholder: "例）太郎" 
+    
+    .mypage-card__form__input
+      %p.mypage-card__form__number お名前カナ
+      %p.mypage-card__form__require 必須
+    = f.text_field :last_name_kana, value: @address.last_name_kana, class: "mypage-card__form__text",placeholder: "例）ヤマダ" 
+    = f.text_field :first_name_kana, value: @address.first_name_kana, class: "mypage-card__form__text",placeholder: "例）タロウ" 
+
+    .mypage-card__form__input
+      %p.mypage-card__form__number 郵便番号
+      %p.mypage-card__form__require 必須
+    = f.text_field :postal_code, value: @address.postal_code, class: "mypage-card__form__text", placeholder: "例）123-4567", maxlength: "8" 
+    
+    .mypage-card__form__input
+      %p.mypage-card__form__number 都道府県
+      %p.mypage-card__form__require 必須
+    .mypage-card__form__select
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, selected: @address.prefecture_id, prompt: "選択してください"
+      %i.mypage-card__form__select--icon-address.fas.fa-angle-down.fa-2x
+    
+    .mypage-card__form__input
+      %p.mypage-card__form__number 市区町村
+      %p.mypage-card__form__require 必須
+    = f.text_field :city, value: @address.city, placeholder: "例) 渋谷区", class: "mypage-card__form__text"
+    
+    .mypage-card__form__input
+      %p.mypage-card__form__number 番地
+      %p.mypage-card__form__require 必須
+    = f.text_field :address, value: @address.address, placeholder: "例) 神南1-12-16", class: "mypage-card__form__text"
+    
+    .mypage-card__form__input
+      %p.mypage-card__form__number 建物
+      %p.mypage-card__form__require--color 任意
+    = f.text_field :building, value: @address.building,placeholder: "例) アジアビル 801 ", class: "mypage-card__form__text"
+    
+    .mypage-card__form__input
+      %p.mypage-card__form__number 電話
+      %p.mypage-card__form__require--color 任意
+    = f.text_field :tel, value: @address.tel, placeholder: "例) 0120444444", class: "mypage-card__form__text"
+    
+    = f.submit "変更する",class: "mypage-card__form__btn" 
