@@ -100,7 +100,7 @@
         .additional-area
           %ul
             %div{id: "like_button_#{@item.id}"}
-              = render partial: "favorites/favorite", locals: { item: @item, fav_count: @fav_count }
+              = render partial: "favorites/favorite", locals: { item: @item }
 
           %ul
             %li.report-btn
