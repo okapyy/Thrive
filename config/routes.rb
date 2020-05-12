@@ -13,10 +13,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :categories, only: [:index, :show]
   resources :items do
-    get 'buypage', to: 'items#buypage'
+    collection do
+      get 'list', to: 'items#list'
+    end
+    member do
+      get 'buypage', to: 'items#buypage'
+      patch 'buy', to: 'items#buy'
+    end
     get 'top', to: 'items#top'  
-    get 'list', to: 'items#list'
-    patch 'buy', to: 'items#buy'
     resources :favorites, only: [:create, :destroy]
   end
 
