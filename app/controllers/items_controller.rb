@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   def show
     @images = ItemImage.where(item_id: @item.id)
     @image = ItemImage.where(item_id: @item.id).first
-    item_ids = Item.pluck(:id)
+    item_ids = Item.where(id: (@item.id - 10)..(@item.id + 10)).ids
     @prevItem = item_ids.select {|id| id < @item.id}.max
     @nextItem = item_ids.select {|id| id > @item.id}.min
   end
@@ -101,6 +101,10 @@ class ItemsController < ApplicationController
     end
   end
   
+  def search
+    @items = Item.search(params[:q])
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :description, :brand, :category_id, :size_id, :condition_id, :delivery_fee_id, :delivery_from_id, :delivery_method_id, :delivery_day_id, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
@@ -111,7 +115,7 @@ class ItemsController < ApplicationController
   end
 
   def set_items
-    item_ids = Item.pluck(:id)
+    item_ids = Item.ids
     if (params[:id].to_i <= item_ids.max) && (item_ids.include?(params[:id].to_i))
       @item = Item.find(params[:id])
     else
