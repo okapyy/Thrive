@@ -1,3 +1,4 @@
+= render partial: "modules/notification"
 .buypage-header
   .buypage-header__logo
     = link_to root_path do
@@ -5,3 +6,68 @@
   .buypage-main
     .buypage-top
       %h1.buypage-top__check 商品を購入しました。
+    %section.buypage-content
+      .buypage-content__inner
+        .buypage-content__box 
+          .buypage-content__image
+            = image_tag "#{@item.item_images[0].image}",class: "buypage-content__image--item"
+          .buypage-content__description
+            %p=@item.name
+            .buypage-content__description__price
+              = "¥#{@item.price.to_s(:delimited)} (税込) 送料込み"
+
+    %section.buypage-content
+      .buypage-content__inner
+        .buypage-form
+          .buypage-form__cash
+            .buypage-form__cash__info
+              支払い金額
+            .buypage-form__cash__total
+              = "¥#{@item.price.to_s(:delimited)}"
+          .buypage-form__point
+    
+        .buypage-user
+          .buypage-user__cash
+            %h3 支払い方法
+          .buypage-user__credit
+            %p クレジットカード決済
+            .buypage-user__card
+              .buypage-user__card__image
+                = image_tag "#{@card_brand}",class: "buypage-user__card__image--size"
+              .buypage-user__card__limit
+                = "**** **** **** " + @cards.last4
+                .buypage-user__card__limit--right month/year
+                .buypage-user__card__term
+                  %p 有効期限
+                  = "#{@month} / #{@year}"
+
+        .buypage-user
+          .buypage-user__address
+            .buypage-user__destination
+              %h3 配送先
+          .buypage-user__street-address
+            %p=current_user.address.postal_code
+            %p="#{current_user.address.prefecture.name}#{current_user.address.city}#{current_user.address.address}"
+            %p="#{current_user.address.last_name} #{current_user.address.first_name}"
+        .buypage-user
+          .buypage-user__delivery-day
+            %p.buypage-user__delivery-day--padding 到着予定日
+            = "#{@item.delivery_day.name}を予定しております"
+          .buypage-user__top-btn
+            = link_to root_path,class:"buypage-user__top-btn--link" do
+              %button.buypage-user__top-btn--css トップページへ戻る
+        
+  .buypage-footer
+    %ul.buypage-footer__nav
+      = link_to "#" ,class: "buypage-footer__private" do
+        %li プライバシーポリシー
+      = link_to "#" ,class: "buypage-footer__private" do
+        %li メルカリ利用規約
+      = link_to "#" ,class: "buypage-footer__private" do
+        %li 特定商取引に関する表記
+    .buypage-footer__logo
+      = link_to "#" do
+        = image_tag 'logo.png',class: "buypage-footer__logo--position", size:"185x50"
+      .buypage-footer__link
+        %p © Furima, Inc.
+  

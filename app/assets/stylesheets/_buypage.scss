@@ -38,10 +38,10 @@
         display: flex;
       }
       &__image{
-        margin-right: 20px;
+        margin-right: 40px;
         &--item{
-          width: 70px;
-          height: 80px;
+          width: 140px;
+          height: 100px;
         }
       }
       &__description{
@@ -99,8 +99,9 @@
         padding-top: 5px;
         color: #0099e8;
         text-decoration: none;
+        cursor: pointer;
       }
-      i{
+      &__credit--icon{
         color: #0099e8;
         padding-right: 5px;
       }
@@ -111,7 +112,7 @@
         padding-bottom: 5px;
       }
       &__change{
-        text-decoration: none;
+        cursor: pointer;
         color: #0099e8;
         font-size: 14px;
       }
@@ -130,6 +131,33 @@
         color: white;
         background-color: #888;
         border: 1px solid #888;
+        cursor: pointer;
+      }
+      &__delivery-day{
+        display: flex;
+        font-size: 16px;
+        font-weight: bold;
+        justify-content: space-around;
+        &--padding{
+          padding-right: 20px;
+        }
+      }
+      &__top-btn{
+        margin: 50px auto 0;
+        text-align: center;
+        width: 280px;
+        &--link{
+          text-decoration: none;
+        }
+        &--css{
+          width: 250px;
+          height: 50px;
+          border: 1px solid #ea352d;
+          background-color: #ea352d;
+          color: #fff;
+          font-size: 14px;
+          cursor: pointer;
+        }
       }
     }
   }
@@ -159,4 +187,58 @@
   span{
     font-size: 18px;
   }
+}
+.buypage-user__card{
+  width: 250px;
+  display: flex;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  &__image{
+    padding-top: 5px;
+    margin-right: 10px;
+    &--size{
+      width: 60px;
+      height: 50px;
+    }
+  }
+  &__limit{
+    padding: 5px;
+    &--right{
+      margin-top: 5px;
+      text-align: right;
+    }
+  }
+  &__term{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+#buypage-user__card__modal{
+  width: 500px;
+  padding-top: 10px;
+  position: absolute;
+  z-index: 1;
+  background-color: rgb(245, 245, 245);
+  top: 50%;
+  left: 33%;
+  display: none;
+}
+.buypage-user__card__modal-icon{
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  cursor: pointer;
+}
+#buypage-user__address__modal{
+  width: 500px;
+  padding-top: 10px;
+  position: absolute;
+  z-index: 1;
+  background-color: rgb(245, 245, 245);
+  top: 26%;
+  left: 33%;
+  display: none;
 }

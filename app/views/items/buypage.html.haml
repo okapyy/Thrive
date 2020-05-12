@@ -1,3 +1,4 @@
+= render partial: "modules/notification"
 .buypage-header
   .buypage-header__logo
     = link_to "#" do
@@ -26,31 +27,54 @@
           .buypage-form__point
             %i.fas.fa-square.fa-lg
             %p.buypage-form__point__use ポイントを使用(所持ポイント:P0)
+      
     
         .buypage-user
           .buypage-user__cash
             %h3 支払い方法
-          .buypage-user__credit
-            = link_to "#" ,class: "buypage-user__credit-card" do
-              %i.fas.fa-plus-circle
-              %p 登録してください
+            -if @cards
+              .buypage-user__credit
+                %p クレジットカード決済
+                .buypage-user__card
+                  .buypage-user__card__image
+                    = image_tag "#{@card_brand}",class: "buypage-user__card__image--size"
+                  .buypage-user__card__limit
+                    = "**** **** **** " + @cards.last4
+                    .buypage-user__card__limit--right month/year
+                    .buypage-user__card__term
+                      %p 有効期限
+                      = "#{@month} / #{@year}"
+              .buypage-user__credit
+                .buypage-user__credit-card
+                  %i.fas.fa-plus-circle
+                  %p 変更する
+            -else
+              .buypage-user__credit
+                .buypage-user__credit-card#card-modal
+                  %i.buypage-user__credit--icon.fas.fa-plus-circle
+                  %p 登録してください
+              #buypage-user__card__modal
+                %i.buypage-user__card__modal-icon.fas.fa-backspace.fa-2x
+                = render partial: "cards/card"
 
         .buypage-user
           .buypage-user__address
             .buypage-user__destination
               %h3 配送先
-            =link_to "#",class: "buypage-user__change" do
-              %p 変更する
+            %p.buypage-user__change 変更する
           .buypage-user__street-address
             %p=current_user.address.postal_code
-            %p="#{current_user.address.prefecture.name}#{current_user.address.city}#{current_user.address.address}"
+            %p="#{current_user.address.prefecture.name}#{current_user.address.city}#{current_user.address.address}\n#{current_user.address.building}"
             %p="#{current_user.address.last_name} #{current_user.address.first_name}"
+        #buypage-user__address__modal
+          %i.buypage-user__card__modal-icon.fas.fa-backspace.fa-2x
+          = render partial: "users/address_form"
         
         .buypage-user
           .buypage-user__infomation
             %p 郵便局/コンビニ受取をご希望の方は、購入後に取引画面から受取場所を変更をすることが可能です。出品者が発送作業を開始した後は受取場所の変更ができませんので、早めに変更を行ってください。
         
-        = form_with(model:@item, url: item_buy_path, local: true) do |f|
+        = form_with(model:@item, url: buy_item_path, local: true) do |f|
           = f.submit "購入する", class:"buypage-user__buybtn"
   
   .buypage-footer
