@@ -1,0 +1,19 @@
+- if user_signed_in?
+  - favorite = current_user.favorites.find_by(item_id: item.id)
+  - fav_count = Favorite.where(item_id: item.id).count
+  - if favorite.present?
+    = link_to("/items/#{item.id}/favorites/#{favorite.id}", method: :delete, id: "fav-button", remote: true) do
+      .unlike-btn 
+        %i.fa.fa-star
+        お気に入り！
+        = fav_count
+  - else
+    = link_to("/items/#{item.id}/favorites", method: :post, id: "fav-button", remote: true) do
+      .like-btn 
+        %i.far.fa-star
+        お気に入り！
+        = fav_count
+- else
+  %i.fa.fa-star.like-btn お気に入り登録
+  %br/
+

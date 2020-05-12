@@ -92,9 +92,9 @@
 
         .additional-area
           %ul
-            %li.like-btn
-              %i.fa.fa-star
-              %p お気に入り0
+            %div{id: "like_button_#{@item.id}"}
+              = render partial: "favorites/favorite", locals: { item: @item }
+
           %ul
             %li.report-btn
               %i.fa.fa-flag

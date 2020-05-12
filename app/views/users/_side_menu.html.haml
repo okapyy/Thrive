@@ -9,8 +9,8 @@
     = link_to "#", class: "side-menu__link" do
       %li やることリスト
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to "#", class: "side-menu__link" do
-      %li いいね！一覧
+    = link_to user_favoritelist_path(current_user), class: "side-menu__link" do
+      %li お気に入り一覧
       %i.angre-btn.fas.fa-angle-right.fa-2x
     = link_to new_item_path, class: "side-menu__link" do
       %li 出品する

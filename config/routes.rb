@@ -19,7 +19,11 @@ Rails.application.routes.draw do
       get 'buypage', to: 'items#buypage'
       patch 'buy', to: 'items#buy'
     end
+    get 'top', to: 'items#top'  
+    resources :favorites, only: [:create, :destroy]
   end
+
+
   resources :users, only: :show do
     member do
       get 'purchasehistory', to: 'users#purchasehistory'
@@ -30,6 +34,11 @@ Rails.application.routes.draw do
     get 'logout', to: 'users#logout'
     get 'cash', to: 'users#cash'
     get 'address', to: 'users#address'
+    get 'nowonsale', to: 'users#nowonsale'
+    get 'completed', to: 'users#completed'
+    get 'purchasehistory', to: 'users#purchasehistory'
+    get 'favoritelist', to: 'users#favoritelist'
+
   end
   resources :addresses, only: :update
   resources :item_images

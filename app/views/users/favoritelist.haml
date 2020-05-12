@@ -1,0 +1,24 @@
+.mypage
+  .mypage-main.clearfix
+    .mypage-content
+      .fav-body
+        .fav-body__main
+          .fav-body__main__heading
+            %h2 お気に入り一覧
+          .fav-body__main__items
+          - @favorites.each do |fav|
+            .fav-body__main__items__item
+              = link_to item_path(fav.item.id), class: "fav-body__main__items__item__box" do
+                .fav-body__main__items__item__box__left
+                  .fav-body__main__items__item__box__left__image
+                    = image_tag "#{fav.item.item_images[0].image}", id:"favorite-pic"
+                .fav-body__main__items__item__box__right
+                  .fav-body__main__items__item__box__right__content
+                    .fav-body__main__items__item__box__right__content__item-name
+                      = fav.item.name
+                    .fav-body__main__items__item__box__right__content__item-price
+                      = "¥#{fav.item.price}"
+                  .fav-body__main__items__item__box__right__icon
+                    %i.angre-btn.fas.fa-angle-right.fa-2x
+    .mypage-side
+      = render partial: "side_menu"

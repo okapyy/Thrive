@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :items
   has_one :address
   has_many :purchases
+  has_many :favorites, dependent: :destroy
+  has_many :fav_items, through: :favorites, source: :item
 
   validates :nickname, presence: true, uniqueness: true
   validates :email,    presence: true, uniqueness: true, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
