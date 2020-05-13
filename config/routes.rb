@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get 'category', to: 'categories#category'
     end
   end
+  
   resources :items do
     collection do
       get 'list', to: 'items#list'
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
       get 'buypage', to: 'items#buypage'
       patch 'buy', to: 'items#buy'
     end
-    get 'top', to: 'items#top'  
+    resources :comments, only: :create
     resources :favorites, only: [:create, :destroy]
   end
 

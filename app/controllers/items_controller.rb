@@ -33,6 +33,8 @@ class ItemsController < ApplicationController
   def show
     @images = ItemImage.where(item_id: @item.id)
     @image = ItemImage.where(item_id: @item.id).first
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
     @prevItem = Item.where('id < ?', @item.id).maximum(:id)
     @nextItem = Item.where('id > ?', @item.id).minimum(:id)
   end
