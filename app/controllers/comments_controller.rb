@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
   def create
-    comment = Comment.create(comment_params)
-    redirect_back(fallback_location: root_path)
+    comment = Comment.new(comment_params)
+    if comment.save
+      redirect_back(fallback_location: root_path)
+    else
+      render :show
+    end
   end
 
   private
