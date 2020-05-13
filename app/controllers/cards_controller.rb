@@ -60,7 +60,7 @@ class CardsController < ApplicationController
     @card.destroy
 
     if @card.destroy
-      redirect_to user_cash_path(current_user.id)
+      redirect_to cash_user_path(current_user.id)
       flash[:notice] = 'クレジットカードを削除しました'
 
       else
