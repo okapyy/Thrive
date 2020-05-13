@@ -53,9 +53,7 @@ $(document).on('change','.exhibition__box__image__add-image',function(){
   //追加分の削除//
 $(document).on('click',".exhibition__box__image__image-delete__btn-delete",function(){
   let imageDelete = $(this).parents(".exhibition__box__image__image-list");
-  console.log(imageDelete)
   let id = $(this).attr('id');
-  console.log(id)
   $(imageDelete).remove();
   $(`#item_item_images_attributes_${id}_image`).val("");
   $('.exhibition__box__image__box').attr({id: `exhibition__box__image__box--${id}`,for: `item_item_images_attributes_${id}_image`});

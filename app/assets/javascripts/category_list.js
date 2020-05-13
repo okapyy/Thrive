@@ -6,7 +6,6 @@ $(document).on('turbolinks:load',function(){
     return html;
     
   }
-
   $("#categoryBtn").on('mouseover',function(){
     $(".tree").fadeIn(300);
   })
@@ -16,7 +15,6 @@ $(document).on('turbolinks:load',function(){
   
   $(".category-tree").on('mouseover',function(){
     let id = $(this).attr("id")
-    console.log(id)
 
     $(".subcatTree").toggle();
     $(".selected-color").removeClass("selected-color");
@@ -43,11 +41,9 @@ function buildGrandChildHTML(grandChild){
   let html = `<a class="item-tree" id="${grandChild.id}" 
   href="/categories/${grandChild.id}">${grandChild.name}</a>`;
   return html;
-  
 }
   $(document).on('mouseover',".subcat-tree",function(){
     let id = $(this).attr("id")
-    console.log(id)
     $(".itemTree").toggle(true);
     $(".selected-sub").removeClass("selected-sub");
     $('#' + id).addClass("selected-sub");
@@ -69,12 +65,11 @@ function buildGrandChildHTML(grandChild){
     });
   })
 })
-  $(document).on('mouseover',".item-tree",function(){
-    let id = $(this).attr("id")
-    console.log(id)
-    $(".selected-item").removeClass("selected-item");
-    $('#' + id).addClass("selected-item");
-  })
+$(document).on('mouseover',".item-tree",function(){
+  let id = $(this).attr("id")
+  $(".selected-item").removeClass("selected-item");
+  $('#' + id).addClass("selected-item");
+})
   
   
   
