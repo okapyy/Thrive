@@ -35,6 +35,8 @@ class ItemsController < ApplicationController
     @image = ItemImage.where(item_id: @item.id).first
     @beforeitem = Item.find_by(id: @item.id - 1) 
     @nextitem = Item.find_by(id: @item.id + 1)
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user)
   end
   
   def edit

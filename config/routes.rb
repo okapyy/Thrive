@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get 'buypage', to: 'items#buypage'
       patch 'buy', to: 'items#buy'
     end
+    resources :comments, only: :create
   end
   resources :users, only: :show do
     get 'logout', to: 'users#logout'
