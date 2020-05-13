@@ -37,8 +37,8 @@ Rails.application.routes.draw do
       get 'purchasehistory', to: 'users#purchasehistory'
       get 'soldout', to: 'users#soldout'
       get 'nowonsale', to: 'users#nowonsale'
+      get 'favoritelist', to: 'users#favoritelist'
     end
-
 
   end
   resources :addresses, only: :update
