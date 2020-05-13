@@ -9,9 +9,11 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one :purchase
+  has_many :favorites, dependent: :destroy
   has_many :item_images, dependent: :destroy
   has_many :comments
   accepts_nested_attributes_for :item_images, allow_destroy: true
+
 
   belongs_to :category
 
@@ -26,9 +28,12 @@ class Item < ApplicationRecord
             presence: true
   validates :name, length: {maximum: 40}, presence: true
   validates :description, length: {maximum: 1000}, presence: true
-  validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9999999}, presence: true
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 9999999}, presence: true
   before_validation :params_check 
   after_update_commit :create_purchase
+
+
+ 
 
   def params_check
     if self.category_id == nil
@@ -36,6 +41,11 @@ class Item < ApplicationRecord
     else
       return
     end 
+  end
+
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name like(?)', "%#{search}%")
   end
 
   def create_purchase

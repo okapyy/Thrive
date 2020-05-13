@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     end
   end
   def address
-    @user = User.find(params[:user_id])
-    @address = Address.find(params[:user_id])
+    @user = User.find(params[:id])
+    @address = Address.find(params[:id])
   end
 
   # 販売中のitem
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   # 売れたitem
-  def completed
+  def soldout
     @items = current_user.items.where('is_deleted', 0)
   end
 
@@ -33,4 +33,10 @@ class UsersController < ApplicationController
   def purchasehistory
     @purchases = Item.where(buyer_id: current_user.id).order(id: :desc)
   end
+
+  #お気に入り一覧
+  def favoritelist
+    @favorites = current_user.favorites.order('id DESC')
+  end
+
 end

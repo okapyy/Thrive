@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configre_permitted_parameters, if: :devise_controller?
-
+  before_action :set_category
+  
   protected
   def configre_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :birthday])
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
 
   def production?
     Rails.env.production?
+  end
+
+  def set_category
+    @parents = Category.where(ancestry: nil)
   end
 end

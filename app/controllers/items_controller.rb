@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_items, only:[:show, :edit, :update, :destroy, :buy, :buypage]
-  before_action :set_category, only:[:index, :new, :create, :edit]
+  before_action :set_category
   before_action :set_card, only:[:buy, :buypage]
   
   def index
@@ -33,10 +33,10 @@ class ItemsController < ApplicationController
   def show
     @images = ItemImage.where(item_id: @item.id)
     @image = ItemImage.where(item_id: @item.id).first
-    @beforeitem = Item.find_by(id: @item.id - 1) 
-    @nextitem = Item.find_by(id: @item.id + 1)
     @comment = Comment.new
     @comments = @item.comments.includes(:user)
+    @prevItem = Item.where('id < ?', @item.id).maximum(:id)
+    @nextItem = Item.where('id > ?', @item.id).minimum(:id)
   end
   
   def edit
@@ -102,6 +102,10 @@ class ItemsController < ApplicationController
     end
   end
   
+  def search
+    @items = Item.search(params[:q])
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :description, :brand, :category_id, :size_id, :condition_id, :delivery_fee_id, :delivery_from_id, :delivery_method_id, :delivery_day_id, :price, item_images_attributes: [:image]).merge(user_id: current_user.id)
@@ -112,10 +116,11 @@ class ItemsController < ApplicationController
   end
 
   def set_items
-    if params[:id].to_i  <= Item.all.length
+    item_ids = Item.ids
+    if (params[:id].to_i <= item_ids.max) && (item_ids.include?(params[:id].to_i))
       @item = Item.find(params[:id])
     else
-      redirect_to root_path
+      redirect_to list_items_path
     end
   end
 
