@@ -1,6 +1,6 @@
 - breadcrumb :new_item
 = render partial: "modules/notification"
-.exhibition
+%main.exhibition.main
   .exhibition__header
     = image_tag 'logo.png', size:"140x50", class:"exhibition__header__frima"
   = render partial: "modules/itemform", locals: { submitBtn: "出品する" }
