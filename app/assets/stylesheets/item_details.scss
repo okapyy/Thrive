@@ -331,13 +331,21 @@
             width: 100%;
           }
           .box {
-            height: 30px;
             margin-top: 10px;
             border-bottom: 1px solid #eee;
             text-shadow: 1px 1px 1px #eee;
             display: flex;
             justify-content: space-between;
+            .name{
+              width: 70%;
+              padding: 5px;
+            }
+            .time{
+              width: 30%;
+              padding: 5px;
+            }
           }
+          
         }
         
       }
