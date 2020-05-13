@@ -33,9 +33,8 @@ class ItemsController < ApplicationController
   def show
     @images = ItemImage.where(item_id: @item.id)
     @image = ItemImage.where(item_id: @item.id).first
-    item_ids = Item.where(id: (@item.id - 10)..(@item.id + 10)).ids
-    @prevItem = item_ids.select {|id| id < @item.id}.max
-    @nextItem = item_ids.select {|id| id > @item.id}.min
+    @prevItem = Item.where('id < ?', @item.id).maximum(:id)
+    @nextItem = Item.where('id > ?', @item.id).minimum(:id)
   end
   
   def edit
