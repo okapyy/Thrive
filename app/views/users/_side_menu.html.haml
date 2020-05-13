@@ -9,8 +9,8 @@
     = link_to "#", class: "side-menu__link" do
       %li やることリスト
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to "#", class: "side-menu__link" do
-      %li いいね！一覧
+    = link_to favoritelist_user_path(current_user), class: "side-menu__link" do
+      %li お気に入り一覧
       %i.angre-btn.fas.fa-angle-right.fa-2x
     = link_to new_item_path, class: "side-menu__link" do
       %li 出品する
@@ -18,19 +18,19 @@
     = link_to "#", class: "side-menu__link" do
       %li 下書き一覧
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to user_nowonsale_path(current_user), class: "side-menu__link" do
+    = link_to nowonsale_user_path(current_user), class: "side-menu__link" do
       %li 出品した商品・出品中
       %i.angre-btn.fas.fa-angle-right.fa-2x
     = link_to "#", class: "side-menu__link" do
       %li 出品した商品・取引中
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to user_completed_path(current_user), class: "side-menu__link" do
+    = link_to soldout_user_path(current_user), class: "side-menu__link" do
       %li 出品した商品・売却済み
       %i.angre-btn.fas.fa-angle-right.fa-2x
     = link_to "#", class: "side-menu__link" do
       %li 購入した商品・取引中
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to user_purchasehistory_path(current_user), class: "side-menu__link" do
+    = link_to purchasehistory_user_path(current_user), class: "side-menu__link" do
       %li 購入した商品・過去の取引
       %i.angre-btn.fas.fa-angle-right.fa-2x
     = link_to "#", class: "side-menu__link" do
@@ -62,10 +62,10 @@
     = link_to "#", class: "side-menu__link" do
       %li プロフィール
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to user_address_path(current_user), class: "side-menu__link" do
+    = link_to address_user_path(current_user), class: "side-menu__link" do
       %li 発送元・お届け先住所変更
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to user_cash_path(current_user), class: "side-menu__link" do
+    = link_to cash_user_path(current_user), class: "side-menu__link" do
       %li 支払い方法
       %i.angre-btn.fas.fa-angle-right.fa-2x
     = link_to "#", class: "side-menu__link" do
@@ -77,6 +77,6 @@
     = link_to "#", class: "side-menu__link" do
       %li 電話番号の確認
       %i.angre-btn.fas.fa-angle-right.fa-2x
-    = link_to user_logout_path(current_user), class: "side-menu__link" do
+    = link_to logout_user_path(current_user), class: "side-menu__link" do
       %li ログアウト
       %i.angre-btn.fas.fa-angle-right.fa-2x

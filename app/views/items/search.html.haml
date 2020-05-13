@@ -1,0 +1,22 @@
+- breadcrumb :search
+%main.index-main
+  %section.index-items
+    %h2.index-items__title
+      = "#{@items.length}件の商品がHITしました。"
+    .index-items__box
+      = link_to category_path(1), class: "box__head--link" do
+        .index-items__lists
+          -@items.each do |item|
+            .index-items__list
+              = link_to item_path(item.id),class: "index-item__list--link" do
+                .index-items__image
+                  = image_tag "#{item.item_images[0].image}",class: "index-items__image--size"
+                  .index-items__price
+                    = "¥ #{item.price}"
+                .index-items__body
+                  %p.index-items__name 
+                    = item.description
+              - if item.is_deleted.present?
+                .index-items__sold
+                  .index-items__sold--position
+                    %P SOLD

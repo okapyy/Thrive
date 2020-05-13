@@ -187,6 +187,7 @@
           text-align: right;
           padding-right: 2px;
           &__edit {
+            cursor: pointer;
             height: 40px;
             width: 80px;
             font-size: 14px;
@@ -195,6 +196,7 @@
             border-radius: 5px;
           }
           &__delete {
+            cursor: pointer;
             margin-left: 5px;
             height: 40px;
             width: 80px;
@@ -203,6 +205,7 @@
             border-radius: 5px;
           }
           &__purchace {
+            cursor: pointer;
             height: 50px;
             width: 115px;
             font-size: 15px;
@@ -222,9 +225,15 @@
           padding: 10px 0;
           ul {
             width: 200px;
+            a {
+              text-decoration: none;
+            }
             .like-btn {
-              width: 130px;
-              padding: 6px 10px;
+              height: 43px;
+              display: flex;
+              justify-content: space-evenly;
+              width: 160px;
+              padding: 9px 10px;
               border: 1px solid #ffb340;
               display: flex;
               border-radius: 40px;
@@ -232,10 +241,31 @@
               i {
                 font-size: 14px;
                 padding-top: 4px;
+                text-decoration: none;
+              }
+            }
+            .unlike-btn {
+              height: 43px;
+              display: flex;
+              justify-content: space-evenly;
+              width: 160px;
+              padding: 9px 10px;
+              border: 1px solid #3CCACE;
+              display: flex;
+              border-radius: 40px;
+              background-color: #3CCACE;
+              color: white;
+              i {
+                font-size: 14px;
+                padding-top: 4px;
+                text-decoration: none;
               }
             }
             .like-btn:hover {
-              opacity: 0.5;
+              opacity: 0.7;
+            }
+            .unlike-btn:hover {
+              opacity: 0.7;
             }
             .report-btn {
               position: absolute;
@@ -331,7 +361,6 @@
     .related-items {
       margin: 30px auto;
       width: 700px;
-
       a {
         text-decoration: none;
         font-size: 22px;

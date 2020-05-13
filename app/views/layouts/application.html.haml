@@ -16,31 +16,24 @@
         .header-top
           %h1.header-icon=link_to image_tag('logo.png', size:"140x41"), root_path 
           .search-box
-            %form
-              %input#search-input.search-box--input{:name => "keyword", :placeholder => "キーワードから探す"}/
-              %button{:type => "submit"}
+            = form_with(url: search_items_path, method: :get, local: true) do |f|
+              = f.text_field :q, placeholder:"キーワードから探す", id:"search-input", class:"search-box--input"
+              =  button_tag  do
                 .search-box--icon
                   = image_tag 'icon-search 1.png', size:"20x20"
           %ul.resultLists
         .header-nav
           %ul.header-nav--left
             %li.header-nav--left__item.header-nav--left__item--first
-              = link_to "カテゴリー", categories_path,id:"categoryBtn"
-              .tree#tree
-                %ul.categoryTree.displayNone#categoryTree
-                -# 機能実装中のため、以下コメントアウト　ここから
-                  -# - @parents.each do |parent|
-                  -#   %li.categoryTree--item
-                  -#     =link_to parent.name, "", id:"#{parent.id}"
-                %ul.subcatTree.displayNone#subcatTree
-                  -#   - @lady_child.each do |child|
-                  -#     %li.subcatTree--item
-                  -#       =link_to child.name, ""
-                %ul.itemTree.displayNone
-                  -#   - @lady_children[0].children.each do |child|
-                  -#     %li.itemTree--item
-                  -#       = link_to child.name, ""
-                -#  機能実装中のため、コメントアウト　ここまで 
+              = link_to "カテゴリー", categories_path,id:"categoryBtn",class: "category-color"
+
+              %ul.tree#tree
+                %li.categoryTree#categoryTree
+                - @parents.each do |parent|
+                  = link_to "#{parent.name}", category_path(parent), class: "category-tree",id: "#{parent.id}"
+                %li.subcatTree#subcatTree
+                %li.itemTree
+                  
             %li.header-nav--left__item
               = link_to "ブランド", "#", id:"brandBtn"
               %ul.brandsPulldown.displayNone
@@ -58,6 +51,8 @@
               = link_to new_user_registration_path, class: "header-nav--right__item" do
                 %li 新規会員登録
               .image-box{style:"background-image: url(google.png);"}
+    - unless request.fullpath == "/"
+      = render partial: 'modules/breadcrumb'
     = yield
     %footer.footer
       %ul.footer-contents
@@ -92,7 +87,7 @@
         = image_tag 'logo-white.png', size: '160x46', class:"footer-logo--image"
       %p © FURIMA
     - if user_signed_in?
-      = link_to new_item_path do
+      = link_to new_item_path,data: {"turbolinks" => false} do
         .putup__btn
           %span.putup__btn__text> 出品する
           = image_tag 'icon_camera.png', alt: '出品する', height: '', width: '', class: 'putup__btn__icon'
