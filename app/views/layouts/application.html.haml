@@ -29,8 +29,8 @@
 
               %ul.tree#tree
                 %li.categoryTree#categoryTree
-                - @parents.each do |parent|
-                  = link_to "#{parent.name}", category_path(parent), class: "category-tree",id: "#{parent.id}"
+                  - @parents.each do |parent|
+                    = link_to "#{parent.name}", category_path(parent), class: "category-tree",id: "#{parent.id}"
                 %li.subcatTree#subcatTree
                 %li.itemTree
                   
