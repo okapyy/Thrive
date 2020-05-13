@@ -71,14 +71,18 @@
             min-height: 620px;
             top: 40px;
             margin: 0 8px 5px 5px;
-            border-left: 1px solid #f8f8f8;
-            border-right: 1px solid #f8f8f8;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
             display: none;
             .categoryTree {
               display: flex;
               flex-direction: column;
               position: relative;
               width: 220px;
+              
+            }
+            .category-tree{
+              padding: 5px 15px;
             }
             .category-tree:hover{
               color: #fff;
@@ -93,8 +97,11 @@
               left: 214px;
               width: 210px;
               margin: 0px 8px 5px 5px;
-              border-bottom: 1px solid #f8f8f8;
+              border-bottom: 1px solid #ddd;
               display: none;
+            }
+            .subcat-tree{
+              padding: 5px 15px;
             }
 
             .itemTree {
@@ -107,8 +114,13 @@
               left: 410px;
               width: 260px;
               margin: 0 8px 5px 5px;
-              border-bottom: 1px solid #f8f8f8;
+              border-bottom: 1px solid #ddd;
+              border-right: 1px solid #ddd;
+              border-left: 1px solid #ddd;
               display: none;
+            }
+            .item-tree{
+              padding: 5px 15px;
             }
             .displayNone {
               display: none;
