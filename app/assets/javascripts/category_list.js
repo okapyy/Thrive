@@ -16,6 +16,13 @@ $(document).on('turbolinks:load',function(){
     $(".subcatTree").hide();
     $(".itemTree").hide();
   })
+  $(".mypage").on('mouseover',function(){
+    $(".tree").hide();
+    $(".subcat-tree").remove();
+    $(".item-tree").remove();
+    $(".subcatTree").hide();
+    $(".itemTree").hide();
+  })
   
   $(".category-tree").on('mouseover',function(){
     let id = $(this).attr("id")
