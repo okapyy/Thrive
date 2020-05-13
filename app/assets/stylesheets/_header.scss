@@ -50,6 +50,7 @@
       &--left {
         position: relative;
         display: flex;
+        
         &__item {
           display: flex;
           line-height: 38px;
@@ -66,45 +67,48 @@
             z-index: 2;
             position: absolute;
             background-color: #fff;
-            width: 240px;
+            width: 220px;
+            min-height: 620px;
             top: 40px;
+            margin: 0 8px 5px 5px;
+            border-left: 1px solid #f8f8f8;
+            border-right: 1px solid #f8f8f8;
+            display: none;
             .categoryTree {
               display: flex;
               flex-direction: column;
               position: relative;
-              &--item a {
-                width: 240px;
-                padding: 3px 8px 3px 5px;
-                border-bottom: 1px solid #f8f8f8;
-              }
+              width: 220px;
+            }
+            .category-tree:hover{
+              color: #fff;
             }
             .subcatTree {
-              min-height: 480px;
+              min-height: 620px;
               background-color: #fff;
               display: flex;
               flex-direction: column;
               position: absolute;
               top: 0;
-              left: 230px;
-              &--item a {
-                width: 240px;
-                padding: 3px 8px 3px 5px;
-                border-bottom: 1px solid #f8f8f8;
-              }
+              left: 214px;
+              width: 210px;
+              margin: 0px 8px 5px 5px;
+              border-bottom: 1px solid #f8f8f8;
+              display: none;
             }
+
             .itemTree {
-              min-height: 480px;
+              min-height: 620px;
               background-color: #fff;
               display: flex;
               flex-direction: column;
               position: absolute;
               top: 0;
-              left: 470px;
-              &--item a {
-                width: 240px;
-                padding: 3px 8px 3px 5px;
-                border-bottom: 1px solid #f8f8f8;
-              }
+              left: 410px;
+              width: 260px;
+              margin: 0 8px 5px 5px;
+              border-bottom: 1px solid #f8f8f8;
+              display: none;
             }
             .displayNone {
               display: none;
@@ -134,4 +138,13 @@
       }
     }
   }
+}
+.selected-color{
+  background-color: #ea352d;
+}
+.selected-sub{
+  background-color: #eee;
+}
+.selected-item{
+  background-color: #eee;
 }

@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     end
   end
   def address
-    @user = User.find(params[:user_id])
-    @address = Address.find(params[:user_id])
+    @user = User.find(params[:id])
+    @address = Address.find(params[:id])
   end
 
   # 販売中のitem
