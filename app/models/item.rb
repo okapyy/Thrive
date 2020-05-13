@@ -27,7 +27,7 @@ class Item < ApplicationRecord
             presence: true
   validates :name, length: {maximum: 40}, presence: true
   validates :description, length: {maximum: 1000}, presence: true
-  validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9999999}, presence: true
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 9999999}, presence: true
   before_validation :params_check 
   after_update_commit :create_purchase
 
