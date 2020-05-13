@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_items, only:[:show, :edit, :update, :destroy, :buy, :buypage]
-  before_action :set_category, only:[:index, :new, :create, :edit]
+  before_action :set_category
   before_action :set_card, only:[:buy, :buypage]
   
   def index

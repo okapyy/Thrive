@@ -25,22 +25,15 @@
         .header-nav
           %ul.header-nav--left
             %li.header-nav--left__item.header-nav--left__item--first
-              = link_to "カテゴリー", categories_path,id:"categoryBtn"
-              .tree#tree
-                %ul.categoryTree.displayNone#categoryTree
-                -# 機能実装中のため、以下コメントアウト　ここから
-                  -# - @parents.each do |parent|
-                  -#   %li.categoryTree--item
-                  -#     =link_to parent.name, "", id:"#{parent.id}"
-                %ul.subcatTree.displayNone#subcatTree
-                  -#   - @lady_child.each do |child|
-                  -#     %li.subcatTree--item
-                  -#       =link_to child.name, ""
-                %ul.itemTree.displayNone
-                  -#   - @lady_children[0].children.each do |child|
-                  -#     %li.itemTree--item
-                  -#       = link_to child.name, ""
-                -#  機能実装中のため、コメントアウト　ここまで 
+              = link_to "カテゴリー", categories_path,id:"categoryBtn",class: "category-color"
+
+              %ul.tree#tree
+                %li.categoryTree#categoryTree
+                - @parents.each do |parent|
+                  = link_to "#{parent.name}", category_path(parent), class: "category-tree",id: "#{parent.id}"
+                %li.subcatTree#subcatTree
+                %li.itemTree
+                  
             %li.header-nav--left__item
               = link_to "ブランド", "#", id:"brandBtn"
               %ul.brandsPulldown.displayNone
