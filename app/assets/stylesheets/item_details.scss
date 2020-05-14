@@ -337,12 +337,20 @@
             display: flex;
             justify-content: space-between;
             .name{
-              width: 70%;
+              width: 67%;
               padding: 5px;
+              
+              display: flex;
+              &__text {
+                width: 390px;
+                word-wrap: break-word;
+                padding: 0 5px;
+              }
             }
             .time{
-              width: 30%;
+              width: 33%;
               padding: 5px;
+              text-align: right;
             }
           }
           
