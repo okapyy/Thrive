@@ -119,8 +119,9 @@
             - @comments.each do |comment|
               .box
                 .name
-                  = comment.user.nickname
-                  = "：#{comment.text}"
+                  %p= comment.user.nickname
+                  %p= "："
+                  %p.name__text= comment.text
                 .time= comment.created_at.to_s(:datetime_jp) 
                 
            
