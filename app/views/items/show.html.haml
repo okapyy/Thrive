@@ -119,10 +119,10 @@
             - @comments.each do |comment|
               .box
                 .name
-                  %p= comment.user.nickname
-                  %p= "："
-                  %p.name__text= comment.text
-                .time= comment.created_at.to_s(:datetime_jp) 
+                  %p.name__font= "#{comment.user.nickname}"
+                  .time= comment.created_at.to_s(:datetime_jp) 
+                %p.name__text= comment.text
+                
                 
            
     %ul.links

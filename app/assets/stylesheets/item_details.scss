@@ -334,21 +334,32 @@
             margin-top: 10px;
             border-bottom: 1px solid #eee;
             text-shadow: 1px 1px 1px #eee;
-            display: flex;
             justify-content: space-between;
+            box-shadow: 2px 2px 3px lightgray;
             .name{
-              width: 67%;
-              padding: 5px;
-              
+              width: 100%;
               display: flex;
+              justify-content: space-between;
+              align-items: center;
               &__text {
-                width: 390px;
+                width: 400px;
+                padding: 10px;
+                margin: 7px 0 10px 10px;
                 word-wrap: break-word;
-                padding: 0 5px;
+                margin-bottom: 10px;
+                border-radius: 15px;
+                background-color: #eef0f4;
+                box-shadow: 2px 2px 3px lightgray;
+              }
+              &__font {
+                width: 400px;
+                font-size: 18px;
+                font-weight: bold;
+                margin-left: 5px;
+                word-wrap: break-word;
               }
             }
             .time{
-              width: 33%;
               padding: 5px;
               text-align: right;
             }
