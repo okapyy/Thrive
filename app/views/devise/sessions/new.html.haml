@@ -11,10 +11,10 @@
           新規会員登録
       .user-body__main__container__row
         .user-body__main__container__row__var
-          = link_to "#", class:"user-body__main__container__row__var__facebook" do
+          = link_to user_facebook_omniauth_authorize_path, method: :post, class:"user-body__main__container__row__var__facebook" do
             = icon('fab', 'facebook-square', class: "user-body__main__container__row__var__facebook--icon")
             Facebookでログイン
-          = link_to "#", class:"user-body__main__container__row__var__google" do
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class:"user-body__main__container__row__var__google" do
             = icon('fab', 'google', class: "user-body__main__container__row__var__google--icon")
             Googleでログイン
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

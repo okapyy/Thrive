@@ -20,6 +20,13 @@
       .user-body__main__contents__title
         %h2 会員情報入力
       .user-body__main__contents__form
+        .user-body__main__contents__form__banner
+          = link_to user_facebook_omniauth_authorize_path, method: :post, class:"user-body__main__contents__form__banner__facebook" do
+            = icon('fab', 'facebook-square', class: "user-body__main__contents__form__banner__facebook--icon")
+            Facebookで登録
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class:"user-body__main__contents__form__banner__google" do
+            = icon('fab', 'google', class: "user-body__main__contents__form__banner__google--icon")
+            Googleで登録
         = form_for(@user, url: registration_path(resource_name)) do |f|
           = render "devise/shared/error_messages", resource: resource
           .user-body__main__contents__form__field
@@ -32,16 +39,19 @@
               = f.label "メールアドレス"
               %span.blue 必須
               = f.email_field :email, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "user-body__main__contents__form__field--input"
-          .user-body__main__contents__form__field
-            .user-body__main__contents__form__field--label
-              = f.label "パスワード"
-              %span.blue 必須
-              = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "user-body__main__contents__form__field--input"
-          .user-body__main__contents__form__field
-            .user-body__main__contents__form__field--label
-              = f.label "パスワード確認"
-              %span.blue 必須
-              = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "user-body__main__contents__form__field--input"
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
+            .user-body__main__contents__form__field
+              .user-body__main__contents__form__field--label
+                = f.label "パスワード"
+                %span.blue 必須
+                = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "user-body__main__contents__form__field--input"
+            .user-body__main__contents__form__field
+              .user-body__main__contents__form__field--label
+                = f.label "パスワード確認"
+                %span.blue 必須
+                = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "user-body__main__contents__form__field--input"
           .user-body__main__contents__form__text
             %h2 本人確認
             %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。

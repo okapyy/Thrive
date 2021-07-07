@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'items#index'
 
   devise_for :users, controllers: {
+    omniauth_callbacks: 'wizard/omniauth_callbacks',
     registrations: 'wizard/registrations'
   }
   devise_scope :user do
